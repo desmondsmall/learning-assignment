@@ -14,6 +14,15 @@ cp .env.example .env.local   # then add your ANTHROPIC_API_KEY
 npm run dev                  # http://localhost:3000
 ```
 
+## Tests and evals
+
+```bash
+npm test          # the rules applied in code, without calling a model
+npm run eval      # the judge against 29 labelled responses; calls the API
+```
+
+How the evals work and how to read them is in `docs/evals.md`.
+
 ## Layout
 
 | Path | What's there |

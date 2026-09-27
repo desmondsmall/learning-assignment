@@ -5,11 +5,11 @@ How the coach works and why, for anyone working on it: developers, and the learn
 - `design.md`: how the coach gives feedback, and the reasoning and research behind it.
 - `experience.md`: what the learner sees and does, step by step.
 - `rubric.md`: what the coach judges, and when a response counts as strong.
+- `evals.md`: how the evals work, how to run them, and how to read the results.
 
-Planned, written with the code they describe:
+Planned, written with the code it describes:
 
 - `architecture.md`: how the app is put together: the model calls, the rules applied in code, data handling and security.
-- `evals.md`: how the evals work, and how to read the results.
 
 ## Reference
 
