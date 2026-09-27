@@ -9,9 +9,10 @@ What the learner sees and does, from opening the page to the debrief. The reason
 **Your response.** A text area for the learner's answer to the scenario, with a button to submit it.
 
 - It is the learner's alone. Nothing and nobody else writes in it, including the coach.
-- Above it, once there is a submitted version, are arrows to step back and forward through every version they have submitted, with a label such as "Version 2 of 3". The first is marked as the starting point.
-- Stepping back puts that version in the text area, read-only, with the coach's feedback on it. Stepping forward to the newest brings back the working draft, editable. Stepping back never loses the draft.
-- After a submission, the draft starts as the version just submitted, so revising means editing it. The learner can revise and resubmit as often as they like.
+- A row of numbered tabs above the feedback and the response lists every version. It sits above both because it changes both. The version being written is numbered as the version it will become and marked with a pencil: before the first submission the row is just "✎ 1", and after two it reads "1 2 ✎ 3". It is there from the start and gains a tab with each submission. Above the text area, a line names the version on screen, such as "Version 1 · your starting point" or "Version 3 · in progress".
+- Opening an earlier version puts it in the text area, read-only, with the coach's feedback on it. Opening the pencil tab brings back the version being written, editable. Looking back never loses it.
+- After a submission, the next version starts as the one just submitted, so revising means editing it. The learner can revise and resubmit as often as they like.
+- On an earlier version, **Back to version 3** (or whichever is being written) returns to it, and **Revise from this version** starts the version being written from that one instead, for a learner who decides an earlier version was better. If there are changes not yet submitted, it asks before replacing them.
 
 **The coach's feedback.** One box, showing the coach's feedback on the version on screen.
 
@@ -20,7 +21,7 @@ What the learner sees and does, from opening the page to the debrief. The reason
 - The feedback ends with something to take into the next version: the options question in the first round, a challenge after that, or a last test once the response is strong. Which one is set by the rule below.
 - The box holds only the coach's words and the prompt. The learner never writes to the coach: there is no reply space and no chat, and revising the response is the only way to answer.
 
-**Hints.** Below the feedback box, outside it, small chips say what the learner can do next. They are authored text set by code, never written by the coach, so they read as part of the page rather than as something the coach said:
+**Hints.** At the foot of the feedback box, set apart from the coach's words by a rule and in smaller, quieter text, a line says what the learner can do next. Hints are authored text set by code, never written by the coach, so they read as part of the page rather than as something the coach said:
 
 - after a question or challenge: "The coach reads your next version, not replies. Work your answer into your response and submit it again."
 - after the last test: "If your response already handles this, you're done. If not, you can add it."
@@ -30,7 +31,7 @@ What the learner sees and does, from opening the page to the debrief. The reason
 
 Like the feedback, the hints belong to the version on screen.
 
-**See the debrief.** A button that appears once the response is strong, or once the learner seems stuck, and then stays. It sits with the hints, next to the chip that explains it. Stuck is a rule in code, from what the judge already returns: the same limiting pattern in three versions in a row, or five versions without reaching strong.
+**See the debrief.** A button that appears once the response is strong, or once the learner seems stuck, and then stays. It sits with the hints at the foot of the feedback box, next to the one that explains it. Stuck is a rule in code, from what the judge already returns: the same limiting pattern in three versions in a row, or five versions without reaching strong.
 
 Seeing the debrief ends the session.
 
@@ -103,7 +104,7 @@ It is kept as their starting point.
 
 > "At 4:30 that Friday, what other options did you have?"
 
-**Hint, below the box:** *The coach reads your next version, not replies. Work your answer into your response and submit it again.*
+**Hint, at the foot of the box:** *The coach reads your next version, not replies. Work your answer into your response and submit it again.*
 
 ### First revision
 
@@ -155,7 +156,7 @@ The challenge: the response is now closest to path 6 (Send an accurate report an
 
 > "Monday, 8:15. The client phones you: 'I'm walking into the board in forty-five minutes. If they ask about quality, what do I tell them?' You haven't heard from Marcus. What do you tell the client?"
 
-**Hints, below the box, next to See the debrief:** *If your response already handles this, you're done. If not, you can add it.* · *Your response is strong. See the debrief when you're ready, or keep working on it.*
+**Hints, at the foot of the box, next to See the debrief:** *If your response already handles this, you're done. If not, you can add it.* · *Your response is strong. See the debrief when you're ready, or keep working on it.*
 
 The learner decides their response covers it, and opens the debrief.
 

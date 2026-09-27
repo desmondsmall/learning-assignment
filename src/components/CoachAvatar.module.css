@@ -1,0 +1,109 @@
+/* The coach's three states. The illustration itself never changes; small
+   cues around it (a breath, thought dots, voice arcs) show what it's doing. */
+
+.avatar {
+  width: var(--coach-size);
+  aspect-ratio: 1;
+  position: relative;
+  isolation: isolate;
+  flex: none;
+}
+
+.aura {
+  position: absolute;
+  inset: 20% 13% 11%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgb(143 183 156 / 0.27), rgb(143 183 156 / 0.09) 52%, transparent 72%);
+  filter: blur(12px);
+  opacity: 0.6;
+}
+
+.art {
+  position: absolute;
+  inset: 0;
+  transform-origin: 49% 71%;
+  animation: breathe 5.6s ease-in-out infinite;
+}
+
+.art img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  user-select: none;
+}
+
+.thought {
+  position: absolute;
+  left: 78%;
+  top: 82%;
+  display: flex;
+  gap: 3px;
+  align-items: flex-end;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity 0.45s, transform 0.45s;
+}
+
+.thought i {
+  display: block;
+  width: 4px;
+  height: 4px;
+  background: var(--sage);
+  border-radius: 50%;
+  opacity: 0.6;
+}
+
+.thought i:nth-child(2) { width: 5px; height: 5px; }
+.thought i:nth-child(3) { width: 7px; height: 7px; }
+
+.voice {
+  position: absolute;
+  left: 63%;
+  top: 34%;
+  width: 19%;
+  height: 19%;
+  border-radius: 50%;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+
+.voice i {
+  position: absolute;
+  inset: 0;
+  border: 2px solid rgb(248 242 222 / 0.74);
+  border-left-color: transparent;
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  transform: rotate(30deg) scale(0.45);
+  opacity: 0;
+}
+
+.thinking .art { animation: ponder 3.8s ease-in-out infinite; }
+.thinking .aura { animation: glow 2.8s ease-in-out infinite; }
+.thinking .thought { opacity: 1; transform: none; }
+.thinking .thought i { animation: dot 1.4s ease-in-out infinite; }
+.thinking .thought i:nth-child(2) { animation-delay: 0.2s; }
+.thinking .thought i:nth-child(3) { animation-delay: 0.4s; }
+
+.speaking .art { animation: speak 1.9s ease-in-out infinite; }
+.speaking .aura { animation: glow 1.9s ease-in-out infinite; }
+.speaking .voice { opacity: 1; }
+.speaking .voice i { animation: arc 1.9s ease-out infinite; }
+.speaking .voice i:nth-child(2) { animation-delay: 0.54s; }
+.speaking .voice i:nth-child(3) { animation-delay: 1.08s; }
+
+@keyframes breathe { 50% { transform: translateY(-1px) rotate(-0.35deg); } }
+@keyframes ponder { 50% { transform: translateY(-2px) rotate(-1.2deg); } }
+@keyframes speak { 25% { transform: translateY(-1px) rotate(0.7deg); } 65% { transform: translateY(0.5px) rotate(-0.5deg); } }
+@keyframes glow { 50% { opacity: 1; transform: scale(1.08); } }
+@keyframes dot { 50% { opacity: 1; transform: translateY(-3px); } }
+@keyframes arc { 12% { opacity: 0.7; } 85%, 100% { opacity: 0; transform: rotate(30deg) scale(1.5); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .avatar *, .avatar *::before, .avatar *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
