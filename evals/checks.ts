@@ -3,7 +3,7 @@
 // judge it. "Strong" in a phrase like "a strong line", on a response that isn't
 // strong, gets flagged even when it's harmless.
 
-import type { Mode } from "@/lib/coach";
+import type { Mode } from "@/lib/session";
 import { feedbackBudget } from "@/lib/coach";
 import { normalise } from "@/lib/rules";
 

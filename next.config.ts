@@ -1,7 +1,10 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  // The prompts are Markdown read from disk at runtime, so they're traced into the route explicitly.
+  outputFileTracingIncludes: {
+    "/api/feedback": ["./prompts/**/*"],
+  },
 };
 
 export default nextConfig;

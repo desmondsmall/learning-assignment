@@ -36,4 +36,6 @@ How the evals work and how to read them is in `docs/evals.md`.
 
 ## Deploying
 
-The app deploys to Vercel as a standard Next.js project. Set `ANTHROPIC_API_KEY` in the project's environment variables. Nothing else needs configuring.
+The app deploys to Vercel as a standard Next.js project. Set `ANTHROPIC_API_KEY` in the project's environment variables.
+
+To keep an anonymous record of each exchange (the response, the judgment and the feedback), create a private Vercel Blob store and connect it to the project, which sets `BLOB_READ_WRITE_TOKEN`. Without it, nothing is stored. Each exchange is one JSON file at `<environment>/sessions/<session id>/`, browsable in the Vercel dashboard under Storage.

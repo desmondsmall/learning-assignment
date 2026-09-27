@@ -4,6 +4,7 @@ import { content, pathById } from "./content";
 import type { Effort } from "./judge";
 import { contentVars, fill, readPrompt } from "./prompts";
 import { blockingElements, normalise, type Judgment, type Prompt } from "./rules";
+import type { Mode, SessionState } from "./session";
 
 // The coach writes the feedback the learner reads, from the checked judgment,
 // streamed as it's written. It never sees the rubric's levels as labels, and
@@ -13,9 +14,6 @@ import { blockingElements, normalise, type Judgment, type Prompt } from "./rules
 const SYSTEM = fill(readPrompt("coach"), contentVars);
 const { rubric, scenario, lastTest } = content;
 const ELEMENT_NAMES = Object.fromEntries(rubric.elements.map((e) => [e.key, e.name]));
-
-/** The first response, a revision, an unchanged resubmission, or one too short to judge. */
-export type Mode = "first" | "revision" | "unchanged" | "too_short";
 
 /** One judged version, as the coach remembers it. */
 export type Version = { response: string; judgment: Judgment; strong: boolean; feedback?: string };
@@ -45,6 +43,16 @@ export type CoachInput = {
   /** The prompt this feedback ends with, if any, as the learner will see it. */
   prompt?: string | null;
 };
+
+/** What the coach remembers of a session: a short summary, never the whole transcript. */
+export function historyOf(session: SessionState): History {
+  return {
+    first: session.first ? { response: session.first.response } : undefined,
+    previous: session.previous ?? undefined,
+    rounds: session.rounds,
+    lastPrompt: session.lastPrompt ? promptText(session.lastPrompt) : undefined,
+  };
+}
 
 /** The authored text of a prompt, exactly as the learner sees it after the feedback. */
 export function promptText(prompt: Prompt): string {

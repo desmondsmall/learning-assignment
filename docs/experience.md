@@ -9,6 +9,7 @@ What the learner sees and does, from opening the page to the debrief. The reason
 **Your response.** A text area for the learner's answer to the scenario, with a button to submit it.
 
 - It is the learner's alone. Nothing and nobody else writes in it, including the coach.
+- The session lives in the page: a refresh starts over. Below the text area, one quiet line says that responses are saved anonymously to improve the coach.
 - A row of numbered tabs above the feedback and the response lists every version. It sits above both because it changes both. The version being written is numbered as the version it will become and marked with a pencil: before the first submission the row is just "✎ 1", and after two it reads "1 2 ✎ 3". It is there from the start and gains a tab with each submission. Above the text area, a line names the version on screen, such as "Version 1 · your starting point" or "Version 3 · in progress".
 - Opening an earlier version puts it in the text area, read-only, with the coach's feedback on it. Opening the pencil tab brings back the version being written, editable. Looking back never loses it.
 - After a submission, the next version starts as the one just submitted, so revising means editing it. The learner can revise and resubmit as often as they like.

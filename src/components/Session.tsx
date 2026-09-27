@@ -1,73 +1,108 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { LuFileText, LuPencil } from "react-icons/lu";
+import { newSession, type Mode, type SessionState } from "@/lib/session";
 import { CoachAvatar, type CoachState } from "./CoachAvatar";
 
-// A preview of the loop with no model behind it yet: submitting shows the
-// coach reading, then streams placeholder text in place of real feedback.
+// The learner's side of the loop. Each submission goes to /api/feedback, which
+// streams back the round: the judge's verdict and the prompt the feedback ends
+// with, then the coach's words as they're written, then the next session state.
+// The session lives only in this page: a refresh starts over.
 
-type Version = { text: string; feedback: string; prompt: string };
+type ShownPrompt = { kind: "options" | "challenge" | "lastTest"; text: string };
+/** What one submission got back. */
+type Round = { feedback: string; prompt: ShownPrompt | null; mode: Mode };
+type Version = Round & { text: string };
 
 const OPENING = "Take your time. Write what you'd actually do, and why.";
-const PLACEHOLDER =
-  "This is a preview. The coach isn't connected yet, so this isn't feedback on what you wrote. When it is, the coach's feedback on your response will appear here as it's written, and end with something to take into your next version.";
-const NEXT_STEP =
-  "The coach reads your next version, not replies. Work your answer into your response and submit it again.";
+const HINTS = {
+  next: "The coach reads your next version, not replies. Work your answer into your response and submit it again.",
+  lastTest: "If your response already handles this, you're done. If not, you can add it.",
+  tooShort: "Add to your response and submit it again.",
+};
+const FAILED = "The coach couldn't finish. Your response is still here: try submitting it again.";
 
-// The preview's stand-in for the rule in code: the options question after the
-// first version, and the first challenge in the authored order after that.
-export function Session({
-  optionsQuestion,
-  firstChallenge,
-  onShowScenario,
-}: {
-  optionsQuestion: string;
-  firstChallenge: string;
-  onShowScenario: () => void;
-}) {
+export function Session({ onShowScenario }: { onShowScenario: () => void }) {
   const [versions, setVersions] = useState<Version[]>([]);
-  const [viewing, setViewing] = useState(0); // index into versions; versions.length means the draft
+  const [viewing, setViewing] = useState(0); // index into versions; versions.length means the version being written
   const [draft, setDraft] = useState("");
   const [coach, setCoach] = useState<CoachState>("idle");
   const [streamed, setStreamed] = useState("");
-  const timers = useRef<number[]>([]);
-
-  useEffect(() => () => timers.current.forEach(clearTimeout), []);
+  const [session, setSession] = useState<SessionState>(newSession);
+  // Feedback on a submission that isn't kept as a version: too short, or unchanged.
+  const [note, setNote] = useState<Round | null>(null);
+  const [error, setError] = useState<string | null>(null);
+  const sessionId = useRef<string | null>(null);
 
   const busy = coach !== "idle";
   const onDraft = viewing === versions.length;
-  const shown = onDraft ? versions.at(-1) : versions[viewing];
-  const latest = shown === versions.at(-1);
+  const latest = note ?? versions.at(-1);
+  const shown: Round | undefined = onDraft ? latest : versions[viewing];
 
-  function submit() {
+  async function submit() {
     const text = draft.trim();
     if (!text || busy) return;
-    const prompt = versions.length === 0 ? optionsQuestion : firstChallenge;
+    sessionId.current ??= crypto.randomUUID();
+    const count = versions.length;
+    setViewing(count);
     setCoach("thinking");
     setStreamed("");
-    const words = PLACEHOLDER.split(" ");
-    timers.current.push(
-      window.setTimeout(() => {
-        setCoach("speaking");
-        words.forEach((_, i) => {
-          timers.current.push(
-            window.setTimeout(() => {
-              setStreamed(words.slice(0, i + 1).join(" "));
-              if (i === words.length - 1) {
-                setVersions((v) => [...v, { text, feedback: PLACEHOLDER, prompt }]);
-                setViewing((i) => i + 1);
-                setCoach("idle");
-              }
-            }, i * 45),
-          );
-        });
-      }, 1800),
-    );
+    setError(null);
+
+    let round: Omit<Round, "feedback"> | null = null;
+    let feedback = "";
+    let next: SessionState | null = null;
+    let failure: string | null = null;
+    try {
+      const res = await fetch("/api/feedback", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ sessionId: sessionId.current, response: text, session }),
+      });
+      if (!res.ok || !res.body) throw new Error(`status ${res.status}`);
+      // Newline-delimited JSON: one event per line, split across chunks as it arrives.
+      const reader = res.body.pipeThrough(new TextDecoderStream()).getReader();
+      let buffer = "";
+      for (;;) {
+        const { done, value } = await reader.read();
+        if (done) break;
+        buffer += value;
+        const lines = buffer.split("\n");
+        buffer = lines.pop()!;
+        for (const line of lines.filter(Boolean)) {
+          const event = JSON.parse(line);
+          if (event.type === "judgment") round = { mode: event.mode, prompt: event.prompt };
+          else if (event.type === "text") {
+            feedback += event.text;
+            setCoach("speaking");
+            setStreamed(feedback);
+          } else if (event.type === "done") {
+            feedback = event.feedback;
+            next = event.session;
+          } else if (event.type === "error") failure = event.message;
+        }
+      }
+    } catch {
+      failure = FAILED;
+    }
+
+    if (failure || !round || !next) {
+      setError(failure ?? FAILED);
+    } else if (round.mode === "too_short" || round.mode === "unchanged") {
+      setSession(next);
+      setNote({ ...round, feedback });
+    } else {
+      setSession(next);
+      setNote(null);
+      setVersions((v) => [...v, { ...round!, feedback, text }]);
+      setViewing(count + 1);
+    }
+    setCoach("idle");
   }
 
-  // Makes the version on screen the working draft. Every submitted version stays
-  // in the history, so only unsubmitted changes to the draft can be lost: ask first.
+  // Makes the version on screen the one being written. Every submitted version stays
+  // in the history, so only unsubmitted changes can be lost: ask first.
   function reviseFromViewed() {
     const unsubmitted = draft.trim() !== (versions.at(-1)?.text ?? "");
     if (unsubmitted && !window.confirm(`Replace what you've written in version ${versions.length + 1} with version ${viewing + 1}? Your changes since your last submission will be lost.`)) return;
@@ -75,8 +110,29 @@ export function Session({
     setViewing(versions.length);
   }
 
-  const feedbackText = busy ? streamed : shown?.feedback ?? OPENING;
-  const prompt = busy ? null : shown?.prompt;
+  const failed = onDraft && !busy && error;
+  const feedbackText = busy ? streamed : failed ? error : (shown?.feedback ?? OPENING);
+  const prompt = busy || failed ? null : shown?.prompt;
+  const hint =
+    busy || failed || shown !== latest || !shown
+      ? null
+      : shown.mode === "too_short"
+        ? HINTS.tooShort
+        : shown.prompt?.kind === "lastTest"
+          ? HINTS.lastTest
+          : shown.prompt
+            ? HINTS.next
+            : null;
+  const status =
+    coach === "thinking"
+      ? "Reading your response…"
+      : coach === "speaking"
+        ? "Writing feedback…"
+        : shown && shown === note
+          ? "Feedback on your last submission"
+          : shown
+            ? `Feedback on version ${versions.indexOf(shown as Version) + 1}`
+            : "Ready when you are";
 
   // The version being written is numbered as the version it will become.
   const versionLabel = (i: number) =>
@@ -130,7 +186,7 @@ export function Session({
           <div>
             <p className="font-display text-lg font-semibold text-sage-deep">Your coach</p>
             <p className="text-sm text-ink-soft" aria-live="polite">
-              {coach === "thinking" ? "Reading your response…" : coach === "speaking" ? "Writing feedback…" : shown ? `Feedback on version ${versions.indexOf(shown) + 1}` : "Ready when you are"}
+              {status}
             </p>
           </div>
         </div>
@@ -142,14 +198,12 @@ export function Session({
 
         {prompt && (
           <p className="mt-5 leading-7 text-ink">
-            <span className="font-semibold text-sage-deep">For your next version: </span>
-            &ldquo;{prompt}&rdquo;
+            <span className="font-semibold text-sage-deep">{prompt.kind === "lastTest" ? "Want to see if it holds? " : "For your next version: "}</span>
+            &ldquo;{prompt.text}&rdquo;
           </p>
         )}
 
-        {prompt && latest && (
-          <p className="mt-6 border-t border-line pt-4 text-sm text-ink-soft">{NEXT_STEP}</p>
-        )}
+        {hint && <p className="mt-6 border-t border-line pt-4 text-sm text-ink-soft">{hint}</p>}
       </section>
 
       <section aria-label="Your response" className="rounded-3xl border border-line bg-card p-6 sm:p-7">
@@ -171,7 +225,12 @@ export function Session({
         />
 
         <div className="mt-4 flex flex-wrap items-center justify-between gap-4">
-          {onDraft && <p className="text-sm text-ink-soft">Revise and resubmit as often as you like.</p>}
+          {onDraft && (
+            <p className="text-sm text-ink-soft">
+              Revise and resubmit as often as you like.
+              <span className="block text-xs">Responses are saved anonymously to improve the coach.</span>
+            </p>
+          )}
           {onDraft ? (
             <button
               type="button"

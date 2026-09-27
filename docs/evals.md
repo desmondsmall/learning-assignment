@@ -44,6 +44,15 @@ The rest only a person can judge: whether the feedback aims at the right thing, 
 
 Beside it, `feedback.md` holds every coach message, and `results.json` everything the run produced: every judgment, with the quotes each level rests on and what the judge said each element shows and doesn't yet show, and every coach message with what it was given. That's where to look when a number moves.
 
+## Known disagreements
+
+Four places where the judge disagrees with a label consistently, and the label is right: the judge misapplies a principle its prompt already has. None changes whether a response is strong. They are left as they are rather than fixed with a prompt change that hasn't been through the evals.
+
+- **W1, Voice** (labelled developing, judged beginning every time). "Email the client saying the report is coming Monday" says what a message says, but is vague about the checks, which is developing. The judge reads the vagueness as saying nothing.
+- **E02, Action plan** (beginning, judged developing 4 times in 5). One send, with the failed checks left out, is a stance rather than a plan, as the rubric's own example ("send it the way Marcus asked") says. The judge credits it as concrete.
+- **E21, Reasoning** (beginning, judged developing every time). What drives the plan is not wanting to send bad news; the truth rule stated alongside it is a floor. The judge credits the rule, the move the rubric's "judge the reason that drives what it does" warns against.
+- **E18, too short to judge** (judged too short about half the time). After the note to the marker, which the judge always ignores, what's left is one correct line with no plan. The judge splits on whether that is enough to judge. Either way it is never called strong, and the coach asks for more or gives feedback on the line.
+
 ## Choosing the model
 
 The judge and the coach run on Claude Opus 5 at low effort. `evals/comparisons/sonnet-5/` is the same eval on Claude Sonnet 5, kept for reference. Its judge came close to Opus's, a little less accurate and less consistent, but most of its coach's messages failed a check, most often by asking two to four questions where the coach may ask one, and a few by calling a response strong that wasn't. The judge alone wouldn't have shown the difference; the coach is why Opus is used for both. Earlier runs, outside this repo, found low effort as accurate as medium on the judge, and faster.

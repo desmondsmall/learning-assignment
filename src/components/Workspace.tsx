@@ -8,14 +8,12 @@ import { Session } from "./Session";
 
 type Props = {
   scenario: Pick<Scenario, "title" | "text" | "question">;
-  optionsQuestion: string;
-  firstChallenge: string;
 };
 
 // Large screens show the scenario beside the work throughout. Small screens
 // take it in two steps: read the scenario and start, then work, with the
 // scenario one tap away in a dialog.
-export function Workspace({ scenario, optionsQuestion, firstChallenge }: Props) {
+export function Workspace({ scenario }: Props) {
   const [started, setStarted] = useState(false);
   const dialog = useRef<HTMLDialogElement>(null);
 
@@ -42,7 +40,7 @@ export function Workspace({ scenario, optionsQuestion, firstChallenge }: Props) 
       </section>
 
       <div className={`${started ? "" : "hidden"} lg:block`}>
-        <Session optionsQuestion={optionsQuestion} firstChallenge={firstChallenge} onShowScenario={() => dialog.current?.showModal()} />
+        <Session onShowScenario={() => dialog.current?.showModal()} />
       </div>
 
       <dialog

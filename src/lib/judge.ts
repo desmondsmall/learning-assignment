@@ -19,7 +19,7 @@ const ElementJudgment = z.object({
   level: z.enum(["beginning", "developing", "strong"]),
 });
 
-const JudgmentSchema = z.object({
+export const JudgmentSchema = z.object({
   assessable: z.boolean(),
   elements: z.object(Object.fromEntries(content.rubric.elements.map((e) => [e.key, ElementJudgment]))),
   patterns: z.array(z.string()),

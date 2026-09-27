@@ -20,10 +20,11 @@ import fs from "node:fs";
 import path from "node:path";
 import type { Usage } from "@anthropic-ai/sdk/resources/messages";
 import { MODEL } from "@/lib/anthropic";
-import { coach, promptText, type History, type Mode } from "@/lib/coach";
+import { coach, historyOf, promptText, type History } from "@/lib/coach";
 import { content } from "@/lib/content";
 import { judge, type Effort } from "@/lib/judge";
-import { isStrong, isUnchanged, nextPrompt, verifyQuotes, type Judgment, type Level, type Prompt } from "@/lib/rules";
+import { isStrong, verifyQuotes, type Judgment, type Level, type Prompt } from "@/lib/rules";
+import { afterRound, modeOf, newSession, promptFor, unchanged, type Mode } from "@/lib/session";
 import cases from "./cases.json";
 import { checkFeedback, type Issue } from "./checks";
 
@@ -135,7 +136,6 @@ function judgeAll(): Promise<Run[]> {
 
 const scenarioText = content.scenario.text;
 const byId = Object.fromEntries(cases.responses.map((c) => [c.id, c]));
-const optionsStrong = (j: Judgment) => j.elements.options?.level === "strong";
 
 /**
  * Coaches one version, given the session so far, with the prompt the rules in
@@ -169,11 +169,10 @@ function coachFirsts(runs: Run[]): Promise<(Coached | Failed)[]> {
   const firsts = runs.filter((r): r is Judged => !("error" in r) && r.repeat === 0);
   return pool(firsts, async (judged): Promise<Coached | Failed> => {
     try {
-      const j = judged.judgment;
-      const prompt = j.assessable
-        ? nextPrompt({ strong: judged.strong, first: true, optionsStrong: optionsStrong(j), lastTestDone: false, raised: [], closest: j.closest_paths, startedClosest: null, order: content.scenario.challengeOrder })
-        : null;
-      const out = await coachOne(judged.id, byId[judged.id].response, judged, j.assessable ? "first" : "too_short", {}, prompt);
+      const response = byId[judged.id].response;
+      const mode = modeOf(newSession(), response, judged.judgment);
+      const prompt = promptFor(newSession(), mode, judged.judgment, judged.strong, content.scenario.challengeOrder);
+      const out = await coachOne(judged.id, response, judged, mode, historyOf(newSession()), prompt);
       log(`  ${judged.id} coached (${out.text.split(/\s+/).length} words)`);
       return out;
     } catch (err) {
@@ -201,40 +200,20 @@ function playSequences(runs: Run[]): Promise<Sequence[]> {
   return pool(cases.resubmissions, async (seq): Promise<Sequence> => {
     try {
       const steps: Coached[] = [];
-      const history: History = { rounds: [] };
-      let first: { response: string; closest: number | null } | null = null;
-      let previous: { response: string; judged: Judged; prompt: Prompt | null } | null = null;
-      const raised: number[] = [];
-      let lastTestDone = false;
+      let session = newSession();
+      let lastJudged: Judged | null = null;
 
       for (const step of seq.steps) {
         const response = "case" in step ? byId[step.case!].response : step.text!;
-        const unchanged: boolean = previous !== null && isUnchanged(previous.response, response);
-        const judged: Judged = unchanged ? previous!.judged : (("case" in step && judgedFirst(step.case!)) || (await judgeOne(seq.id, response)));
-        const j = judged.judgment;
-        const mode: Mode = !j.assessable ? "too_short" : unchanged ? "unchanged" : previous ? "revision" : "first";
-        const prompt: Prompt | null =
-          mode === "too_short"
-            ? null
-            : mode === "unchanged"
-              ? previous!.prompt
-              : nextPrompt({ strong: judged.strong, first: !previous, optionsStrong: optionsStrong(j), lastTestDone, raised, closest: j.closest_paths, startedClosest: first?.closest ?? null, order: content.scenario.challengeOrder });
-
-        const out = await coachOne(seq.id, response, judged, mode, { ...history, rounds: [...history.rounds!] }, prompt);
+        const judged: Judged = unchanged(session, response)
+          ? lastJudged!
+          : ("case" in step && judgedFirst(step.case!)) || (await judgeOne(seq.id, response));
+        const mode = modeOf(session, response, judged.judgment);
+        const prompt = promptFor(session, mode, judged.judgment, judged.strong, content.scenario.challengeOrder);
+        const out = await coachOne(seq.id, response, judged, mode, historyOf(session), prompt);
         steps.push(out);
-
-        if (prompt?.kind === "challenge" && !raised.includes(prompt.pathId)) raised.push(prompt.pathId);
-        if (prompt?.kind === "lastTest") lastTestDone = true;
-        history.lastPrompt = prompt ? promptText(prompt) : undefined;
-        if (j.assessable && !unchanged) {
-          history.rounds!.push({ strong: judged.strong, patterns: j.patterns });
-          history.previous = { response, judgment: j, strong: judged.strong, feedback: out.text };
-          previous = { response, judged, prompt };
-          first ??= { response, closest: j.closest_paths[0] ?? null };
-          history.first = { response: first.response };
-        } else if (history.previous) {
-          history.previous = { ...history.previous, feedback: out.text };
-        }
+        session = afterRound(session, { response, judgment: judged.judgment, strong: judged.strong, mode, prompt, feedback: out.text });
+        if (mode !== "too_short" && mode !== "unchanged") lastJudged = judged;
       }
       log(`  ${seq.id} coached ${steps.length} rounds`);
       return { id: seq.id, title: seq.title, note: seq.note, steps };
