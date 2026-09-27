@@ -24,7 +24,6 @@ What the learner sees and does, from opening the page to the debrief. The reason
 
 **Hints.** At the foot of the feedback box, set apart from the coach's words by a rule and in smaller, quieter text, a line says what the learner can do next. Hints are authored text set by code, never written by the coach, so they read as part of the page rather than as something the coach said:
 
-- after a question or challenge: "The coach reads your next version, not replies. Work your answer into your response and submit it again."
 - after the last test: "If your response already handles this, you're done. If not, you can add it."
 - after a response too short to judge: "Add to your response and submit it again."
 - when See the debrief appears because the response is strong: "Your response is strong. See the debrief when you're ready, or keep working on it."
@@ -48,7 +47,7 @@ The whole experience is one loop: submit, feedback, revise, resubmit. Each submi
 1. **The learner opens the page.** They see the scenario, an empty response and the coach's opening line.
 2. **They write their first response and submit it.** It is kept as their starting point.
 3. **The coach gives feedback.** It credits what is working, with a quote. It goes through the two or three elements that matter most right now, each with a quote, what it shows and what it doesn't show yet. It names the one thing most limiting the response, and asks one question to think about. The shape is in `design.md`. There is no score and no model answer.
-4. **The feedback ends with the options question**, reframed as something to take into the next version: "At 4:30 that Friday, what other options did you have?" The learner answers it, if they choose to, in their response. If the first response already weighs other courses well, a challenge comes instead.
+4. **The feedback ends with the options question**, offered as something to consider: "At 4:30 that Friday, what other options did you have?" The learner answers it, if they choose to, in their response. If the first response already weighs other courses well, a challenge comes instead.
 5. **The learner revises and submits.** The coach responds to what changed since the last version, quoting before and after, and says whether it dealt with what was flagged. If the new version takes on what it was asked last time, the coach says so; if it doesn't, the coach lets it go. It keeps the starting point in view.
 6. **From the second round, the feedback ends with a challenge**: a path the learner didn't take, argued the way someone who took it would argue it, and chosen by the rule below. The learner tests their next version against it.
 7. **Another round.** This repeats as long as the learner wants.
@@ -101,11 +100,9 @@ It is kept as their starting point.
 >
 > What's limiting your plan most is that it's built around Marcus's authority, and the client's situation hasn't come into it yet. Something to think about: what does the client need from you before Monday morning, and what happens if they don't have it?"
 
-**For your next version:**
+**Something to consider:**
 
 > "At 4:30 that Friday, what other options did you have?"
-
-**Hint, at the foot of the box:** *The coach reads your next version, not replies. Work your answer into your response and submit it again.*
 
 ### First revision
 
@@ -121,7 +118,7 @@ It is kept as their starting point.
 
 The challenge, by the rule above: the response is closest to path 4 (Hold it until Marcus is back), so that is left out. The learner hasn't moved away from where they started, and nothing has been raised yet, so the fixed order gives path 1, Marcus's own argument.
 
-**For your next version:**
+**Something to consider:**
 
 > "Marcus would put it like this: 'The fixes are small, I'll have them done by Monday, and this client panics over nothing. I'm the lead on this. Just send it.' Why not do what he asked?"
 
@@ -139,7 +136,7 @@ The challenge, by the rule above: the response is closest to path 4 (Hold it unt
 
 The challenge: the response is now closest to path 6 (Send an accurate report and tell Marcus), and path 1 has been raised. The learner has moved away from where they started, so the challenge comes from there: path 4.
 
-**For your next version:**
+**Something to consider:**
 
 > "Someone might say: 'You can't reach Marcus, and it's his project. Wait until Monday and let him decide.' Why not wait?"
 

@@ -42,7 +42,7 @@ The coach judges all six elements every round, but the learner reads a prioritiz
 2. **Element by element, for the two or three that matter most right now**, taken only from the elements that stand between the response and strong. For each: a short quote, what it shows, and what it doesn't show yet. The rest wait for a later round, and elements already good enough for strong are left alone.
 3. **The limiting pattern**: one, two at most, named at the level of process ("Your reasoning stops at the rule", "Every consequence you name is to you"). The patterns the coach looks for first are listed in `rubric.md`.
 4. **One question, at the end, not a fix**: "What does the client need from you before Monday morning?", "What would your note to Marcus tell him?" It is the only question the coach asks; every other point is made as a statement.
-5. **Something to take into the next version**, authored and chosen in code: the options question in the first round, a challenge after that. It is shown as written, after the coach's own words, with a line saying the coach reads the next version rather than replies.
+5. **Something to consider**, authored and chosen in code: the options question in the first round, a challenge after that. It is shown as written, after the coach's own words, marked "Something to consider", because taking it up is optional.
 
 About 120 to 250 words. In testing, the coach given room for three questions wove rhetorical questions through the body and asked five to seven in total. With the prompt that follows, the learner meets two questions at most, and only one of them is the coach's.
 

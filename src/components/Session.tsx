@@ -17,7 +17,6 @@ type Version = Round & { text: string };
 
 const OPENING = "Take your time. Write what you'd actually do, and why.";
 const HINTS = {
-  next: "The coach reads your next version, not replies. Work your answer into your response and submit it again.",
   lastTest: "If your response already handles this, you're done. If not, you can add it.",
   tooShort: "Add to your response and submit it again.",
 };
@@ -120,9 +119,7 @@ export function Session({ onShowScenario }: { onShowScenario: () => void }) {
         ? HINTS.tooShort
         : shown.prompt?.kind === "lastTest"
           ? HINTS.lastTest
-          : shown.prompt
-            ? HINTS.next
-            : null;
+          : null;
   const status =
     coach === "thinking"
       ? "Reading your response…"
@@ -191,14 +188,17 @@ export function Session({ onShowScenario }: { onShowScenario: () => void }) {
           </div>
         </div>
 
-        <p className="mt-5 min-h-12 whitespace-pre-line leading-7 text-ink">
-          {feedbackText}
-          {coach === "speaking" && <span className="ml-0.5 inline-block h-4 w-0.5 translate-y-0.5 animate-pulse bg-sage" aria-hidden="true" />}
-        </p>
+        {/* While the coach is reading there are no words yet, so the card is just its header. */}
+        {feedbackText && (
+          <p className="mt-5 whitespace-pre-line leading-7 text-ink">
+            {feedbackText}
+            {coach === "speaking" && <span className="ml-0.5 inline-block h-4 w-0.5 translate-y-0.5 animate-pulse bg-sage" aria-hidden="true" />}
+          </p>
+        )}
 
         {prompt && (
           <p className="mt-5 leading-7 text-ink">
-            <span className="font-semibold text-sage-deep">{prompt.kind === "lastTest" ? "Want to see if it holds? " : "For your next version: "}</span>
+            <span className="font-semibold text-sage-deep">{prompt.kind === "lastTest" ? "Want to see if it holds? " : "Something to consider: "}</span>
             &ldquo;{prompt.text}&rdquo;
           </p>
         )}
@@ -228,7 +228,7 @@ export function Session({ onShowScenario }: { onShowScenario: () => void }) {
           {onDraft && (
             <p className="text-sm text-ink-soft">
               Revise and resubmit as often as you like.
-              <span className="block text-xs">Responses are saved anonymously to improve the coach.</span>
+              <span className="mt-0.5 block text-xs text-ink-soft/60">Responses are saved anonymously to improve the coach.</span>
             </p>
           )}
           {onDraft ? (
