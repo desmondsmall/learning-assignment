@@ -12,13 +12,12 @@ type Version = { text: string; feedback: string; prompt: string };
 const OPENING = "Take your time. Write what you'd actually do, and why.";
 const PLACEHOLDER =
   "This is a preview. The coach isn't connected yet, so this isn't feedback on what you wrote. When it is, the coach's feedback on your response will appear here as it's written, and end with something to take into your next version.";
-const OPTIONS_QUESTION = "At 4:30 that Friday, what other options did you have?";
-const FIRST_CHALLENGE =
-  "Marcus would put it like this: 'The fixes are small, I'll have them done by Monday, and this client panics over nothing. I'm the lead on this. Just send it.' Why not do what he asked?";
 const NEXT_STEP =
   "The coach reads your next version, not replies. Work your answer into your response and submit it again.";
 
-export function Session() {
+// The preview's stand-in for the rule in code: the options question after the
+// first version, and the first challenge in the authored order after that.
+export function Session({ optionsQuestion, firstChallenge }: { optionsQuestion: string; firstChallenge: string }) {
   const [versions, setVersions] = useState<Version[]>([]);
   const [viewing, setViewing] = useState(0); // index into versions; versions.length means the draft
   const [draft, setDraft] = useState("");
@@ -36,7 +35,7 @@ export function Session() {
   function submit() {
     const text = draft.trim();
     if (!text || busy) return;
-    const prompt = versions.length === 0 ? OPTIONS_QUESTION : FIRST_CHALLENGE;
+    const prompt = versions.length === 0 ? optionsQuestion : firstChallenge;
     setCoach("thinking");
     setStreamed("");
     const words = PLACEHOLDER.split(" ");

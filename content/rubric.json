@@ -1,0 +1,164 @@
+{
+  "principles": [
+    "It judges the current response only. Earlier versions, and anything the learner said to the coach elsewhere, are not scored.",
+    "It judges the reasoning and the action, not the path. The *whether* is settled: a report that says the checks are complete, or leaves them out, or hides them behind a caveat, is misleading, and a response that plans to send one can't be strong on Recognition. The *how* is open. Whether to involve someone senior, whether to send tonight or first thing Saturday, and how much to say to whom are all defensible, and a well-argued choice earns full credit.",
+    "A strong plan has to say whether anyone else at the firm should know, and why not if nobody. A reasoned \"not tonight\" or \"there's no one I can reach\" is as good as escalating.",
+    "Sending on Saturday holds only if the client hears the substance tonight, and the delay serves a purpose, such as giving someone senior a say in how it's put. A vague heads-up that hides the failures overnight doesn't meet the first condition.",
+    "When a response gives reasons at more than one level, judge the reason that drives what it does. A rule stated alongside (\"that would be a lie\") doesn't lift the reasoning if the plan itself is driven by not upsetting Marcus or the client.",
+    "It credits what the text shows, in any wording. The learner doesn't need the word \"stakeholder\" or \"board\" if they say \"the people deciding on Monday\". Credit reasonable implication (\"send it with the two failed checks shown\" implies they see that \"complete\" is false), but not what the learner probably meant.",
+    "Each element is judged on its own terms. A plan to send a misleading report can still be concrete (Action plan) or come with words (Voice); Recognition is what carries the *whether*.",
+    "Ambiguity is neither credited nor held against the learner. If a key phrase can genuinely be read two ways (\"send it as-is\": with the failures shown, or marked complete?), judge on what is clear and name the ambiguity, rather than choosing a reading.",
+    "Length isn't quality. A short response can be strong, and a long one can be beginning on every element. Naming ethical theories or professional codes earns nothing on its own.",
+    "Judge only against what the scenario tells the learner. Don't expect them to know anything it doesn't say."
+  ],
+  "elements": [
+    {
+      "key": "recognition",
+      "name": "Recognition",
+      "focus": "What the learner sees in the situation.",
+      "levels": {
+        "beginning": "Doesn't see that the report would be false or misleading, or treats a caveat or leaving the checks off as honest enough. Or builds the plan on something the scenario rules out or doesn't give them: talking Marcus round tonight, or fixing the checks themselves.",
+        "developing": "Sees that marking the checks complete would be untrue, but the picture stops there. The client is one undifferentiated party, and the board meeting isn't set against Marcus's \"by Monday\".",
+        "strong": "Sees that the report would be false when it is relied on, not only when it is sent: the board meets on Monday morning, and \"by Monday\" is a promise nobody can confirm before then. The scenario doesn't say whether the fixes land before or after the board meets, so either reading earns this, as does saying it's unknown. What earns it is seeing that a promise can't make \"complete\" true in time. Owning the report as theirs (\"it goes out under my name\") and noticing what else isn't known (how serious the failures are, reasoned about conditionally) add to this, but aren't required."
+      }
+    },
+    {
+      "key": "reasoning",
+      "name": "Reasoning",
+      "focus": "Why they act as they do.",
+      "levels": {
+        "beginning": "No reason, or only personal interest (\"I'd get in trouble\", \"I don't want to annoy Marcus\"), or deferring (\"it's his call, not mine\").",
+        "developing": "Reasons from a rule: \"it's lying\", \"it's against policy\", \"I have to be honest\". Correct, but it stops there, and Marcus's arguments go unanswered.",
+        "strong": "Reasons from what the report is for and who relies on it, and meets at least one of Marcus's arguments on its own terms rather than dismissing it: the fixes are small, the client panics over nothing, it'll be done by Monday. Taking his concern seriously counts in its favour."
+      }
+    },
+    {
+      "key": "options",
+      "name": "Options",
+      "focus": "The courses they see and how they choose.",
+      "levels": {
+        "beginning": "Sees only complying or refusing. Or goes straight to a drastic step: telling the client Marcus asked them to lie, resigning, reporting him, or sending nothing.",
+        "developing": "Lands on a course between complying and refusing, but doesn't show why it is better than the alternatives.",
+        "strong": "Considers at least one other course and says why not, and the choice is proportionate: the least drastic step that keeps the report true."
+      }
+    },
+    {
+      "key": "action_plan",
+      "name": "Action plan",
+      "focus": "What they actually do.",
+      "levels": {
+        "beginning": "No actions, only a stance (\"I wouldn't send it\"). Or a plan that rests entirely on something the scenario rules out or doesn't give them, such as reaching Marcus or fixing the checks, so nothing can actually happen tonight.",
+        "developing": "Actions are named but vague or unordered: \"escalate\" without saying to whom. Or the plan mixes steps that can happen tonight with one that can't, such as talking to Marcus. Or the plan is concrete but silent on whether anyone else at the firm should know.",
+        "strong": "Concrete, in order and doable on Friday evening with the people who can be reached: what goes to the client and when, what goes to Marcus, and whether anyone else at the firm should know, with a reason if not. Something is in writing."
+      }
+    },
+    {
+      "key": "voice",
+      "name": "Voice",
+      "focus": "What they would say, and how.",
+      "levels": {
+        "beginning": "Doesn't say what they'd tell anyone, or what they'd say accuses Marcus, alarms the client or hands the client the internal disagreement.",
+        "developing": "Says who they'd tell and roughly what about, but not what the message says (\"I'd explain to Marcus why I sent it accurately\"). Or it says what a message says, but is vague about the checks or claims more than anyone knows (\"they're nothing to worry about\").",
+        "strong": "Says what the hardest message says, usually the one to Marcus, clearly enough to hear how it would land: what they did, why, and what happens next. And says plainly what the client is told about the two checks: that they aren't done, and what is and isn't known about the fixes. Calm, clear and not accusatory, and it serves Marcus's real wish not to alarm the client. The learner's own summary of a message is enough; a drafted note isn't required. Nobody knows what the checks test or how serious the failures are, so a message that says so honestly is being specific."
+      }
+    },
+    {
+      "key": "reflection",
+      "name": "Reflection and follow-through",
+      "focus": "Beyond Friday night.",
+      "levels": {
+        "beginning": "Nothing beyond Friday night, and no sense of their own part in it.",
+        "developing": "One of these: a Monday follow-up (talking to Marcus, confirming the fixes to the client), or acknowledging their own pressure or their part in raising it at 4:30.",
+        "strong": "A Monday follow-up and at least one of: owning why this surfaced at 4:30 rather than in the morning, something for next time (flagging failures the same day, agreeing what \"complete\" means) or naming the pressure they feel. Specific, without self-flagellation."
+      }
+    }
+  ],
+  "strongRule": {
+    "mustBeStrong": [
+      "recognition",
+      "reasoning",
+      "action_plan",
+      "voice"
+    ],
+    "atLeastDeveloping": [
+      "options",
+      "reflection"
+    ]
+  },
+  "patterns": [
+    {
+      "key": "defers-to-authority",
+      "text": "Your plan is built around Marcus's authority, but the report goes out under your name.",
+      "limits": [
+        "recognition",
+        "reasoning"
+      ]
+    },
+    {
+      "key": "misses-the-timing",
+      "text": "You haven't yet put Monday's board meeting next to Marcus's 'by Monday'. Who can confirm the fixes before the board relies on the report?",
+      "limits": [
+        "recognition"
+      ]
+    },
+    {
+      "key": "omission-as-honesty",
+      "text": "Leaving it out, or softening it, still leaves the client believing something that isn't true.",
+      "limits": [
+        "recognition"
+      ]
+    },
+    {
+      "key": "misreads-the-facts",
+      "text": "Your plan depends on reaching Marcus, who isn't picking up, or on something the scenario doesn't give you, like fixing the checks yourself.",
+      "limits": [
+        "recognition",
+        "action_plan"
+      ]
+    },
+    {
+      "key": "stops-at-the-rule",
+      "text": "Your reasoning stops at the rule: it's lying. Why does it matter here, to these people?",
+      "limits": [
+        "reasoning"
+      ]
+    },
+    {
+      "key": "all-or-nothing",
+      "text": "You see two choices: do what he says, or blow it up. Is there anything in between?",
+      "limits": [
+        "options"
+      ]
+    },
+    {
+      "key": "decides-but-doesnt-act",
+      "text": "You know what's right, but not yet what you'd do tonight.",
+      "limits": [
+        "action_plan"
+      ]
+    },
+    {
+      "key": "topic-not-message",
+      "text": "You'd explain it to Marcus, but what would you tell him?",
+      "limits": [
+        "voice"
+      ]
+    },
+    {
+      "key": "turns-on-marcus",
+      "text": "The message makes this about Marcus, not about the report.",
+      "limits": [
+        "voice",
+        "options"
+      ]
+    },
+    {
+      "key": "consequences-only-to-self",
+      "text": "Every consequence you name is to you.",
+      "limits": [
+        "reasoning",
+        "recognition"
+      ]
+    }
+  ]
+}

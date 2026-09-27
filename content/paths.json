@@ -1,0 +1,72 @@
+[
+  {
+    "id": 1,
+    "name": "Send it as Marcus asked",
+    "summary": "Mark the checks complete and send, deferring to Marcus.",
+    "challenge": "Marcus would put it like this: 'The fixes are small, I'll have them done by Monday, and this client panics over nothing. I'm the lead on this. Just send it.' Why not do what he asked?",
+    "mostLikely": "You send it at five. The client reads \"all checks complete\" and takes that into Monday's board meeting, which goes smoothly. Marcus finishes the fixes. Nobody ever mentions it.",
+    "couldAlsoHappen": "One fix turns out bigger than Marcus thought and runs into Wednesday. On Thursday the client learns from next week's report that the checks had failed before the board meeting. They ask who signed off last Friday's report. It has your name on it.",
+    "cost": "Most likely, nothing you'll ever see. Possibly the client's standing with their board, and their trust in the firm. And a precedent: next time a check fails on a Friday, this is how it's done.",
+    "protected": "A calm weekend, a smooth board meeting, and your working relationship with Marcus."
+  },
+  {
+    "id": 2,
+    "name": "Send it, leaving the two checks off",
+    "summary": "Send the report with only the checks that passed.",
+    "challenge": "Someone might say: 'Just leave the two failed checks out. You wouldn't have written a single false word.' What's wrong with that?",
+    "mostLikely": "The client doesn't notice the gap, or notices and assumes the other two were fine. Monday passes.",
+    "couldAlsoHappen": "On Saturday the client emails: \"What happened to the other two checks?\" Now you have to answer, alone and in writing, without Marcus. Or it surfaces weeks later, when a missing item looks deliberate, which reads worse than a mistake.",
+    "cost": "If it's ever noticed, the gap looks like hiding rather than a slip, and that's harder to explain than a failed check.",
+    "protected": "Your sense that you didn't write anything untrue, and Marcus's wish for a quiet weekend."
+  },
+  {
+    "id": 3,
+    "name": "Send it with a general caveat",
+    "summary": "Say the checks are complete with a soft note that some items are being finalized.",
+    "challenge": "A colleague suggests: 'Write \"all checks complete; a couple of minor items are being finalized\". It keeps Marcus happy, and it isn't really hiding anything.' Why isn't that enough?",
+    "mostLikely": "The client reads \"complete\" and skims past the rest. The board hears that quality checks are complete. Monday goes fine.",
+    "couldAlsoHappen": "A board member asks directly: \"Were there any quality issues?\" The client says no, trusting your report. If it comes out later, you point to the caveat, and they point to the word \"complete\".",
+    "cost": "The caveat protects you on paper, but the client still ends up believing something that isn't true.",
+    "protected": "Marcus's instruction, mostly, and your record, partly."
+  },
+  {
+    "id": 4,
+    "name": "Hold it until Marcus is back",
+    "summary": "Send nothing, or delay, until Marcus can decide.",
+    "challenge": "Someone might say: 'You can't reach Marcus, and it's his project. Wait until Monday and let him decide.' Why not wait?",
+    "mostLikely": "Five o'clock passes with no report, and the client chases it, that evening or over the weekend. Without it, they go into Monday's board meeting with last week's picture. Marcus finds out on Monday, with the board about to meet.",
+    "couldAlsoHappen": "The client phones you on Saturday afternoon, and you have to decide on the spot what to tell them, without having prepared what to say.",
+    "cost": "Waiting didn't avoid the decision; it moved it to a worse moment. The board went ahead on out-of-date information, and the silence said something too: the client noticed.",
+    "protected": "You didn't say anything false, and you didn't go against Marcus."
+  },
+  {
+    "id": 5,
+    "name": "Take it to someone else at the firm",
+    "summary": "Involve someone senior at the firm in the decision.",
+    "challenge": "Someone might say: 'This is above your pay grade. Email someone senior at the firm and let them decide.' Why not hand it to them?",
+    "mostLikely": "You hear back that evening, or not until the weekend. If they reply, it may well be: send it accurately, keep it calm, and they'll talk to Marcus on Monday. Either way the report still goes out under your name. On Monday Marcus may be cool with you for a day; he'd rather have heard it from you first.",
+    "couldAlsoHappen": "They reply, \"Marcus knows this client, do what he says.\" You asked, the answer is the one you were hoping not to hear, and the report still goes out under your name.",
+    "cost": "Some awkwardness with Marcus, and the feeling of having gone around him. How it lands depends on how you put it: about the report, or about Marcus.",
+    "protected": "You didn't carry it alone, and the firm knows what's happening in its name."
+  },
+  {
+    "id": 6,
+    "name": "Send an accurate report and tell Marcus",
+    "summary": "Show the two failed checks plainly, with what's being done, and tell Marcus what was sent and why.",
+    "challenge": "The client might put it like this: 'I'd rather hear bad news from you on Friday than from someone else on Thursday. Just tell me what's going on.' What would you tell them?",
+    "mostLikely": "The client comes back with a question or two: do the failures affect anything the board will see, and when will they be fixed? You answer what you can and say Marcus will confirm on Monday. At the board the client mentions two items being fixed, and the meeting moves on. Marcus may well be irritated that you didn't do what he asked.",
+    "couldAlsoHappen": "The client is anxious and phones on Saturday, and you spend an hour on the call without Marcus. On Monday he says, \"I told you they panic,\" and you have a hard conversation.",
+    "cost": "A harder Friday evening, some of your weekend, and a tense Monday with Marcus.",
+    "protected": "The board decided on accurate information, the client wasn't blindsided, and your name is on something true. If a fix runs late, nobody is surprised, including Marcus."
+  },
+  {
+    "id": 7,
+    "name": "Tell the client everything, including what Marcus asked",
+    "summary": "Disclose the failures and Marcus's request to the client, or take a drastic step such as resigning or reporting him.",
+    "challenge": "Someone might say: 'Tell the client everything, including what Marcus asked you to do. Then nobody can ever say you went along with it.' Why not?",
+    "mostLikely": "The client gets an accurate report, and with it an account of an internal disagreement they didn't need. They start to wonder what else goes on inside the firm. On Monday Marcus learns the client heard about his request before he could explain it, and someone senior spends the week repairing the relationship. The board hears about quality issues and an internal dispute.",
+    "couldAlsoHappen": "The client values your candour and asks for you on future work, while inside the firm, trust in you is badly damaged.",
+    "cost": "The client's confidence in the firm, your relationship with Marcus, and possibly your standing, all over a request he never got to explain.",
+    "protected": "The truth, and your certainty that nobody could accuse you of going along with it."
+  }
+]

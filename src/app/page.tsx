@@ -1,7 +1,9 @@
-import scenario from "../../content/scenario.json";
 import { Session } from "@/components/Session";
+import { content, pathById } from "@/lib/content";
 
 export default function Home() {
+  const { scenario } = content;
+
   return (
     <main className="mx-auto grid w-full max-w-6xl flex-1 content-start gap-6 px-5 py-8 sm:px-8 sm:py-10 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-10 lg:py-14">
       <section aria-labelledby="scenario-title" className="lg:sticky lg:top-8 lg:self-start">
@@ -17,7 +19,10 @@ export default function Home() {
         </div>
       </section>
 
-      <Session />
+      <Session
+        optionsQuestion={scenario.optionsQuestion}
+        firstChallenge={pathById(scenario.challengeOrder[0]).challenge}
+      />
     </main>
   );
 }
