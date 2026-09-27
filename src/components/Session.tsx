@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { LuPencil } from "react-icons/lu";
+import { LuFileText, LuPencil } from "react-icons/lu";
 import { CoachAvatar, type CoachState } from "./CoachAvatar";
 
 // A preview of the loop with no model behind it yet: submitting shows the
@@ -17,7 +17,15 @@ const NEXT_STEP =
 
 // The preview's stand-in for the rule in code: the options question after the
 // first version, and the first challenge in the authored order after that.
-export function Session({ optionsQuestion, firstChallenge }: { optionsQuestion: string; firstChallenge: string }) {
+export function Session({
+  optionsQuestion,
+  firstChallenge,
+  onShowScenario,
+}: {
+  optionsQuestion: string;
+  firstChallenge: string;
+  onShowScenario: () => void;
+}) {
   const [versions, setVersions] = useState<Version[]>([]);
   const [viewing, setViewing] = useState(0); // index into versions; versions.length means the draft
   const [draft, setDraft] = useState("");
@@ -76,31 +84,43 @@ export function Session({ optionsQuestion, firstChallenge }: { optionsQuestion: 
 
   return (
     <div className="flex flex-col gap-5">
-      <nav aria-label="Your versions" className="flex items-center gap-3 overflow-x-auto">
-        <div className="flex shrink-0 gap-1 rounded-full border border-line bg-card p-1">
-          {[...versions.keys(), versions.length].map((i) => {
-            const isDraft = i === versions.length;
-            return (
-              <button
-                key={i}
-                type="button"
-                onClick={() => setViewing(i)}
-                disabled={busy}
-                aria-current={viewing === i ? "true" : undefined}
-                title={versionLabel(i)}
-                className={`min-w-9 rounded-full px-3 py-1.5 text-sm tabular-nums transition disabled:opacity-40 ${
-                  viewing === i ? "bg-sage-deep font-semibold text-white" : "text-ink-soft hover:bg-sage-soft"
-                }`}
-              >
-                <span className="inline-flex items-center gap-1.5">
-                  {isDraft && <LuPencil className="size-3.5" aria-hidden="true" />}
-                  {i + 1}
-                </span>
-              </button>
-            );
-          })}
-        </div>
-      </nav>
+      <div className="flex items-center justify-between gap-3">
+        <nav aria-label="Your versions" className="min-w-0 overflow-x-auto">
+          <div className="flex w-max gap-1 rounded-full border border-line bg-card p-1">
+            {[...versions.keys(), versions.length].map((i) => {
+              const isDraft = i === versions.length;
+              return (
+                <button
+                  key={i}
+                  type="button"
+                  onClick={() => setViewing(i)}
+                  disabled={busy}
+                  aria-current={viewing === i ? "true" : undefined}
+                  title={versionLabel(i)}
+                  className={`min-w-9 rounded-full px-3 py-1.5 text-sm tabular-nums transition disabled:opacity-40 ${
+                    viewing === i ? "bg-sage-deep font-semibold text-white" : "text-ink-soft hover:bg-sage-soft"
+                  }`}
+                >
+                  <span className="inline-flex items-center gap-1.5">
+                    {isDraft && <LuPencil className="size-3.5" aria-hidden="true" />}
+                    {i + 1}
+                  </span>
+                </button>
+              );
+            })}
+          </div>
+        </nav>
+
+        {/* Small screens only: the scenario isn't on screen beside the work. */}
+        <button
+          type="button"
+          onClick={onShowScenario}
+          className="inline-flex shrink-0 items-center gap-1.5 rounded-full border border-line bg-card px-3.5 py-2 text-sm font-semibold text-sage-deep hover:bg-sage-soft lg:hidden"
+        >
+          <LuFileText className="size-4" aria-hidden="true" />
+          Scenario
+        </button>
+      </div>
 
       <section aria-label="The coach's feedback" className="rounded-3xl border border-line bg-card p-6 shadow-[0_18px_50px_rgb(45_75_55/0.05)] sm:p-7">
         <div className="flex items-center gap-4">

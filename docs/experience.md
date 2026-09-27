@@ -4,7 +4,7 @@ What the learner sees and does, from opening the page to the debrief. The reason
 
 ## What's on the screen
 
-**The scenario.** The situation, ending "What do you do, and why?" It stays visible throughout, so the learner can always reread it.
+**The scenario.** The situation, ending "What do you do, and why?" On a wide screen it sits beside the work throughout, so the learner can always reread it. On a phone, where both won't fit, the page opens on the scenario alone, with a **Start writing** button; after that the learner works on the feedback and the response, and a **Scenario** button beside the version tabs opens it again in a dialog.
 
 **Your response.** A text area for the learner's answer to the scenario, with a button to submit it.
 
