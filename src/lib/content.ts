@@ -22,6 +22,12 @@ const Scenario = z.strictObject({
   optionsQuestion: text,
   // Path ids, in the order challenges are offered after the rules in code.
   challengeOrder: z.array(z.int()).min(1),
+  // What the scenario settles, so the coach doesn't reopen it.
+  settled: text,
+  // What it leaves open on purpose; the coach never settles these, or asks the learner to.
+  leftOpen: z.array(text).min(1),
+  // Every time the scenario gives; the coach adds no others.
+  times: z.array(text).min(1),
 });
 
 const Rubric = z.strictObject({

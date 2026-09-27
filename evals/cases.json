@@ -237,7 +237,7 @@
       "expected": {
         "assessable": true,
         "levels": {
-          "recognition": "developing",
+          "recognition": "beginning",
           "reasoning": "beginning",
           "options": "developing",
           "action_plan": "developing",
@@ -629,6 +629,92 @@
           1
         ]
       }
+    }
+  ],
+  "resubmissions": [
+    {
+      "id": "RS1",
+      "title": "Nothing changed",
+      "steps": [
+        {
+          "case": "E08"
+        },
+        {
+          "case": "E08"
+        }
+      ],
+      "note": "Round 2: says nothing changed and points to the one thing to work on (the note to Marcus), briefly."
+    },
+    {
+      "id": "RS2",
+      "title": "Progress",
+      "steps": [
+        {
+          "case": "E07"
+        },
+        {
+          "case": "E08"
+        }
+      ],
+      "note": "Round 2: opens with what changed, quoting before and after; moves on to the words."
+    },
+    {
+      "id": "RS3",
+      "title": "Stuck",
+      "steps": [
+        {
+          "case": "E04"
+        },
+        {
+          "text": "I wouldn't send anything tonight. I'd leave Marcus a voicemail and a text so he knows I haven't sent it, and we can sort it out first thing Monday before it goes to the client."
+        }
+      ],
+      "note": "Round 2: notices the plan hasn't moved and changes angle; its questions differ from round 1."
+    },
+    {
+      "id": "RS4",
+      "title": "The worked example",
+      "steps": [
+        {
+          "case": "W1"
+        },
+        {
+          "case": "W2"
+        },
+        {
+          "case": "W3"
+        }
+      ],
+      "note": "Names each shift; calls W3 strong plainly, with no push for polish; may say how far it came from the start."
+    },
+    {
+      "id": "RS5",
+      "title": "Stuck for three rounds",
+      "steps": [
+        {
+          "case": "E04"
+        },
+        {
+          "text": "I wouldn't send anything tonight. I'd leave Marcus a voicemail and a text so he knows I haven't sent it, and we can sort it out first thing Monday before it goes to the client."
+        },
+        {
+          "text": "I wouldn't send anything tonight. I'd leave Marcus a voicemail and a text so he knows I haven't sent it, and email the client to say the report will come on Monday once Marcus is back."
+        }
+      ],
+      "note": "Round 3: a new angle again, further down the ladder than round 2 (a lens or a contrast), never repeating itself, never the whole answer."
+    },
+    {
+      "id": "RS7",
+      "title": "An ambiguous revision",
+      "steps": [
+        {
+          "text": "i'd tell marcus that i dont feel comfortable sending the report with the quality checks marked complete when they arent, even if he corrects them by monday."
+        },
+        {
+          "case": "E23"
+        }
+      ],
+      "note": "Round 2, from a real session: asks whether 'as-is' means with the failures shown or marked complete, instead of asserting a contradiction."
     }
   ]
 }

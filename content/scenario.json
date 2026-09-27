@@ -4,5 +4,18 @@
   "text": "You are a junior consultant at a small firm. It is 4:30 p.m. on a Friday afternoon. Your project lead, Marcus, asks you to send the client this week's status report with all the quality checks marked as complete. You ran the checks this morning and two of them failed. Marcus says the fixes are small, he will have them done by Monday, and the client \"panics over nothing\". The client is presenting the project to their board on Monday morning, and the report goes out under your name. Marcus leaves for the weekend before you can answer him, and he is not picking up his phone.",
   "question": "What do you do, and why?",
   "optionsQuestion": "At 4:30 that Friday, what other options did you have?",
-  "challengeOrder": [1, 4, 5, 6, 3, 2, 7]
+  "challengeOrder": [1, 4, 5, 6, 3, 2, 7],
+  "settled": "a report that says the checks are complete, leaves them out or hides them behind a caveat is misleading.",
+  "leftOpen": [
+    "what the checks test",
+    "how serious the failures are",
+    "when the fixes will be done",
+    "how anyone will react"
+  ],
+  "times": [
+    "4:30 p.m. on Friday",
+    "\"this morning\" for the checks",
+    "the weekend",
+    "Monday morning for the board"
+  ]
 }

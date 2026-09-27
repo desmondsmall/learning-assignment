@@ -39,4 +39,7 @@ export const contentVars: Record<string, string> = {
   strong_rule: `${list(rubric.strongRule.mustBeStrong.map(elementName))} must be strong, and ${list(rubric.strongRule.atLeastDeveloping.map(elementName))} at least developing`,
   patterns: rubric.patterns.map((p) => `- \`${p.key}\`: "${p.text}"`).join("\n"),
   paths: paths.map((p) => `- **${p.id}. ${p.name}.** ${p.summary}`).join("\n"),
+  settled: scenario.settled,
+  left_open: scenario.leftOpen.join(", "),
+  times: `${scenario.times.slice(0, -1).join(", ")}, and ${scenario.times.at(-1)}`,
 };

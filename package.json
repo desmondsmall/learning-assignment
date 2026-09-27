@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "test": "tsx --test --test-reporter=spec src/lib/*.test.ts",
+    "test": "tsx --conditions=react-server --test --test-reporter=spec src/lib/*.test.ts evals/*.test.ts",
     "eval": "tsx --conditions=react-server --env-file-if-exists=.env.local evals/run.ts"
   },
   "dependencies": {
