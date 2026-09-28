@@ -1,8 +1,12 @@
-# Marcus scenario coach
+# Scenario coach
 
 A small web tool that gives learners feedback on a professional judgment scenario. The learner reads the scenario, writes a response and submits it. A coach gives feedback on what they wrote, ending with a path they didn't take to test their next version against, and they revise and resubmit as often as they like.
 
 How the coach works, and why, is in `docs/`.
+
+## View it live
+
+https://learning-assignment-nine.vercel.app/
 
 ## Running it locally
 
