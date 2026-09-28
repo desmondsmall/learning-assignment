@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { describe, test } from "node:test";
-import { checkFeedback, inventedTimes } from "./checks";
+import { checkClosing, checkFeedback, inventedTimes } from "./checks";
 
 const scenario = "It is 4:30 p.m. on a Friday afternoon. The client is presenting to their board on Monday morning.";
 const response = "I'd send the report tonight with the two failed checks shown, and email Marcus to explain.";
@@ -41,5 +41,25 @@ describe("inventedTimes", () => {
 
   test("flags times neither of them gave", () => {
     assert.deepEqual(inventedTimes("At 4:45, or by 9 a.m. on Saturday.", [scenario]), ["4:45", "9am", "saturday"]);
+  });
+});
+
+describe("checkClosing", () => {
+  const first = "It's not really my call. I'd send it.";
+  const final = "I'd send the report tonight with the two failed checks shown, and email Marcus to explain.";
+  const closing = (text: string, versions = { first, final }) => checkClosing(text, versions).issues.map((i) => i.check);
+
+  test("passes a short note that quotes each version exactly", () => {
+    assert.deepEqual(closing('You started at "not really my call" and finished with "the two failed checks shown".'), []);
+  });
+
+  test("wants a quote from each version, or from the one version there is", () => {
+    assert.deepEqual(closing('You finished with "the two failed checks shown".'), ["missing-quote"]);
+    assert.deepEqual(closing('It says plainly "email Marcus to explain".', { first: final, final }), []);
+  });
+
+  test("flags questions, paths and length", () => {
+    assert.deepEqual(closing('From "not really my call" to "the two failed checks shown". What next?'), ["questions"]);
+    assert.deepEqual(closing(`From "not really my call" to "email Marcus to explain": a new path. ${"word ".repeat(70)}`), ["mentions-paths", "too-long"]);
   });
 });

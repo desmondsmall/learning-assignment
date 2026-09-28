@@ -3,22 +3,42 @@
 import { useRef, useState } from "react";
 import { LuX } from "react-icons/lu";
 import type { Scenario } from "@/lib/content";
+import { debriefOffer, newSession, type SessionState } from "@/lib/session";
+import { Debrief, type DebriefPath } from "./Debrief";
+import { DebriefButton } from "./DebriefButton";
 import { ScenarioCard } from "./ScenarioCard";
 import { Session } from "./Session";
 
 type Props = {
   scenario: Pick<Scenario, "title" | "text" | "question">;
+  paths: DebriefPath[];
 };
 
 // Large screens show the scenario beside the work throughout. Small screens
 // take it in two steps: read the scenario and start, then work, with the
-// scenario one tap away in a dialog.
-export function Workspace({ scenario }: Props) {
+// scenario one tap away in a dialog. The Reflection button, which opens the debrief, is always there, below the
+// scenario or beside its button, and opens once the rules in code allow it.
+export function Workspace({ scenario, paths }: Props) {
   const [started, setStarted] = useState(false);
   const dialog = useRef<HTMLDialogElement>(null);
+  const [session, setSession] = useState<SessionState>(newSession);
+  const sessionIdRef = useRef<string | null>(null);
+  const sessionId = () => (sessionIdRef.current ??= crypto.randomUUID());
+  // Starting fresh bumps this, which remounts the work and the debrief with nothing in them.
+  const [run, setRun] = useState(0);
+  const [debriefOpen, setDebriefOpen] = useState(false);
+  const offer = debriefOffer(session);
 
   function start() {
     setStarted(true);
+    window.scrollTo({ top: 0 });
+  }
+
+  function startFresh() {
+    sessionIdRef.current = null;
+    setSession(newSession());
+    setRun((r) => r + 1);
+    setDebriefOpen(false);
     window.scrollTo({ top: 0 });
   }
 
@@ -37,11 +57,38 @@ export function Workspace({ scenario }: Props) {
         >
           Start writing
         </button>
+        <div className="mt-5 hidden lg:block">
+          <DebriefButton
+            available={offer !== null}
+            onOpen={() => setDebriefOpen(true)}
+            className="w-full rounded-full border border-sage/50 bg-card px-6 py-3 font-semibold text-sage-deep transition hover:bg-sage-soft aria-disabled:hover:bg-card"
+          >
+            Reflection
+          </DebriefButton>
+        </div>
       </section>
 
-      <div className={`${started ? "" : "hidden"} lg:block`}>
-        <Session onShowScenario={() => dialog.current?.showModal()} />
+      {/* min-w-0 lets the version tabs scroll, rather than widen the page. */}
+      <div className={`${started ? "" : "hidden"} min-w-0 lg:block`}>
+        <Session
+          key={run}
+          session={session}
+          onSession={setSession}
+          sessionId={sessionId}
+          onShowScenario={() => dialog.current?.showModal()}
+          onShowDebrief={() => setDebriefOpen(true)}
+        />
       </div>
+
+      <Debrief
+        key={run}
+        open={debriefOpen}
+        onClose={() => setDebriefOpen(false)}
+        onStartFresh={startFresh}
+        session={session}
+        sessionId={sessionId}
+        paths={paths}
+      />
 
       <dialog
         ref={dialog}

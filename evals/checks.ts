@@ -5,6 +5,7 @@
 
 import type { Mode } from "@/lib/session";
 import { feedbackBudget } from "@/lib/coach";
+import { content } from "@/lib/content";
 import { normalise } from "@/lib/rules";
 
 export type Issue = { check: string; detail: string };
@@ -28,6 +29,24 @@ export function inventedTimes(text: string, sources: string[]) {
   return [...new Set(timesIn(text))].filter((t) => !known.has(t));
 }
 
+// Quotes must be exact. Single and double quote marks count as the same, since
+// a quote nested inside a quote swaps them, and so does case, since changing
+// the capital at the start of a quote is normal quoting. An ellipsis may join parts.
+const loose = (t: string) => normalise(t).replace(/"/g, "'").toLowerCase();
+const quoteParts = (quote: string) =>
+  loose(quote)
+    .replace(/^[.,;:!?…\s]+|[.,;:!?…\s]+$/g, "")
+    .split(/\.\.\.|…/)
+    .map((p) => p.trim())
+    .filter(Boolean);
+const quotedFrom = (quote: string, source: string) => quoteParts(quote).every((p) => loose(source).includes(p));
+
+/** The quotes in a text that none of the sources contain. */
+function inexactQuotes(text: string, sources: string[]) {
+  const allowed = sources.join(" \u0000 ");
+  return [...text.matchAll(QUOTED)].map((m) => m[1] ?? m[2]).filter((q) => !quotedFrom(q, allowed));
+}
+
 export type FeedbackContext = {
   response: string;
   previous?: string;
@@ -45,20 +64,7 @@ export function checkFeedback(text: string, ctx: FeedbackContext) {
   const own = withoutQuotes(text); // the coach's own words
   const sources = [ctx.response, ctx.previous ?? "", ctx.scenario, ...(ctx.others ?? [])];
 
-  // Quotes must be exact. Single and double quote marks count as the same, since
-  // a quote nested inside a quote swaps them, and so does case, since changing
-  // the capital at the start of a quote is normal quoting. An ellipsis may join parts.
-  const loose = (t: string) => normalise(t).replace(/"/g, "'").toLowerCase();
-  const allowed = sources.map(loose).join(" \u0000 ");
-  for (const m of text.matchAll(QUOTED)) {
-    const quote = m[1] ?? m[2];
-    const parts = loose(quote)
-      .replace(/^[.,;:!?…\s]+|[.,;:!?…\s]+$/g, "")
-      .split(/\.\.\.|…/)
-      .map((p) => p.trim())
-      .filter(Boolean);
-    if (!parts.every((p) => allowed.includes(p))) issues.push({ check: "quote-not-exact", detail: quote });
-  }
+  for (const quote of inexactQuotes(text, sources)) issues.push({ check: "quote-not-exact", detail: quote });
 
   const flag = (check: string, pattern: RegExp, source = text) => {
     const found = source.match(pattern);
@@ -87,6 +93,42 @@ export function checkFeedback(text: string, ctx: FeedbackContext) {
   const words = text.split(/\s+/).filter(Boolean).length;
   const limit = Math.round(feedbackBudget(ctx.response, ctx.mode) * 1.2);
   if (words > limit) issues.push({ check: "too-long", detail: `${words} words (limit ${limit})` });
+
+  return { issues, words, questions };
+}
+
+export type ClosingContext = { first: string; final: string };
+
+/**
+ * The closing note: a quote from each version, exact; at most 70 words; no
+ * questions; nothing about paths, levels, the rubric or verdicts.
+ */
+export function checkClosing(text: string, { first, final }: ClosingContext) {
+  const issues: Issue[] = [];
+  const own = withoutQuotes(text);
+  const quotes = [...text.matchAll(QUOTED)].map((m) => m[1] ?? m[2]);
+  for (const quote of inexactQuotes(text, [first, final])) issues.push({ check: "quote-not-exact", detail: quote });
+  // Two versions need a quote from each; a single version, a quote from it.
+  const versions = normalise(first) === normalise(final) ? [final] : [first, final];
+  for (const [i, version] of versions.entries()) {
+    if (!quotes.some((q) => quotedFrom(q, version))) issues.push({ check: "missing-quote", detail: versions.length === 1 ? "none from the response" : i === 0 ? "none from the starting point" : "none from the final response" });
+  }
+
+  const flag = (check: string, pattern: RegExp) => {
+    const found = own.match(pattern);
+    if (found) issues.push({ check, detail: found[0] });
+  };
+  flag("level-word", /\b(beginning|developing)\b/i);
+  flag("rubric-language", /\b(rubric|elements?|score[sd]?|grade[sd]?)\b/i);
+  flag("mentions-paths", /\bpaths?\b/i);
+  flag("verdict-word", /\b(wrong|unethical|incorrect)\b/i);
+  const named = content.paths.find((p) => own.toLowerCase().includes(p.name.toLowerCase()));
+  if (named) issues.push({ check: "names-a-path", detail: named.name });
+
+  const questions = (own.match(/\?/g) ?? []).length;
+  if (questions > 0) issues.push({ check: "questions", detail: `${questions} questions` });
+  const words = text.split(/\s+/).filter(Boolean).length;
+  if (words > 70) issues.push({ check: "too-long", detail: `${words} words (limit 70)` });
 
   return { issues, words, questions };
 }

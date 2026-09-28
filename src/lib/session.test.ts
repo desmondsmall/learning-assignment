@@ -1,14 +1,14 @@
 import assert from "node:assert/strict";
 import { describe, test } from "node:test";
 import type { Judgment, Level } from "./rules";
-import { afterRound, modeOf, newSession, promptFor, type SessionState } from "./session";
+import { afterRound, debriefOffer, modeOf, newSession, promptFor, type SessionState } from "./session";
 
 const ORDER = [1, 4, 5, 6, 3, 2, 7];
 
-function judged(level: Level, closest: number[], assessable = true): Judgment {
+function judged(level: Level, closest: number[], assessable = true, patterns = ["topic-not-message"]): Judgment {
   const el = { evidence: [], shows: "", not_yet: "", level };
   const keys = ["recognition", "reasoning", "options", "action_plan", "voice", "reflection"];
-  return { assessable, elements: Object.fromEntries(keys.map((k) => [k, el])), patterns: ["topic-not-message"], closest_paths: closest };
+  return { assessable, elements: Object.fromEntries(keys.map((k) => [k, el])), patterns, closest_paths: closest };
 }
 
 /** Plays one submission through the session, as the route does. */
@@ -55,5 +55,41 @@ describe("a session", () => {
     assert.deepEqual(one.prompt, { kind: "lastTest" });
     const two = submit(one.next, "A strong plan, revised.", judged("strong", [6]), true);
     assert.equal(two.prompt, null);
+  });
+});
+
+describe("the debrief", () => {
+  /** Plays a list of submissions from a new session. */
+  const play = (steps: { text: string; judgment: Judgment; strong?: boolean }[]) =>
+    steps.reduce((session, s) => submit(session, s.text, s.judgment, s.strong).next, newSession());
+
+  test("is closed until a version is strong, then stays open", () => {
+    const one = play([{ text: "A first try.", judgment: judged("developing", [4]) }]);
+    assert.equal(debriefOffer(one), null);
+    const strong = play([
+      { text: "A first try.", judgment: judged("developing", [4]) },
+      { text: "A strong plan.", judgment: judged("strong", [6], true, []), strong: true },
+      { text: "A strong plan, undone.", judgment: judged("developing", [1]) },
+    ]);
+    assert.equal(debriefOffer(strong), "strong");
+  });
+
+  test("opens when the learner seems stuck, and stays open when the pattern changes", () => {
+    const three = play(["One.", "Two.", "Three."].map((text) => ({ text, judgment: judged("developing", [4]) })));
+    assert.equal(debriefOffer(three), "stuck");
+    const four = play([
+      ...["One.", "Two.", "Three."].map((text) => ({ text, judgment: judged("developing", [4]) })),
+      { text: "Four.", judgment: judged("developing", [4], true, ["all-or-nothing"]) },
+    ]);
+    assert.equal(debriefOffer(four), "stuck");
+  });
+
+  test("doesn't count submissions that aren't kept as versions", () => {
+    const session = play([
+      { text: "One.", judgment: judged("developing", [4]) },
+      { text: "One.", judgment: judged("developing", [4]) },
+      { text: "idk", judgment: judged("beginning", [], false) },
+    ]);
+    assert.equal(debriefOffer(session), null);
   });
 });

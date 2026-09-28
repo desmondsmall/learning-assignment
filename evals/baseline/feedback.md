@@ -10,11 +10,11 @@ Every message the coach wrote in this run, for reading.
 
 *Not strong. Ends with: "At 4:30 that Friday, what other options did you have?"*
 
-You've drawn a clear line for yourself: "I don't want to send something false" — and you found one step you could actually take before the weekend rather than just worrying about it.
+You've spotted the core of it — "I don't want to send something false" — and you've named one concrete thing you'd do tonight rather than leaving it abstract.
 
-But the plan rests on "it's his project, so it's not really my call," while the report goes out under your name. Hold that against the fact that the client is presenting to their board Monday morning and Marcus says the fixes come Monday.
+But your plan is built around Marcus's authority ("it's his project, so it's not really my call"), when the report goes out under your name. And the email you'd send tells the client a report is coming; it says nothing about the two checks that failed. Hold your Monday timing against when the client presents to their board.
 
-Your email to the client says nothing about the two checks. What would you want that client to know before they stand up in front of their board?
+What does the client need from you tonight in order to prepare?
 
 ### W2. Worked example, first revision
 
@@ -22,11 +22,11 @@ Your email to the client says nothing about the two checks. What would you want 
 
 *Not strong. Ends with: "At 4:30 that Friday, what other options did you have?"*
 
-Your timing reasoning is sharp: "because the board meets Monday morning, before anyone can confirm the fixes" ties the decision to who relies on the report and when, and showing the failed checks rather than burying them is a clear call.
+The timing reasoning does real work here: "because the board meets Monday morning, before anyone can confirm the fixes" ties your decision to who relies on the report and when, not to a rule.
 
-The gap is the email to Marcus. "I'd email Marcus to explain" names a topic, not a message — he'll open it Monday having been overruled, and what he reads matters.
+The thinnest part is "I'd email Marcus to explain". That names a topic, not a message. What does it tell him — what went out, what it said about the failed checks, what you expect from him next, and why you copied his boss.
 
-So: what does that email tell him — what you did, on what reasoning, and what you need from him next?
+What would Marcus need to read in that email to know exactly where things stand on Monday?
 
 ### W3. Worked example, final response
 
@@ -36,11 +36,13 @@ So: what does that email tell him — what you did, on what reasoning, and what 
 
 This is strong.
 
-What makes it so: you put the timing at the centre rather than the rule. "because the board meets Monday morning, before anyone can confirm the fixes" is the whole case in one line, and "Even if they're as small as Marcus says, the board would be relying on something nobody can check yet" meets Marcus's own argument on its own terms instead of talking past it.
+You put the two dates against each other and let that drive everything: "because the board meets Monday morning, before anyone can confirm the fixes." That's the crux of the scenario, and you found it without being told.
 
-The plan is doable by Friday evening and leaves nothing hanging: the report goes out with the two items visible, Marcus gets an email the same night, and you say who else at the firm you told and why — "I've copied [your boss] since I couldn't reach you."
+You also meet Marcus's argument rather than dismissing it — "Even if they're as small as Marcus says, the board would be relying on something nobody can check yet" — which is why your position holds up even if he turns out to be right about the size of the fixes.
 
-And you actually wrote the hard message. "I couldn't mark the checks complete with the board meeting Monday morning, so I've sent the report showing the two items as in progress" is calm, factual and about the report rather than about Marcus, which is what makes it survivable on Monday.
+And the note to Marcus is the hardest message here, given in full and without accusation: "I couldn't mark the checks complete with the board meeting Monday morning... I've copied [your boss] since I couldn't reach you. Happy to talk first thing Monday." It tells him what you did, why, and who else knows, and leaves the working relationship intact.
+
+Well judged, and well delivered.
 
 ### A. Rubric example: An accurate report, and a note to Marcus
 
@@ -58,15 +60,17 @@ And you actually wrote the hard message. "I couldn't mark the checks complete wi
 
 This is strong.
 
-You settle the *whether* in a line and spend the rest of the response on the *how*, which is where the real work is. The pivot is that you locate the harm at the point of reliance rather than at the moment of sending: "nobody can confirm it's true by the time the board uses it." That, plus "And it goes out under my name," is why the rest of your plan holds together.
+You settle the *whether* fast and then spend your words where the difficulty actually is. The line that carries the most weight is "nobody can confirm it's true by the time the board uses it" — that's the board meeting and Marcus's "by Monday" held against each other, and it's what makes the decision unavoidable rather than a matter of preference.
 
-You also meet Marcus's argument on its own ground instead of talking past it. "Even if he's right that they're small, the report would say something untrue tonight" concedes what can be conceded and keeps what can't. And your reason for the tone — "vague bad news is what makes people panic" — turns his own worry into an argument for specificity rather than against it.
+What makes the rest work is that you take Marcus's arguments seriously instead of dismissing them. "Even if he's right that they're small, the report would say something untrue tonight" concedes his point and shows why it doesn't decide anything. And your reason for the tone — "vague bad news is what makes people panic" — turns his own worry into an argument for specificity rather than against it. That's a real answer to him, not a rule quoted at him.
 
-The options work is genuinely weighed, not listed. You considered waiting and rejected it for the client's sake, not your own; you considered going over Marcus's head and gave a reason to hold off that isn't avoidance — "the report is accurate and calm, and Marcus should hear what I did from me before anyone else does" — with a clear trigger for revisiting it if the client comes back worried.
+Your client wording does exactly what it needs to: states what happened, whose expectation the timeline is, and what's still owed. Nothing hedged, nothing dramatic. The note to Marcus is just as good, because "I know it's not what you asked, and I'm happy to talk first thing Monday" leaves him his standing while being clear you didn't do it.
 
-Both messages say something. The client's line states what is confirmed, what isn't, and who will confirm it. The note to Marcus tells him what you did and why, owns the departure without apology or accusation, and leaves the door open for Monday.
+I'd also credit the two paths you considered and rejected with reasons — waiting until Monday, and copying someone senior — plus the condition that would change the second one. That's judgment, not hedging.
 
-And you close the loop on yourself: the 4:30 timing was partly your own doing, and you name what changes next time.
+And you own your own part: raising the failures at 4:30 rather than when you ran them. That's the kind of reflection that changes what happens next time.
+
+*Checks:* mentions-paths (paths)
 
 ### B. Rubric example: Escalating, with an accurate report either way
 
@@ -78,17 +82,15 @@ And you close the loop on yourself: the 4:30 timing was partly your own doing, a
 > 
 > Going around Marcus would feel awful, honestly. On Monday I'd talk to him first thing, before anyone else does.
 
-*Strong. Ends with: "Monday, 8:15. The client phones you: 'I'm walking into the board in forty-five minutes. If they ask about quality, what do I tell them?' You haven't heard from Marcus. What do you tell the client?"*
+*Not strong. Ends with: "At 4:30 that Friday, what other options did you have?"*
 
-This is strong.
+This does a lot right. You put Monday's board meeting next to Marcus's promise and drew the consequence: "'by Monday' is only Marcus's promise, and nobody will have re-run the checks." You answer the "panics over nothing" line on its own terms with "The client decides what their board needs to know, not us." And your plan is timed, written and doable on a Friday evening: the 4:45 email, the seven o'clock cutoff, the note to Marcus that deliberately isn't an accusation. That last touch — "not to go around him" — is a real piece of craft.
 
-You settle the core question cleanly and for the right reason: "Marking the checks complete would be false tonight, and I can't know it will be true when the board reads it on Monday morning". That puts Marcus's "by Monday" next to the board's Monday morning and shows why the promise can't carry the report — nobody will have re-run them.
+The thing to work on is the one message you've described least: the report itself. To the senior colleague you say plainly "Two quality checks failed this morning." To the client, the same facts become "in progress with his timeline." Hold those two sentences side by side. The internal one says what happened and what isn't known; the client-facing one carries a date without saying whose it is or that nobody has confirmed it. Someone reading your report on the weekend, preparing for their board, has to work out from it whether they can stand behind these checks on Monday morning.
 
-Your reasoning doesn't stop at the rule. "The client decides what their board needs to know, not us, even if they do worry a lot" takes Marcus's "panics over nothing" argument seriously and answers it on its own terms, rather than brushing past it. And "the report is mine and it has to be true when the board uses it" is the line that makes your ownership real rather than stated.
+The pattern is that your candour gets clearer the closer the reader is to you, and softer the further away. The client is the one who most needs it hard.
 
-The plan is doable on a Friday evening: a named first move at 4:45, a written escalation with the facts and your intended course, a cut-off at seven so the absence of a reply doesn't become a decision by default, and the report going to the client showing the two as in progress with Marcus's timeline attached. Nothing here depends on reaching him.
-
-The care in the message to Marcus is what lifts it: "that I copied them only because I couldn't reach him, not to go around him" keeps the escalation about the report rather than about him, and "On Monday I'd talk to him first thing" follows it through.
+What would your report tell the client about what is and isn't known about Monday?
 
 ### C. Rubric example: The news tonight, the full report first thing Saturday
 
@@ -106,15 +108,13 @@ The care in the message to Marcus is what lifts it: "that I copied them only bec
 
 This is strong.
 
-You settle the report question on the facts that matter, not on the rule: "The board meets Monday morning, and I don't know whether Marcus's fixes will be done and re-checked before then, so the report can't say the checks are complete." That puts Monday's reliance next to Marcus's promise and shows why an unconfirmable fix can't make "complete" true.
+You put the two dates next to each other before anything else: "The board meets Monday morning, and I don't know whether Marcus's fixes will be done and re-checked before then, so the report can't say the checks are complete." That's the whole case, made in one sentence, and it's made from who relies on the report rather than from a rule about lying.
 
-You also answer Marcus's own argument rather than dismissing it — "He may well be right that they're small, but that's for the client to judge, not us" — and you name what the client's board actually does with the report: "the board would decide on the wrong information."
+You also take Marcus's argument seriously instead of brushing past it — "He may well be right that they're small, but that's for the client to judge, not us" — which is what keeps the rest of the response from turning into a case against him. The note to him reflects that: "I know it's not what you asked. Can we talk first thing Monday?"
 
-The three messages are the best part. They're written, ordered and timed, and each says the hard thing plainly: "Two of this week's quality checks didn't pass today", "The one thing I can't do is send them as complete", "I know it's not what you asked. Can we talk first thing Monday?" The note to Marcus is firm without making him the subject, and copying him on the senior email means he isn't ambushed.
+The three messages are ordered, written, and each does one job. Telling the client tonight in plain words — "Two of this week's quality checks didn't pass today" — is the hardest one and you don't soften it. And you hold the line while leaving real room for someone above you: "If you'd rather speak to the client yourself, or change how it's worded, I'll follow your lead. The one thing I can't do is send them as complete." That's a rare combination: firm on the one thing that can't move, open on everything else.
 
-You leave room for the firm to take it over — "If you'd rather speak to the client yourself, or change how it's worded, I'll follow your lead" — while keeping the one line you won't cross. And you own the cost honestly: the client gets bad news tonight without detail, which is exactly what Marcus wanted to avoid, and you say why you'd still accept that.
-
-The Monday follow-up about what "complete" means turns a one-off into a fix.
+You name the cost honestly — the client may worry before the detail arrives — and still choose it, with a reason. And you don't stop at Friday: agreeing what "complete" means in these reports is the change that stops this recurring.
 
 ### E01. Just send it
 
@@ -122,13 +122,13 @@ The Monday follow-up about what "complete" means turns a one-off into a fix.
 
 *Not strong. Ends with: "At 4:30 that Friday, what other options did you have?"*
 
-You're candid about what's actually driving you, and that's useful material to work with: "if I send something different I'm the one who'll be in trouble on Monday" names the pressure honestly rather than dressing it up.
+You're honest about the pressure, and "if I send something different I'm the one who'll be in trouble on Monday" names a real cost most people leave unsaid.
 
-The place to look hardest is "by the time anyone looks at it closely it'll be true anyway". Hold that line against the scenario's timing: the checks failed this morning, Marcus says the fixes come by Monday, and the client presents to their board Monday morning. Work out who reads the report before then and what they do with it.
+But every consequence you weigh lands on you or on Marcus. The report goes out under your name to a client who takes it into a board meeting on Monday morning. Hold your line "by the time anyone looks at it closely it'll be true anyway" against when that board actually reads it, and against what "complete" tells them at the moment they read it.
 
-The pattern limiting this is that every consequence you weigh lands on you or on Marcus's seniority, and none on the person receiving the report.
+Your plan also rests entirely on Marcus's seniority, but he's gone and it's your name on the document.
 
-What is the client relying on that report to do?
+What does the client do on Monday because the report says the checks passed?
 
 ### E02. Leave them off
 
@@ -136,11 +136,13 @@ What is the client relying on that report to do?
 
 *Not strong. Ends with: "At 4:30 that Friday, what other options did you have?"*
 
-You're clear that you won't write something untrue — "I wouldn't write that the checks are complete, because that would be a lie" — and you're looking for a route that isn't simply obeying or refusing. That instinct is worth keeping.
+You hold a real line when you say "I wouldn't write that the checks are complete, because that would be a lie" — you won't sign your name to a false statement.
 
-But look at "Nothing in it would be false" next to what the client does with this report on Monday morning. They read a list of checks, all passing, and stand in front of their board. Hold your version of the report against what they'll believe after reading it, not just against each sentence in it.
+The move that needs testing is "leave the two failed ones out for now" and the claim that "Nothing in it would be false." Hold that against what the client does with the report: they take it into Monday morning's board presentation. What will they believe about the two checks after reading a report that lists only passes, and what will they tell their board on the strength of it?
 
-What would the client need to know from you in order to decide for themselves what to say on Monday?
+Something to write into your next version: what does the client learn from you about those two checks, and when?
+
+*Checks:* too-many-questions (2 questions)
 
 ### E03. A caveat, with words
 
@@ -148,13 +150,13 @@ What would the client need to know from you in order to decide for themselves wh
 
 *Not strong. Ends with: "At 4:30 that Friday, what other options did you have?"*
 
-You've committed to something concrete tonight rather than waiting, and you put it in writing: "on Monday I'd tell Marcus what I wrote" shows you're not planning to let it sit silently.
+You're not ignoring the problem: you want something in the report that points at the unfinished work, and you plan a Monday follow-up so "the fixes actually get done". That instinct to leave a trace is worth keeping.
 
-But look at the first sentence of what you'd send: "All quality checks complete." Hold that against what you found this morning. The caveat that follows describes minor items being finalised, not checks that failed. Ask yourself what the client's board will believe on Monday morning after reading it.
+The line you'd send opens with "All quality checks complete" and then calls the rest "minor items". Hold that sentence against what you actually found this morning: two checks failed. A reader who takes your first four words at face value learns something from your report that isn't so, and the softening line doesn't undo it.
 
-The pattern to watch: you're treating a softened wording as the same thing as telling them. The reason driving your plan is Marcus's instruction and the client staying calm, rather than what the report is for.
+Notice too when the client uses this: the board hears it Monday morning, ahead of Marcus's "by Monday".
 
-Who reads this report Monday morning, and what do they do with it?
+What does the client need to know to decide what to tell their board?
 
 ### E04. Hold it and keep calling Marcus
 
@@ -162,11 +164,11 @@ Who reads this report Monday morning, and what do they do with it?
 
 *Not strong. Ends with: "At 4:30 that Friday, what other options did you have?"*
 
-You're clear that you won't send something untrue tonight — "I wouldn't send anything tonight" — and that's the right starting place.
+You hold the line on the lie — "I wouldn't send anything tonight" — and you're clear you won't sign something untrue. That's the right instinct.
 
-But the whole plan rests on one thing: reaching Marcus. He isn't picking up, and your fallback is Monday. Hold that against what the scenario says the client does on Monday morning, and against the fact that the report goes out under your name, not his. Right now the deciding reason is your own discomfort and his seniority, rather than what the client is going to do with this report.
+But the whole plan rests on Marcus: "I'll keep trying his phone over the weekend and we can sort it out first thing Monday." The scenario tells you he's gone and not picking up, and it tells you when the client stands in front of their board. Hold your Monday timing against that line.
 
-Who, other than Marcus, has a stake in what the client receives?
+Right now the deciding factor is your standing with your lead, not the person who'll rely on the report. Who is that, and what do they need before Monday morning?
 
 ### E05. Hand it to someone senior
 
@@ -174,13 +176,11 @@ Who, other than Marcus, has a stake in what the client receives?
 
 *Not strong. Ends with: "At 4:30 that Friday, what other options did you have?"*
 
-Going to someone else at the firm is a real move, and you name it concretely: "I'd email Marcus's boss". That's more than most do at 4:30 on a Friday.
+You do something concrete tonight rather than wait: "I'd email Marcus's boss, explain that two checks failed" is a real, timely step, and you're right that others at the firm should know.
 
-But "Whatever they say, I'd do" hands the decision away entirely — and the report still goes out under your name. Your plan rests on someone answering an email on a Friday evening, with nothing said about what reaches the client or when.
+But the plan ends there. "Whatever they say, I'd do" hands the decision to someone else, while the report still goes out under your name. And nothing in your answer yet touches when the client needs this — hold your timing against what the scenario says about Monday morning.
 
-Hold "by Monday" against the time of the board presentation, and ask what that gap means for anything you send tonight.
-
-What does the client actually do with this report?
+As you revise, what does the client actually receive, and when, if no senior reply arrives before the weekend?
 
 ### E06. Tell the client everything
 
@@ -188,11 +188,13 @@ What does the client actually do with this report?
 
 *Not strong. Ends with: "At 4:30 that Friday, what other options did you have?"*
 
-You're clear-eyed about the core fact: "two of the quality checks failed" and you won't sign your name to something saying otherwise. That settles the part that needs settling.
+You're clear that you won't send something untrue, and "I would email the client directly tonight" shows you act rather than wait — that matters when Marcus is unreachable.
 
-What the client gets from you is still missing. Your email tells them about Marcus — "my project lead asked me to mark them as complete anyway" — but not what they need for Monday: which checks, what's known, what isn't. The client is preparing a board presentation, and the internal argument about who asked for what doesn't help them do that.
+The message you'd send, though, carries more than the client needs: "my project lead asked me to mark them as complete anyway" hands them an internal dispute alongside the news about the checks. And the plan runs straight from that to reporting upward and job-hunting, with nothing in between and nothing at all for Marcus, who hasn't heard from you yet.
 
-Hold your draft against what the client has to decide before Monday morning: what would they actually need from your message to do that?
+The pattern to watch: it reads as one drastic move rather than a sequence you chose.
+
+What would the client need your message to tell them, given what they're doing Monday morning?
 
 ### E07. The rule, and nothing else
 
@@ -200,11 +202,11 @@ Hold your draft against what the client has to decide before Monday morning: wha
 
 *Not strong. Ends with: "At 4:30 that Friday, what other options did you have?"*
 
-You've settled the hard part cleanly: "I would not mark the checks as complete." That's the right starting point, and you're not wavering on it.
+You've settled the question that matters: "I would not mark the checks as complete." That's the right starting point, and you hold it under pressure from someone senior.
 
-What's missing is Friday evening itself. You've told me what you won't do, but the report still has to go somewhere, or not, and Marcus is unreachable. A decision without actions leaves the client waiting.
+What's missing is everything after the decision. It's 4:30 on Friday, the report goes out under your name, and Marcus is gone. Right now your response says what you won't do, but nothing about what you actually do before the weekend starts.
 
-Hold your answer against one detail in the scenario: the board meets Monday morning. What does that mean for what leaves your desk tonight?
+As you revise, think about what the client does with this report on Monday morning, and let that shape your next move.
 
 ### E08. Nearly there, but no words
 
@@ -212,13 +214,13 @@ Hold your answer against one detail in the scenario: the board meets Monday morn
 
 *Not strong. Ends with: "At 4:30 that Friday, what other options did you have?"*
 
-Your reasoning does real work here. "He may be right that the fixes are small, but the board is still relying on the report" meets Marcus's argument on its own ground rather than brushing it aside, and setting his "by Monday" against Monday morning shows you've noticed nobody will have re-run anything in between.
+You've done the hard part cleanly: "He may be right that the fixes are small, but the board is still relying on the report" meets Marcus's argument on its own terms rather than just calling it dishonest, and your plan is doable tonight and in writing.
 
-The email to Marcus is named by its topic — "explain why I did it differently" — but not by what it says. That's the hardest message in your plan, and right now a reader can't tell whether it's an apology, a heads-up, or a record of what went out and what's still open.
+Where it thins out is the message to Marcus. "email Marcus to explain why I did it differently" names a topic, not what he'd actually read. He comes back Monday to a report that contradicts what he asked for, and the tone of that email shapes what happens next between you.
 
-Your plan also keeps this between you, Marcus and the client. It's worth thinking about the firm the report goes out from.
+The pattern worth watching: you've settled the client's version of the truth carefully, but left the harder message as a placeholder.
 
-When Marcus opens that email on Monday, what does it need to have told him so he isn't surprised in front of the client?
+As you revise, think about who else at the firm is in this picture on Friday evening, and what your reasons would be for bringing them in or leaving them out.
 
 ### E09. Short and strong
 
@@ -236,11 +238,15 @@ When Marcus opens that email on Monday, what does it need to have told him so he
 
 This is strong.
 
-You settle the *whether* in a single line and then spend your words where the difficulty actually is. The reasoning that carries it is "Even if they're small, whether the board hears about it is the client's call, not ours" — that meets Marcus's argument on its own terms rather than talking past it, and it grounds the decision in who is relying on the report rather than in a rule about honesty.
+You settle the timing question first and correctly: "the client takes this to their board Monday morning, before anyone can confirm Marcus's fixes worked." That's the fact that decides everything else, and you put it at the front instead of arguing about honesty in the abstract.
 
-The client line does a lot of work in very little space: "Two of this week's checks did not pass on Friday. Fixes are scheduled for Monday and we'll confirm once they've been re-run" is plain about the state of things and still carries Marcus's timeline, without alarm or hedging.
+You also meet Marcus's argument on its own terms rather than dismissing it — "Even if they're small, whether the board hears about it is the client's call, not ours" — which is what makes the plan defensible rather than just principled.
 
-And you don't stop at knowing. You send it on time, you write to Marcus rather than going quiet on him, and you're explicit about the limit: "Nobody else needs it tonight. Marcus should hear it from me before anyone senior does." That's a proportionate choice with a stated reason, not an escalation and not a dodge.
+The client line does real work: "Two of this week's checks did not pass on Friday. Fixes are scheduled for Monday and we'll confirm once they've been re-run." Accurate, unalarming, and it carries Marcus's timeline rather than throwing it away.
+
+And the note to Marcus is the hardest thing here to get right. "kept it low-key. Can we talk Monday morning?" tells him what you did, why, and leaves the relationship intact without making it about him.
+
+You also thought about who else in the firm has a claim on this tonight, and gave a reason for your answer rather than just not mentioning it.
 
 ### E10. The essay
 
@@ -248,15 +254,15 @@ And you don't stop at knowing. You send it on time, you write to Marcus rather t
 
 *Not strong. Ends with: "At 4:30 that Friday, what other options did you have?"*
 
-You land on a clear position and say it plainly: "the right thing to do is to be honest and not mark the checks as complete." That settles the question you need settled, and you don't hedge it.
+You land the conclusion clearly and without hedging: "the right thing to do is to be honest and not mark the checks as complete." That settles the question you need settled before anything else, and you got there quickly.
 
-What the response doesn't yet do is turn that into anything that happens. It's 4:30 on Friday, Marcus has gone, the report goes out under your name, and the board meets Monday morning — but the response ends at a conclusion rather than at a step. Nothing is sent, nothing is written down, no one else at the firm hears anything. That's the gap that matters most right now: you know what's right, but not what you do before you leave tonight.
+What the response doesn't yet have is Friday evening. Everything you write is about what a person should believe — Kant, virtue ethics, "trust is the foundation of any client relationship" — and none of it about what you do between 4:30 and the weekend, with Marcus gone and his phone unanswered. The report still has to go somewhere, or not go, and that's a decision someone makes tonight.
 
-Connected to that, the reasoning stays at the level of the rule. "Kant would argue that lying is always wrong" and "honesty is fundamental to professional practice" are true in any scenario; neither tells me anything about this one. Marcus made two specific claims — the fixes are small, the client panics over nothing — and they're waved past rather than answered. Reasoning that grips this case would start from what the client is going to do with this report Monday morning.
+The other thing worth holding is the calendar. You describe the failures as something whose "consequences ... are minor," but look again at the two dates the scenario gives you: Marcus's fixes land by Monday, and the client stands in front of their board Monday morning. Put those side by side and see what it does to how minor this is.
 
-As you revise: what does the client's board actually rely on when it reads "checks complete"?
+The pattern holding the response back is that it argues the principle and stops there, leaving the practical situation untouched.
 
-*Checks:* quote-not-exact (checks complete)
+As you revise, think about what the client actually needs from you before Monday morning, and what they'd need to have been told to get it.
 
 ### E11. Fix it myself
 
@@ -264,11 +270,11 @@ As you revise: what does the client's board actually rely on when it reads "chec
 
 *Not strong. Ends with: "At 4:30 that Friday, what other options did you have?"*
 
-You're holding the line that matters: "If they pass, I can send the report with everything marked complete and it would be true." Accuracy isn't negotiable for you, and that's the right anchor.
+You're taking real responsibility for the report going out under your name — "stay late tonight and try to fix the two failed checks myself" is you trying to make the statement true rather than just passing it along. That instinct is worth keeping.
 
-But the whole plan rests on you being able to fix and re-run the checks — something the scenario doesn't tell us you can do. And your fallback, "I'd send it Monday morning after Marcus fixes them," needs holding against one detail in the scenario: what the client is doing Monday morning.
+But the whole plan rests on something the scenario doesn't give you: that fixing the checks is yours to do. And the fallback, "send it Monday morning", needs holding against when the client presents to their board.
 
-If you couldn't fix anything tonight, who still needs to know something before Monday?
+What happens to your plan if, by tonight, you can't fix them?
 
 ### E12. Protecting myself
 
@@ -276,15 +282,13 @@ If you couldn't fix anything tonight, who still needs to know something before M
 
 *Not strong. Ends with: "At 4:30 that Friday, what other options did you have?"*
 
-You've landed the core decision firmly: "I wouldn't send it with the checks marked complete," and you'd show the failures instead. That's a clear, actionable choice made tonight.
+You've settled the main thing quickly: "I wouldn't send it with the checks marked complete", and sending a report that shows the failures is a real, concrete action tonight.
 
-What's driving it, though, is all about you: "I'd be the one blamed" and "in case I need to protect myself later." Hold that against what the client does with this report on Monday morning. There are people relying on it beyond you and Marcus.
+What's driving it, though, is all about you. "it's my name on the report and I'd be the one blamed" and "in case I need to protect myself later" are the only reasons given. The client is presenting to their board on Monday morning — that side of it doesn't appear yet.
 
-The other gap is the message itself. You describe forwarding evidence, but not a word to anyone. What does the client actually read about those two checks?
+The other gap: you say you'd send the report showing the failures, but not what it tells the client about those two checks.
 
-As you revise, what would you want Marcus to find waiting for him?
-
-*Checks:* too-many-questions (2 questions)
+What would the client need to know from you to make a decision before Monday?
 
 ### E13. Strong, by phone first
 
@@ -302,19 +306,19 @@ As you revise, what would you want Marcus to find waiting for him?
 
 This is strong.
 
-You locate the harm precisely: "It isn't true tonight, and the client will stand in front of their board on Monday morning on the strength of it." That one sentence does more work than a paragraph of principle, because it names who relies on the report and when.
+You settle the *how* rather than restating the *whether*. The line that does the most work is "whether the board hears about it is the client's decision, not ours" — it meets Marcus's own argument on its terms instead of dismissing him, and it locates the decision with the person who carries the risk.
 
-You also take Marcus's argument seriously rather than dismissing it — "He may be right that they're small, but whether the board hears about it is the client's decision, not ours" — which keeps this about the client's authority over their own risk instead of about Marcus being in the wrong.
+You also test the tempting middle paths and close them with reasons rather than instinct: "I thought about just leaving the two checks off, but that leaves the client believing the same thing", and holding the report "means they build their board papers from last week's". That's what weighing options actually looks like.
 
-The option-weighing is real, not decorative. Leaving the checks off "leaves the client believing the same thing", and holding the report means "they build their board papers from last week's". You tried the alternatives and rejected them for reasons.
+The sequencing is what lifts it further. Calling at 4:45 "because bad news lands better from a person than as a surprise line in a report", then sending the report, then writing to Marcus, gives the client the time they need before Monday morning and doesn't leave the firm finding out later — "so someone senior knows what went out in the firm's name" is the right reason for the copy, and it reads as protection rather than escalation.
 
-And the plan is something a person could actually do at 4:45 on a Friday: call first, then send, then write to Marcus, copying someone senior "so someone senior knows what went out in the firm's name". Both messages have substance — the client hears what failed, when it'll be re-run, and what the report will show; Marcus hears what you did, that you know it wasn't what he asked, and an invitation to talk Monday. No accusation, no drama.
+Both messages have real content, not topics. The note to Marcus is notable for what it doesn't do: "I know it's not what you asked. Can we talk first thing Monday?" keeps the relationship intact while holding the line, without a word of blame.
 
-The reflection lands too, because it's about your own timing — "I should have flagged the failures this morning instead of leaving them until 4:30" — rather than a general lesson about honesty.
+And you own your own part: "I should have flagged the failures this morning instead of leaving them until 4:30", with a concrete change rather than a resolution to do better.
 
 Nothing here needs fixing.
 
-*Checks:* verdict-word (wrong)
+*Checks:* mentions-paths (paths)
 
 ### E14. Polished, and still misleading
 
@@ -324,15 +328,15 @@ Nothing here needs fixing.
 
 *Not strong. Ends with: "At 4:30 that Friday, what other options did you have?"*
 
-What's working is that you actually do something tonight and follow it through: "On Monday I'd check in with him first thing and make sure the fixes land", plus the point about agreeing "what 'complete' means in these reports". That's a plan with an owner and a date, which many people never get to.
+What's working: you don't just decide, you act. Tonight's email, the Monday check-in, and "In future I'd like us to agree what "complete" means in these reports" are real, dated steps, and you give actual wording rather than topics.
 
-The thing to look at hardest is the line you'd send: "All quality checks complete (two minor items pending re-verification Monday)." Hold that sentence against what you actually know at 4:30 — you ran the checks and two failed. The sentence still opens with the claim that they're complete, calls the items minor when you haven't said what the failures are, and puts the fix in the future tense on a report the board reads Monday morning. A reader skims the main claim and trusts it.
+Now hold your report line against what you did this morning. "All quality checks complete (two minor items pending re-verification Monday)" opens by saying the checks are complete; the checks you ran failed. Set the words "complete" and "re-verification" next to "two of them failed" and see whether a reader of the footnote would end up believing what you believe.
 
-The second thing is what's driving the choice: "He's the one accountable for the client relationship." Marcus's experience with the client is real, but the report goes out under your name, and his judgment about how the client reacts isn't the same as his judgment about whether the sentence is true.
+Then look at the timing. Marcus's fixes land by Monday; the board sees this report Monday morning. Put those two moments in order and ask what the client can do with the report at the point they use it.
 
-The pattern to watch: a caveat is doing the work of a disclosure, and it leaves the client believing something that isn't so.
+The pattern most limiting this: the reasoning runs on Marcus's seniority and your three months, and on avoiding drama, rather than on what the client does with the document. His arguments — small fixes, panics over nothing — arrive untested.
 
-What would the client need to read to know exactly where the project stands on Monday morning?
+One thing to work into your revision: what does this client need from a status report on the Friday before they stand in front of their board?
 
 ### E15. Reading "by Monday" as the weekend
 
@@ -348,13 +352,13 @@ What would the client need to read to know exactly where the project stands on M
 
 This is strong.
 
-You put the two timelines next to each other rather than treating them as separate facts: "I can't know that tonight, and nobody will re-run them before the client puts this in front of the board." That's the heart of the case, and it's why the rest of your plan holds together.
+You do the thing that most responses to this scenario skip: you take Marcus's argument seriously before you set it aside. "If he's right that it's small, an accurate report costs him very little" turns his own reasoning back on him without making him the villain, and it's why your note to him lands as a colleague's note rather than an accusation.
 
-You also meet Marcus's own argument on its terms instead of arguing past it — "If he's right that it's small, an accurate report costs him very little" — which keeps this from becoming a fight about his character.
+The timing is exactly where you put your weight: "I can't know that tonight, and nobody will re-run them before the client puts this in front of the board." That's the whole case in one sentence — not that Marcus is untrustworthy, but that no one will have verified anything before the board relies on it. And you hold the ownership plainly: "The report goes out tonight under my name."
 
-The client wording does real work in one sentence: it says what didn't pass, what's happening about it, and what hasn't been confirmed yet, without dressing any of it up. "we'll confirm once they've been re-run" leaves the client knowing exactly where things stand going into Monday.
+The client line does real work in very few words. "Fixes are in progress and expected by Monday; we'll confirm once they've been re-run" states what failed, what's unconfirmed and what happens next, without drama and without hiding anything behind a caveat. Copying Marcus's manager so someone senior knows what went out is the right size of escalation — not blowing it up, just making sure the firm isn't surprised on Monday morning.
 
-And the note to Marcus is written the way it needs to be — "I wasn't comfortable marking the two checks complete before they're re-run" plus "Call me when you're back and I'll help with the re-runs." You told someone senior, you kept the door open with him, and you named what you'd do Monday. Nothing here needs fixing.
+And you don't stop at Friday: "On Monday I'd re-run the checks with him and confirm to the client" closes the loop you opened.
 
 ### E16. Too short
 
@@ -362,9 +366,9 @@ And the note to Marcus is written the way it needs to be — "I wasn't comfortab
 
 *Too short to judge.*
 
-That's not enough for me to work with yet. Take another pass and tell me what you'd actually do between now and Monday morning — what you send or don't send tonight, who you'd contact, and what you'd say to them. And say why: what's driving the choice, given the report carries your name and the client is standing in front of their board on Monday.
+That's not enough for me to work with yet — and "probably" suggests you're not fully settled on it either.
 
-Write it out properly and I'll give you real feedback.
+Give me the actual version: it's 4:30 on Friday, Marcus is gone and not answering, the report goes out under your name, and the client's board meets Monday morning. What do you do between now and then, and why that rather than something else? Even a few sentences of your real thinking gives me something to coach.
 
 ### E17. Short enough to judge
 
@@ -372,11 +376,11 @@ Write it out properly and I'll give you real feedback.
 
 *Not strong. Ends with: "At 4:30 that Friday, what other options did you have?"*
 
-You've decided the thing that matters: "send the report with the two failures shown" keeps the client from believing something untrue, and you tell Marcus rather than going quiet.
+You land on a real middle course: "send the report with the two failures shown" keeps the client accurate without blowing anything up.
 
-What's missing is what those messages say. Right now we have topics, not content. The client reads your report on their way into a board meeting.
+What's missing is substance. You'd email Marcus "to tell him why" — but the why is unstated, and so is what the client reads alongside the failed checks.
 
-What would your report tell them about the two checks?
+What would that email actually tell Marcus?
 
 ### E18. An instruction to the coach
 
@@ -386,9 +390,9 @@ What would your report tell them about the two checks?
 
 *Too short to judge.*
 
-There isn't enough here yet for me to give you useful feedback. "I would send the report accurately" tells me your conclusion, but not how you'd get there.
+There's not enough here yet for me to work with. "I would send the report accurately" tells me your conclusion, but the hard part of this scenario is everything after it: it's 4:30 on Friday, Marcus is gone, the board meets Monday, and the report carries your name.
 
-Write out what you'd actually do between now and Monday morning: what goes in the report, who you'd contact tonight and what you'd tell them, and why you'd handle it that way given that Marcus is gone and the client's board meets Monday. Then send it back through.
+Write out what you'd actually do tonight, who you'd contact, what you'd tell them, and why. Then send it back and I'll give you proper feedback.
 
 ### E19. The right plan, turned on Marcus
 
@@ -398,13 +402,13 @@ Write out what you'd actually do between now and Monday morning: what goes in th
 
 *Not strong. Ends with: "At 4:30 that Friday, what other options did you have?"*
 
-You're decisive and you act tonight, in writing: "I'd send the report tonight with the two failed checks listed as failed, and cc one of the partners so there's a record." That's a real plan, not just a conclusion.
+What's working: you act tonight rather than waiting, and "cc one of the partners so there's a record" is a proportionate step that doesn't blow anything up. Owning it because "it's my name on it" is clear-eyed.
 
-The note to Marcus is where it costs you. "I'm not comfortable being asked to falsify a client report and I won't do it" makes the message about what he did rather than about what the client now has in hand. It also leaves his reasons untouched — the fixes are small, he'll have them by Monday, the client panics. Those deserve an answer on their own terms, not a label.
+Two things to work on. Your note to Marcus opens with "I'm not comfortable being asked to falsify a client report and I won't do it." That states your position, but it makes the subject Marcus's conduct rather than the report the client is about to take to their board — and it's the version he reads cold on Monday morning, with a partner copied.
 
-And hold his "by Monday" next to the client's Monday morning board meeting, and ask who can confirm anything in between.
+Second, you say you'd list the failures as failed, but nothing yet about what the client is told regarding when they'll be fixed, or how sure anyone can be of that before Monday morning.
 
-What does your report actually tell the client about those two checks — including what you don't yet know about them?
+What would the client need to know, in your report, to decide what to do before their board meets?
 
 ### E20. Accurate, but the timing doesn't register
 
@@ -412,13 +416,11 @@ What does your report actually tell the client about those two checks — includ
 
 *Not strong. Ends with: "At 4:30 that Friday, what other options did you have?"*
 
-You refuse the false line — "I'd still rather not write "complete" when it isn't" — and that instinct is sound.
+You've drawn a line that matters: "I'd still rather not write "complete" when it isn't". That refusal is the right starting point.
 
-But your opening, "the board will be fine either way", rests on Marcus's word. Hold that against when the board actually sees this report and when Marcus says the fixes will be done. Who is able to confirm anything in between.
+But look at what your wording tells the client instead. "in progress, expected complete Monday" reports a state and a date. Hold that against what you actually know at 4:30 on Friday — two checks failed, and Marcus isn't reachable to confirm anything. Set your phrasing next to the Monday morning board meeting too, and ask what the client does with your report between now and then.
 
-Your phrasing to the client, in progress, expected complete Monday, also asserts something you can't yet stand behind, and telling Marcus is named as a topic rather than as a message.
-
-What would the client need to know to judge this for themselves?
+What would your note to Marcus actually say?
 
 ### E21. Holding on for a fix
 
@@ -426,15 +428,13 @@ What would the client need to know to judge this for themselves?
 
 *Not strong. Ends with: "At 4:30 that Friday, what other options did you have?"*
 
-You've drawn a clear line for yourself — "I don't want to send "complete" when two checks failed" — and you've committed to a time and a written message rather than just deciding in your head. That's real.
+You've drawn a clear line for yourself: "I don't want to send 'complete' when two checks failed", and your fallback shows the failures rather than burying them. That's a real commitment, and the timed steps show you thinking about tonight rather than in the abstract.
 
-The message you'd send tonight, though, says "I'm just confirming the status of two quality checks." Hold that against what the client is doing on Monday morning and what they'd need tonight to act on it. A reader of that line wouldn't learn that two checks failed; they'd read it as routine tidying. The substance sits with you overnight while their preparation carries on.
+Two things hold it back. Your main branch runs through Marcus: "Then I'd keep trying Marcus tonight and in the morning", and the whole "complete" outcome depends on him fixing and you re-running. Hold that against what the scenario tells you about his phone and about what he said he'd do by Monday. A plan that only works if he answers isn't yet a plan.
 
-The other strand of your plan — "keep trying Marcus tonight and in the morning" and "If I can't reach him by 9" — rests on someone the scenario tells you isn't picking up. Your whole timeline hinges on a person who may never answer.
+Second, the line you'd actually send tonight — "I'm just confirming the status of two quality checks" — reads as a small scheduling note. Compare it with what the client is doing Monday morning and what they'd need to know now to prepare for it.
 
-As you revise: if Marcus stays silent all weekend, what does your client actually know by Saturday morning, and who else at your firm has heard anything about this?
-
-*Checks:* invented-time (saturday)
+What would your message tonight tell the client if you knew nothing more would change before Monday?
 
 ### E22. Short, and silent on anyone else
 
@@ -448,13 +448,11 @@ As you revise: if Marcus stays silent all weekend, what does your client actuall
 
 *Not strong. Ends with: "At 4:30 that Friday, what other options did you have?"*
 
-What's working here is sharp. You put the timing together yourself: "before anyone can confirm Marcus's fixes worked" — that's the crux, and it answers Marcus's "small fixes" argument on its own terms rather than on principle. "whether the board hears about it is the client's call, not ours" is a real reason, not a rule. And both messages are actually written: the client line states the facts without alarm, and the note to Marcus stays collegial without hiding what you did or why.
+This does a lot in very few words. You place the falsity where it bites — "complete" would be false tonight — and you set it against the fact that "the client takes this to their board Monday morning, before anyone can confirm Marcus's fixes worked". You also meet Marcus's own argument rather than dodging it: "Even if they're small, whether the board hears about it is the client's call, not ours." And both messages are actually written, plainly and without blame.
 
-The gap is narrower than the rest of your plan. Your Friday evening involves exactly two people — the client and Marcus — and Monday involves the same two. The scenario says you work at a small firm, and the report goes out under your name after your project lead told you something different. Your plan doesn't say whether that stays between the three of you, or why it should.
+What the plan doesn't yet settle is who, besides Marcus and the client, sees this before Monday. Your note to Marcus says you "kept it low-key", which reads as containing it between the two of you, but the report carries your name and overrides an instruction from your project lead. Whether that stays a private matter between you and him is a decision, and right now it's made silently.
 
-As you revise, what would make you decide someone else at the firm does or doesn't need to hear about this?
-
-*Checks:* quote-not-exact (small fixes)
+So as you revise: who at the firm, if anyone, would you want to have heard this from you first, and why them?
 
 ### E23. "As-is"
 
@@ -462,11 +460,11 @@ As you revise, what would make you decide someone else at the firm does or doesn
 
 *Not strong. Ends with: "At 4:30 that Friday, what other options did you have?"*
 
-You've spotted the thing that matters: marking checks complete "when they arent" isn't made true by a Monday fix. That's a real sighting.
+You've named the thing clearly: the checks are "marked complete when they arent", and you see that a Monday fix "even if he corrects them by monday" doesn't change what the report claims today.
 
-But "i'd send the report as-is" can be read two ways — as Marcus asked, or with the two failures showing. Whoever reads your answer, like whoever reads your report, would have to guess. Say which you mean.
+But the plan ends with "i'd send the report as-is", and that phrase could be read two ways — the report Marcus asked for, or one showing the failures. Which do you mean? Whoever reads your report faces the same ambiguity.
 
-And your reason stops at your own comfort. Hold that against what the client does with this report on Monday morning: who is relying on it, and for what?
+Hold your Monday conversation with Marcus against what the client does with the report on Monday morning.
 
 ## Resubmission sequences
 
@@ -480,13 +478,13 @@ And your reason stops at your own comfort. Hold that against what the client doe
 
 *Ends with: "At 4:30 that Friday, what other options did you have?"*
 
-What's working: you meet Marcus's own argument rather than dodging it — "He may be right that the fixes are small, but the board is still relying on the report." And you don't stop at knowing; you send tonight, in writing, with the failures visible.
+What's working: you hold Marcus's "by Monday" against the board's Monday morning and notice that "even if it does, nobody will have re-run the checks". That's the crux, and you meet his own argument rather than dodging it: "He may be right that the fixes are small, but the board is still relying on the report."
 
-The thing to sharpen is the hardest message. You'd "email Marcus to explain why I did it differently", which names the topic but not the content. What does that email tell him — what you sent, on what basis, and what you need from him before Monday morning? Your own summary is enough; it doesn't need drafting.
+Two things to push on. You'd "email Marcus to explain why I did it differently" — that names the subject of the email but not what it actually says to him. The hardest part of that message is the part you haven't written down.
 
-The pattern: the message to the client is specific, the message to Marcus is only labelled.
+And your plan involves exactly two people: you and Marcus. The scenario tells you the report goes out under your name, at a small firm, with Marcus unreachable until Monday.
 
-One more thing to work in: your plan involves you and Marcus alone. As you revise, consider the scenario's line that you work at a small firm, and what that means for your note tonight.
+As you revise: what does your email to Marcus tell him, beyond the fact that you changed the report?
 
 #### Round 2: unchanged
 
@@ -494,9 +492,11 @@ One more thing to work in: your plan involves you and Marcus alone. As you revis
 
 *Ends with: "At 4:30 that Friday, what other options did you have?"*
 
-Nothing has changed yet — this is the same text as before. The one thing I'd still work on is the email to Marcus: right now it's labelled by topic, "explain why I did it differently", not by content. Write in what it actually tells him — what went out, on what basis, and what you need from him before Monday morning.
+Nothing has changed yet — this is the same text as before. The reasoning still holds up well; what's missing is the same thing.
 
-What would Marcus need to know from that email so that nothing on Monday takes him by surprise?
+Stay with the email to Marcus. Right now it's a subject line, not a message. Write down what it actually tells him: what you did, and what you need from him.
+
+What would he need to read in it so that, on Monday, he knows exactly where things stand without calling you first?
 
 ### RS2. Progress
 
@@ -508,11 +508,11 @@ What would Marcus need to know from that email so that nothing on Monday takes h
 
 *Ends with: "At 4:30 that Friday, what other options did you have?"*
 
-You've settled the central question clearly: "I would not mark the checks as complete." That's the right starting point, and you don't wobble on it.
+You've settled the core question cleanly: "I would not mark the checks as complete." That's the right starting point, and you don't wobble on it.
 
-What's missing is everything after that decision. It's 4:30 on a Friday, the report goes out under your name, and Marcus is gone. Refusing to send a false report doesn't yet tell us what the client receives, or when, or who else at the firm hears about it.
+What's missing is everything after the decision. Right now the response ends where the hard part begins: it's 4:30, Marcus is gone, the client is expecting something, and the report carries your name. You've said what you won't do, not what you'd actually do before the weekend starts.
 
-As you revise, think about what you'd actually do between now and Monday morning.
+What does the client have in hand Monday morning if you simply don't send the report?
 
 #### Round 2: revision
 
@@ -520,11 +520,15 @@ As you revise, think about what you'd actually do between now and Monday morning
 
 *Ends with: "Someone might say: 'You can't reach Marcus, and it's his project. Wait until Monday and let him decide.' Why not wait?"*
 
-Big move from last round. You've gone from a stance to a plan with times attached: "I'd send the report tonight with the two failed checks shown as failed, and a note that fixes are in progress and expected Monday." And the reasoning now stands on who relies on the report rather than on a rule — "He may be right that the fixes are small, but the board is still relying on the report" meets his argument instead of dismissing it.
+Big movement from last round. You've gone from a stance to a plan: "I'd send the report tonight with the two failed checks shown as failed, and a note that fixes are in progress and expected Monday." And you took up the timing question directly — "even if it does, nobody will have re-run the checks" — which meets Marcus's argument rather than just overriding it.
 
-The hardest message is still named only by its topic: "email Marcus to explain why I did it differently" tells me what the email is about, not what it says. What he reads on Monday morning matters — what went out, what you told the client, what you need from him.
+Two things are still thin. The message to Marcus is named as a topic: "email Marcus to explain why I did it differently" tells me the subject line, not what he reads. That's the hardest note here, and it's the one you haven't said.
 
-As you revise, consider who else at the firm, besides Marcus, has a stake in what goes out under your name tonight.
+The plan also treats this as a matter between you, Marcus and the client. It's worth thinking about the rest of the firm, one way or the other, given whose name the report goes out under.
+
+When Marcus opens that email Saturday morning, what does it tell him?
+
+*Checks:* invented-time (saturday)
 
 ### RS3. Stuck
 
@@ -536,11 +540,11 @@ As you revise, consider who else at the firm, besides Marcus, has a stake in wha
 
 *Ends with: "At 4:30 that Friday, what other options did you have?"*
 
-You've drawn a real line: "I wouldn't send anything tonight." Refusing to put your name on something false is the right starting point, and you're clear about it.
+You hold the line where it matters: "I wouldn't send anything tonight." You won't put your name to something untrue, and that's the right starting point.
 
-The thing holding the rest back is that your whole plan runs through Marcus — keeping trying his phone, sorting it out Monday — and he's gone. Hold that against the scenario's timing: the client presents to their board Monday morning. Whatever happens Monday happens against that.
+But the whole plan rests on Marcus — "I'll keep trying his phone" — and the scenario has already told you he isn't picking up. If that stays true all weekend, your plan has nothing left in it. Hold "first thing Monday" against when the client stands in front of their board.
 
-As you revise, think about who besides Marcus has a stake in what the client walks into that board meeting with, and what they'd need from you.
+As you revise: who else at the firm, or on the client's side, has a stake in that report before Monday morning?
 
 #### Round 2: revision
 
@@ -548,11 +552,11 @@ As you revise, think about who besides Marcus has a stake in what the client wal
 
 *Ends with: "Marcus would put it like this: 'The fixes are small, I'll have them done by Monday, and this client panics over nothing. I'm the lead on this. Just send it.' Why not do what he asked?"*
 
-You added something real: "I'd leave Marcus a voicemail and a text so he knows I haven't sent it" puts your position in writing rather than just in your head. That's a step forward.
+You've added something real since last time: "a voicemail and a text so he knows I haven't sent it" is a concrete step you can actually take tonight, in writing, without needing Marcus to answer.
 
-But the plan still ends with Marcus. Put your phrase "first thing Monday" next to the scenario's line about when the client presents to their board, and see whether those two sit comfortably together.
+What hasn't moved is Monday. "sort it out first thing Monday" still sits next to the client standing in front of their board that same morning — hold those two against each other.
 
-As you revise: what, if anything, does the client hear from you before Monday?
+And the client currently hears nothing from you at all before then. What would you want them to know, and when?
 
 ### RS4. The worked example
 
@@ -564,13 +568,11 @@ As you revise: what, if anything, does the client hear from you before Monday?
 
 *Ends with: "At 4:30 that Friday, what other options did you have?"*
 
-You've drawn a clear line for yourself — "I don't want to send something false" — and you name one concrete step tonight rather than leaving it abstract.
+You've spotted the core of it — "I don't want to send something false" — and you've named one concrete thing you'd do before the weekend, which is more than many manage.
 
-But the plan rests on "it's his project, so it's not really my call," while the report goes out under your name and Marcus isn't reachable. That deference is what's shaping everything else here.
+But the plan rests on it being Marcus's call: "it's his project, so it's not really my call." The report goes out under your name, and your email to the client says the report is coming Monday without saying anything about what you found. Hold that against what the client is doing Monday morning.
 
-Your email to the client says the report is coming Monday and nothing about the checks. Hold that against what the client is doing Monday morning.
-
-What would that email need to tell them so they aren't surprised?
+What does the client need from you in time to be useful to them?
 
 #### Round 2: revision
 
@@ -578,11 +580,11 @@ What would that email need to tell them so they aren't surprised?
 
 *Ends with: "Someone might say: 'You can't reach Marcus, and it's his project. Wait until Monday and let him decide.' Why not wait?"*
 
-Big shift from last time: "it's his project, so it's not really my call" has become a decision you own, and you took up the client email properly — "with the two failed checks shown" plus the reason, "because the board meets Monday morning, before anyone can confirm the fixes." That's real movement.
+Big shift from "I'd wait until Monday" to sending tonight, and you now anchor it in the board: "because the board meets Monday morning, before anyone can confirm the fixes." That's the deferral gone, and you've said who else at the firm hears about it.
 
-What's thinnest now is "I'd email Marcus to explain." That names a topic, not a message. He comes back Monday to a report he didn't authorise and his boss copied.
+What's still thin is the email to Marcus — "I'd email Marcus to explain" names the topic but not the substance. He reads it Monday, after the client already has the report.
 
-What does that email tell Marcus?
+What would that email tell him about what you sent, and what you need from him next?
 
 #### Round 3: revision, strong
 
@@ -590,11 +592,13 @@ What does that email tell Marcus?
 
 *Ends with: "Monday, 8:15. The client phones you: 'I'm walking into the board in forty-five minutes. If they ask about quality, what do I tell them?' You haven't heard from Marcus. What do you tell the client?"*
 
-This is strong. The email to Marcus went from a topic to actual words: "I couldn't mark the checks complete with the board meeting Monday morning, so I've sent the report showing the two items as in progress, with your fixes expected Monday." It says what you did, why, and what happens next, without accusing him of anything — and "Happy to talk first thing Monday" leaves the door open rather than slamming it.
+This is strong.
 
-You also took up the challenge about waiting, and answered it on Marcus's own terms: "Even if they're as small as Marcus says, the board would be relying on something nobody can check yet." That's the argument met head-on rather than sidestepped, and it's the biggest step you've made since your first version, where this wasn't your call at all.
+The email to Marcus is no longer a topic — it's there in full, and it does the two things it needed to do: it says plainly what you sent and why, "I couldn't mark the checks complete with the board meeting Monday morning, so I've sent the report showing the two items as in progress," and it keeps the door open with "Happy to talk first thing Monday." It's calm, it isn't accusatory, and it tells him about the copy to his boss rather than letting him discover it.
 
-The client note, the note to Marcus, the copy to his boss and the reason for it all hang together as one plan you could carry out tonight. Well done.
+You also took Marcus's own argument seriously instead of stepping past it: "Even if they're as small as Marcus says, the board would be relying on something nobody can check yet." That's the reason this holds up — not that a rule was broken, but that the people in that room would be leaning on something no one has confirmed.
+
+From "I'd wait until Monday" to this is a long way.
 
 ### RS5. Stuck for three rounds
 
@@ -606,13 +610,11 @@ The client note, the note to Marcus, the copy to his boss and the reason for it 
 
 *Ends with: "At 4:30 that Friday, what other options did you have?"*
 
-Refusing to send it — "I wouldn't send anything tonight" — is a real decision, and you made it under pressure without Marcus there.
+You're clear that you won't send something untrue: "I wouldn't send anything tonight" is a real decision, and you make it before anyone tells you to.
 
-But the whole plan rests on him: keep trying his phone, "sort it out first thing Monday." Hold that against when the client presents to their board. And Marcus isn't picking up, so the one thing your plan depends on may never happen.
+But the whole plan rests on Marcus — "I'll keep trying his phone" — and the scenario has already told you he isn't picking up. That leaves you with nothing that actually happens tonight. Hold "first thing Monday" against what the client is doing Monday morning, and against how their report gets used.
 
-The pattern is that your course of action needs Marcus to cooperate, when the scenario has already told you he won't.
-
-What does the client need to have in hand, and by when?
+What could you set in motion this evening that doesn't depend on anyone answering their phone?
 
 #### Round 2: revision
 
@@ -620,13 +622,11 @@ What does the client need to have in hand, and by when?
 
 *Ends with: "Marcus would put it like this: 'The fixes are small, I'll have them done by Monday, and this client panics over nothing. I'm the lead on this. Just send it.' Why not do what he asked?"*
 
-You've added something real since last time: "a voicemail and a text so he knows I haven't sent it" puts your decision in writing tonight rather than leaving it to a phone that isn't answered.
+You've added something that actually happens tonight: "I'd leave Marcus a voicemail and a text" — in writing, not dependent on him answering.
 
-But "first thing Monday" is still the resolution, and the client's board meets Monday morning. Everything still waits for Marcus.
+But the resolution still waits for him, and "first thing Monday" sits next to the client's board Monday morning. Put those two moments side by side and see which comes first. Meanwhile the client, who is preparing for that board, hears nothing from you all weekend.
 
-The pattern: you see sending or not sending, and nothing else on Friday evening.
-
-Beyond Marcus, who at the client's end is holding a report they'll rely on?
+What does the client know about their report by Monday morning under your plan?
 
 #### Round 3: revision
 
@@ -634,11 +634,13 @@ Beyond Marcus, who at the client's end is holding a report they'll rely on?
 
 *Ends with: "Someone might say: 'This is above your pay grade. Email someone senior at the firm and let them decide.' Why not hand it to them?"*
 
-You took up my question: the client now hears from you tonight, "email the client to say the report will come on Monday once Marcus is back". That's new, and it's a real step.
+You took up my question: the client now hears from you — "email the client to say the report will come on Monday once Marcus is back." That's new, and it's the right direction.
 
-But hold that email against what the client is doing Monday morning. A report arriving Monday, and an email that mentions neither of the two failed checks, still leaves them preparing on what they think they know.
+But that email tells them a delivery date and nothing else. The client is preparing for a board presentation Monday morning; hold your Monday delivery against that moment. And they still don't know anything is wrong.
 
-What does the client need from you tonight in order to prepare?
+What does that email tell them about the two checks you ran this morning?
+
+*Checks:* verdict-word (wrong)
 
 ### RS7. An ambiguous revision
 
@@ -650,11 +652,11 @@ What does the client need from you tonight in order to prepare?
 
 *Ends with: "At 4:30 that Friday, what other options did you have?"*
 
-You've drawn the line clearly: "the quality checks marked complete when they arent", and you hold it even if he fixes things by Monday.
+You've landed the key point: marking checks complete "when they arent" isn't made true by a fix "even if he corrects them by monday".
 
-But the whole plan rests on telling Marcus, and he's gone and not answering. That leaves tonight empty, and the report still hasn't gone anywhere.
+But the whole plan rests on telling Marcus, and he's gone and not answering. That leaves Friday evening unaccounted for — and the client has a board on Monday morning.
 
-Think about what the client has in hand when they walk into Monday morning, and who at your firm can act before then.
+What would the client actually receive, and when?
 
 #### Round 2: revision
 
@@ -662,10 +664,88 @@ Think about what the client has in hand when they walk into Monday morning, and 
 
 *Ends with: "Someone might say: 'This is above your pay grade. Email someone senior at the firm and let them decide.' Why not hand it to them?"*
 
-You've kept the clear line from last time — "the quality checks marked complete when they arent" — and you've added a Monday follow-up with Marcus.
+You've added a Monday step — "i'd have to tell him this on monday though" — so the conversation with Marcus doesn't just vanish.
 
-But "i'd send the report as-is" reads two ways: as Marcus asked, or with the two failures shown. Whoever reads your note would face the same question, so say which you mean.
+But "i'd send the report as-is" can be read two ways: the version Marcus asked for, with the checks marked complete, or the version showing the two that failed. Whoever reads your note would face the same question, and the client certainly would.
 
-And the only reason given is still "i dont feel comfortable". Hold that against who is sitting in that board room Monday morning reading your report.
+Say plainly which one goes out, and hold that against what the client will stand up and tell their board on Monday morning.
 
-What does the client actually learn from what you send?
+What does the client see about those two checks?
+
+## Closing notes
+
+### CL1. The worked example
+
+*What to look for: Names the move from "not really my call" to a plan, and says what the final version does well.*
+
+Starting point:
+
+> I'd wait until Monday. I can't reach Marcus and it's his project, so it's not really my call. I don't want to send something false, but I don't want to go against him either. I'd email the client saying the report is coming Monday.
+
+Final response:
+
+> I'd send the report tonight with the two failed checks shown and a note that fixes are expected Monday, because the board meets Monday morning, before anyone can confirm the fixes. Even if they're as small as Marcus says, the board would be relying on something nobody can check yet. I'd email Marcus tonight: 'I couldn't mark the checks complete with the board meeting Monday morning, so I've sent the report showing the two items as in progress, with your fixes expected Monday. I kept it calm and specific. I've copied [your boss] since I couldn't reach you. Happy to talk first thing Monday.'
+
+*The final response is strong.*
+
+You moved from "it's his project, so it's not really my call" to seeing that the board's Monday timing made delay its own choice — "the board would be relying on something nobody can check yet." The final response sends accurate information on time, tells Marcus exactly what you did and why, and leaves the door open for Monday rather than going around him quietly.
+
+### CL2. From a rule to a plan
+
+*What to look for: From a rule with no plan to a strong short response: names the movement in thinking, not just what was added.*
+
+Starting point:
+
+> I would not mark the checks as complete. It's dishonest, and as a consultant my integrity is the most important thing I have. Professional ethics are clear that you can't misrepresent results to a client, no matter who tells you to.
+
+Final response:
+
+> The checks failed, so "complete" would be false tonight, and the client takes this to their board Monday morning, before anyone can confirm Marcus's fixes worked. Even if they're small, whether the board hears about it is the client's call, not ours.
+> 
+> I'll send it on time with: "Two of this week's checks did not pass on Friday. Fixes are scheduled for Monday and we'll confirm once they've been re-run."
+> 
+> Then to Marcus: "Couldn't mark them complete with the board first thing Monday, so I sent them as in progress with your timeline, kept it low-key. Can we talk Monday morning?"
+> 
+> Nobody else needs it tonight. Marcus should hear it from me before anyone senior does.
+> 
+> Monday: talk to him, confirm the fixes to the client.
+
+*The final response is strong.*
+
+You began with a stance — "I would not mark the checks as complete" — grounded in integrity but stopping short of what to send. The final response turns that into a deliverable: the report goes out on time, accurate, with "Fixes are scheduled for Monday." It also holds Marcus's dignity, telling him directly before anyone senior, and names why the timing matters: the board meets first.
+
+### CL3. Stopping before strong
+
+*What to look for: Finishing before strong: honest about what moved and about the one thing still open, without pressing them to go on.*
+
+Starting point:
+
+> I wouldn't send anything tonight. I can't reach Marcus, and I'm not comfortable either lying or going against my lead without talking to him first. I'll keep trying his phone over the weekend and we can sort it out first thing Monday before it goes to the client.
+
+Final response:
+
+> I wouldn't send anything tonight. I'd leave Marcus a voicemail and a text so he knows I haven't sent it, and we can sort it out first thing Monday before it goes to the client.
+
+*The final response is not strong.*
+
+You moved from "keep trying his phone over the weekend" to "leave Marcus a voicemail and a text so he knows I haven't sent it" — a shift from waiting toward leaving a visible record of your position. Still open: the board meets Monday morning, so "sort it out first thing Monday" may arrive after the client needs it, and the report still carries your name either way.
+
+### CL4. Strong on the first try
+
+*What to look for: One version, strong from the start: says what it does well, with a quote, and invents no movement.*
+
+One version:
+
+> The checks failed, so "complete" would be false tonight, and the client takes this to their board Monday morning, before anyone can confirm Marcus's fixes worked. Even if they're small, whether the board hears about it is the client's call, not ours.
+> 
+> I'll send it on time with: "Two of this week's checks did not pass on Friday. Fixes are scheduled for Monday and we'll confirm once they've been re-run."
+> 
+> Then to Marcus: "Couldn't mark them complete with the board first thing Monday, so I sent them as in progress with your timeline, kept it low-key. Can we talk Monday morning?"
+> 
+> Nobody else needs it tonight. Marcus should hear it from me before anyone senior does.
+> 
+> Monday: talk to him, confirm the fixes to the client.
+
+*The final response is strong.*
+
+Your first response held up, so there's no change to trace. It rests on a clear line — "whether the board hears about it is the client's call, not ours" — and then does the harder practical work: an accurate report that still goes out on time, framed without alarm, plus a note to Marcus so he hears it from you first. Judgment and tact together.

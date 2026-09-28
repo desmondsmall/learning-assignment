@@ -1,5 +1,5 @@
 import "server-only";
-import { anthropic, MODEL } from "./anthropic";
+import { streamText } from "./anthropic";
 import { content, pathById } from "./content";
 import type { Effort } from "./judge";
 import { contentVars, fill, readPrompt } from "./prompts";
@@ -124,32 +124,6 @@ export function coachMessage({ mode, response, judgment, strong, history = {}, p
 }
 
 /** Streams the coach's feedback, calling onText with each piece as it arrives. */
-export async function coach(input: CoachInput, { effort = "low", onText }: { effort?: Effort; onText?: (text: string) => void } = {}) {
-  const started = Date.now();
-  let firstTextAt: number | null = null;
-  let text = "";
-  const stream = anthropic.messages.stream({
-    model: MODEL,
-    max_tokens: 16000,
-    thinking: { type: "adaptive" },
-    output_config: { effort },
-    // The instructions, scenario and patterns are the same on every call, so they're cached.
-    system: [{ type: "text", text: SYSTEM, cache_control: { type: "ephemeral" } }],
-    messages: [{ role: "user", content: coachMessage(input) }],
-  });
-  for await (const event of stream) {
-    if (event.type === "content_block_delta" && event.delta.type === "text_delta") {
-      firstTextAt ??= Date.now();
-      text += event.delta.text;
-      onText?.(event.delta.text);
-    }
-  }
-  const message = await stream.finalMessage();
-  if (message.stop_reason === "refusal") throw new Error("The coach refused to give feedback on this response");
-  return {
-    text: text.trim(),
-    usage: message.usage,
-    ms: Date.now() - started,
-    firstTextMs: firstTextAt === null ? null : firstTextAt - started,
-  };
+export function coach(input: CoachInput, { effort = "low", onText }: { effort?: Effort; onText?: (text: string) => void } = {}) {
+  return streamText({ system: SYSTEM, user: coachMessage(input), effort, onText, refusal: "The coach refused to give feedback on this response" });
 }

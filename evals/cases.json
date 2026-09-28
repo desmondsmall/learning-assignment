@@ -716,5 +716,35 @@
       ],
       "note": "Round 2, from a real session: asks whether 'as-is' means with the failures shown or marked complete, instead of asserting a contradiction."
     }
+  ],
+  "closings": [
+    {
+      "id": "CL1",
+      "title": "The worked example",
+      "first": "W1",
+      "final": "W3",
+      "note": "Names the move from \"not really my call\" to a plan, and says what the final version does well."
+    },
+    {
+      "id": "CL2",
+      "title": "From a rule to a plan",
+      "first": "E07",
+      "final": "E09",
+      "note": "From a rule with no plan to a strong short response: names the movement in thinking, not just what was added."
+    },
+    {
+      "id": "CL3",
+      "title": "Stopping before strong",
+      "first": "E04",
+      "final_text": "I wouldn't send anything tonight. I'd leave Marcus a voicemail and a text so he knows I haven't sent it, and we can sort it out first thing Monday before it goes to the client.",
+      "note": "Finishing before strong: honest about what moved and about the one thing still open, without pressing them to go on."
+    },
+    {
+      "id": "CL4",
+      "title": "Strong on the first try",
+      "first": "E09",
+      "final": "E09",
+      "note": "One version, strong from the start: says what it does well, with a quote, and invents no movement."
+    }
   ]
 }

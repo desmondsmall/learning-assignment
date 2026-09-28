@@ -1,38 +1,61 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { LuFileText, LuPencil } from "react-icons/lu";
-import { newSession, type Mode, type SessionState } from "@/lib/session";
+import { readEvents } from "@/lib/events";
+import { debriefOffer, type Mode, type SessionState } from "@/lib/session";
 import { CoachAvatar, type CoachState } from "./CoachAvatar";
+import { DebriefButton } from "./DebriefButton";
 
 // The learner's side of the loop. Each submission goes to /api/feedback, which
 // streams back the round: the judge's verdict and the prompt the feedback ends
 // with, then the coach's words as they're written, then the next session state.
-// The session lives only in this page: a refresh starts over.
+// The session lives only in this page, held by Workspace so the debrief can
+// read it: a refresh starts over.
 
 type ShownPrompt = { kind: "options" | "challenge" | "lastTest"; text: string };
 /** What one submission got back. */
 type Round = { feedback: string; prompt: ShownPrompt | null; mode: Mode };
 type Version = Round & { text: string };
+type FeedbackEvent =
+  | { type: "judgment"; mode: Mode; prompt: ShownPrompt | null }
+  | { type: "text"; text: string }
+  | { type: "done"; feedback: string; session: SessionState }
+  | { type: "error"; message: string };
+
+type Props = {
+  session: SessionState;
+  onSession: (session: SessionState) => void;
+  /** The session's random ID, made on first use. */
+  sessionId: () => string;
+  onShowScenario: () => void;
+  onShowDebrief: () => void;
+};
 
 const OPENING = "Take your time. Write what you'd actually do, and why.";
 const HINTS = {
   lastTest: "If your response already handles this, you're done. If not, you can add it.",
   tooShort: "Add to your response and submit it again.",
+  strong: "Your response is strong. Open the reflection when you're ready, or keep working on it.",
+  stuck: "If you're stuck, you can open the reflection now: every path someone could take here, and how each might play out. Or keep revising.",
 };
 const FAILED = "The coach couldn't finish. Your response is still here: try submitting it again.";
 
-export function Session({ onShowScenario }: { onShowScenario: () => void }) {
+export function Session({ session, onSession, sessionId, onShowScenario, onShowDebrief }: Props) {
   const [versions, setVersions] = useState<Version[]>([]);
   const [viewing, setViewing] = useState(0); // index into versions; versions.length means the version being written
   const [draft, setDraft] = useState("");
   const [coach, setCoach] = useState<CoachState>("idle");
   const [streamed, setStreamed] = useState("");
-  const [session, setSession] = useState<SessionState>(newSession);
   // Feedback on a submission that isn't kept as a version: too short, or unchanged.
   const [note, setNote] = useState<Round | null>(null);
   const [error, setError] = useState<string | null>(null);
-  const sessionId = useRef<string | null>(null);
+  const tabs = useRef<HTMLElement>(null);
+
+  // On a phone the tabs can outgrow their row: keep the version being written in view.
+  useEffect(() => {
+    tabs.current?.scrollTo({ left: tabs.current.scrollWidth });
+  }, [versions.length]);
 
   const busy = coach !== "idle";
   const onDraft = viewing === versions.length;
@@ -42,7 +65,6 @@ export function Session({ onShowScenario }: { onShowScenario: () => void }) {
   async function submit() {
     const text = draft.trim();
     if (!text || busy) return;
-    sessionId.current ??= crypto.randomUUID();
     const count = versions.length;
     setViewing(count);
     setCoach("thinking");
@@ -57,30 +79,18 @@ export function Session({ onShowScenario }: { onShowScenario: () => void }) {
       const res = await fetch("/api/feedback", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ sessionId: sessionId.current, response: text, session }),
+        body: JSON.stringify({ sessionId: sessionId(), response: text, session }),
       });
-      if (!res.ok || !res.body) throw new Error(`status ${res.status}`);
-      // Newline-delimited JSON: one event per line, split across chunks as it arrives.
-      const reader = res.body.pipeThrough(new TextDecoderStream()).getReader();
-      let buffer = "";
-      for (;;) {
-        const { done, value } = await reader.read();
-        if (done) break;
-        buffer += value;
-        const lines = buffer.split("\n");
-        buffer = lines.pop()!;
-        for (const line of lines.filter(Boolean)) {
-          const event = JSON.parse(line);
-          if (event.type === "judgment") round = { mode: event.mode, prompt: event.prompt };
-          else if (event.type === "text") {
-            feedback += event.text;
-            setCoach("speaking");
-            setStreamed(feedback);
-          } else if (event.type === "done") {
-            feedback = event.feedback;
-            next = event.session;
-          } else if (event.type === "error") failure = event.message;
-        }
+      for await (const event of readEvents<FeedbackEvent>(res)) {
+        if (event.type === "judgment") round = { mode: event.mode, prompt: event.prompt };
+        else if (event.type === "text") {
+          feedback += event.text;
+          setCoach("speaking");
+          setStreamed(feedback);
+        } else if (event.type === "done") {
+          feedback = event.feedback;
+          next = event.session;
+        } else if (event.type === "error") failure = event.message;
       }
     } catch {
       failure = FAILED;
@@ -89,10 +99,10 @@ export function Session({ onShowScenario }: { onShowScenario: () => void }) {
     if (failure || !round || !next) {
       setError(failure ?? FAILED);
     } else if (round.mode === "too_short" || round.mode === "unchanged") {
-      setSession(next);
+      onSession(next);
       setNote({ ...round, feedback });
     } else {
-      setSession(next);
+      onSession(next);
       setNote(null);
       setVersions((v) => [...v, { ...round!, feedback, text }]);
       setViewing(count + 1);
@@ -112,14 +122,17 @@ export function Session({ onShowScenario }: { onShowScenario: () => void }) {
   const failed = onDraft && !busy && error;
   const feedbackText = busy ? streamed : failed ? error : (shown?.feedback ?? OPENING);
   const prompt = busy || failed ? null : shown?.prompt;
-  const hint =
+  // Like the feedback, the hints belong to the version on screen: only the latest has them.
+  const offer = debriefOffer(session);
+  const hints =
     busy || failed || shown !== latest || !shown
-      ? null
+      ? []
       : shown.mode === "too_short"
-        ? HINTS.tooShort
-        : shown.prompt?.kind === "lastTest"
-          ? HINTS.lastTest
-          : null;
+        ? [HINTS.tooShort]
+        : [
+            shown.prompt?.kind === "lastTest" ? HINTS.lastTest : null,
+            session.rounds.at(-1)?.strong ? HINTS.strong : offer === "stuck" ? HINTS.stuck : null,
+          ].filter((h) => h !== null);
   const status =
     coach === "thinking"
       ? "Reading your response…"
@@ -138,8 +151,8 @@ export function Session({ onShowScenario }: { onShowScenario: () => void }) {
   return (
     <div className="flex flex-col gap-5">
       <div className="flex items-center justify-between gap-3">
-        <nav aria-label="Your versions" className="min-w-0 overflow-x-auto">
-          <div className="flex w-max gap-1 rounded-full border border-line bg-card p-1">
+        <nav ref={tabs} aria-label="Your versions" className="min-w-0 overflow-x-auto rounded-full border border-line bg-card p-1">
+          <div className="flex w-max gap-1">
             {[...versions.keys(), versions.length].map((i) => {
               const isDraft = i === versions.length;
               return (
@@ -164,15 +177,25 @@ export function Session({ onShowScenario }: { onShowScenario: () => void }) {
           </div>
         </nav>
 
-        {/* Small screens only: the scenario isn't on screen beside the work. */}
-        <button
-          type="button"
-          onClick={onShowScenario}
-          className="inline-flex shrink-0 items-center gap-1.5 rounded-full border border-line bg-card px-3.5 py-2 text-sm font-semibold text-sage-deep hover:bg-sage-soft lg:hidden"
-        >
-          <LuFileText className="size-4" aria-hidden="true" />
-          Scenario
-        </button>
+        {/* Small screens only: on large ones these sit in the scenario column. */}
+        <div className="flex shrink-0 gap-2 lg:hidden">
+          <button
+            type="button"
+            onClick={onShowScenario}
+            className="inline-flex items-center gap-1.5 rounded-full border border-line bg-card px-3.5 py-2 text-sm font-semibold text-sage-deep hover:bg-sage-soft"
+          >
+            <LuFileText className="size-4" aria-hidden="true" />
+            Scenario
+          </button>
+          <DebriefButton
+            available={offer !== null}
+            onOpen={onShowDebrief}
+            align="end"
+            className="rounded-full border border-line bg-card px-3.5 py-2 text-sm font-semibold text-sage-deep hover:bg-sage-soft aria-disabled:hover:bg-card"
+          >
+            Reflection
+          </DebriefButton>
+        </div>
       </div>
 
       <section aria-label="The coach's feedback" className="rounded-3xl border border-line bg-card p-6 shadow-[0_18px_50px_rgb(45_75_55/0.05)] sm:p-7">
@@ -203,7 +226,13 @@ export function Session({ onShowScenario }: { onShowScenario: () => void }) {
           </p>
         )}
 
-        {hint && <p className="mt-6 border-t border-line pt-4 text-sm text-ink-soft">{hint}</p>}
+        {hints.length > 0 && (
+          <div className="mt-6 space-y-2 border-t border-line pt-4 text-sm text-ink-soft">
+            {hints.map((h) => (
+              <p key={h}>{h}</p>
+            ))}
+          </div>
+        )}
       </section>
 
       <section aria-label="Your response" className="rounded-3xl border border-line bg-card p-6 sm:p-7">

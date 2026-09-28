@@ -1,7 +1,8 @@
 // Runs the judge against the labelled responses in evals/cases.json and reports
 // how often it agrees with the labels, and with itself across repeated runs.
 // Then the coach gives feedback on each response and plays the resubmission
-// sequences round by round, and every message it writes is checked in code.
+// sequences round by round, and writes the debrief's closing note for each
+// closing case, and every message it writes is checked in code.
 //
 //   npm run eval                          every case, once
 //   npm run eval -- --repeats=5           each case five times, for consistency
@@ -10,6 +11,7 @@
 //   npm run eval -- --baseline            five repeats, written to evals/baseline/ (committed)
 //   npm run eval -- --rescore=baseline    rescore a saved run without calling the API
 //   npm run eval -- --judge-only          skip the coach
+//   npm run eval -- --closings-only       just the closing notes, judging only their final responses
 //   CLAUDE_MODEL=claude-sonnet-5 npm run eval -- --tag=comparisons/sonnet-5
 //                                         another model, kept as a committed comparison
 //   options: --concurrency=4 --effort=low --coach-effort=low
@@ -20,13 +22,14 @@ import fs from "node:fs";
 import path from "node:path";
 import type { Usage } from "@anthropic-ai/sdk/resources/messages";
 import { MODEL } from "@/lib/anthropic";
+import { closing } from "@/lib/closing";
 import { coach, historyOf, promptText, type History } from "@/lib/coach";
 import { content } from "@/lib/content";
 import { judge, type Effort } from "@/lib/judge";
 import { isStrong, verifyQuotes, type Judgment, type Level, type Prompt } from "@/lib/rules";
 import { afterRound, modeOf, newSession, promptFor, unchanged, type Mode } from "@/lib/session";
 import cases from "./cases.json";
-import { checkFeedback, type Issue } from "./checks";
+import { checkClosing, checkFeedback, type Issue } from "./checks";
 
 type Case = (typeof cases.responses)[number];
 type Judged = { id: string; repeat: number; judgment: Judgment; strong: boolean; dropped: number; ms: number; cost: number };
@@ -49,7 +52,18 @@ type Coached = {
   cost: number;
 };
 type Sequence = { id: string; title: string; note: string; steps: Coached[] } | { id: string; title: string; note: string; error: string };
-type Saved = { model: string; effort: Effort; coachEffort?: Effort; repeats: number; runs: Run[]; coached?: (Coached | Failed)[]; sequences?: Sequence[] };
+/** One closing note, with the two responses it was given. */
+type Closed = { id: string; title: string; note: string; first: string; final: string; strong: boolean; text: string; ms: number; cost: number };
+type Saved = {
+  model: string;
+  effort: Effort;
+  coachEffort?: Effort;
+  repeats: number;
+  runs: Run[];
+  coached?: (Coached | Failed)[];
+  sequences?: Sequence[];
+  closings?: (Closed | Failed)[];
+};
 
 const args = Object.fromEntries(
   process.argv.slice(2).map((a) => {
@@ -71,6 +85,7 @@ const repeats = saved?.repeats ?? (baseline ? 5 : Number(args.repeats ?? 1));
 const effort = saved?.effort ?? ((args.effort ?? "low") as Effort);
 const coachEffort = saved?.coachEffort ?? ((args["coach-effort"] ?? "low") as Effort);
 const judgeOnly = args["judge-only"] === "true";
+const closingsOnly = args["closings-only"] === "true";
 const concurrency = Number(args.concurrency ?? 4);
 const only = args.cases?.split(",");
 
@@ -189,6 +204,9 @@ async function judgeOne(id: string, response: string): Promise<Judged> {
   return { id, repeat: 0, judgment, strong: isStrong(judgment, rule), dropped: dropped.length, ms: out.ms, cost: cost(out.usage) };
 }
 
+/** The first judgment of a case in this run, if it was judged. */
+const judgedFirst = (runs: Run[], id: string) => runs.find((r): r is Judged => r.id === id && r.repeat === 0 && !("error" in r));
+
 /**
  * Plays each resubmission sequence round by round, keeping the session the app
  * keeps: the starting point, the previous version with its judgment and
@@ -196,7 +214,6 @@ async function judgeOne(id: string, response: string): Promise<Judged> {
  * previous feedback ended with.
  */
 function playSequences(runs: Run[]): Promise<Sequence[]> {
-  const judgedFirst = (id: string) => runs.find((r): r is Judged => r.id === id && r.repeat === 0 && !("error" in r));
   return pool(cases.resubmissions, async (seq): Promise<Sequence> => {
     try {
       const steps: Coached[] = [];
@@ -207,7 +224,7 @@ function playSequences(runs: Run[]): Promise<Sequence[]> {
         const response = "case" in step ? byId[step.case!].response : step.text!;
         const judged: Judged = unchanged(session, response)
           ? lastJudged!
-          : ("case" in step && judgedFirst(step.case!)) || (await judgeOne(seq.id, response));
+          : ("case" in step && judgedFirst(runs, step.case!)) || (await judgeOne(seq.id, response));
         const mode = modeOf(session, response, judged.judgment);
         const prompt = promptFor(session, mode, judged.judgment, judged.strong, content.scenario.challengeOrder);
         const out = await coachOne(seq.id, response, judged, mode, historyOf(session), prompt);
@@ -225,6 +242,29 @@ function playSequences(runs: Run[]): Promise<Sequence[]> {
   });
 }
 
+/**
+ * The debrief's closing note for each closing case: the starting point, the
+ * final response, and whether the judge calls the final one strong, as the app
+ * sends them. A final response that is a case reuses its judgment from this run.
+ */
+function writeClosings(runs: Run[]): Promise<(Closed | Failed)[]> {
+  return pool(cases.closings, async (c): Promise<Closed | Failed> => {
+    try {
+      const first = byId[c.first].response;
+      const final = "final" in c ? byId[c.final!].response : c.final_text!;
+      const judged = ("final" in c && judgedFirst(runs, c.final!)) || (await judgeOne(c.id, final));
+      const out = await closing({ first, final, strong: judged.strong }, { effort: coachEffort });
+      log(`  ${c.id} closing note (final ${judged.strong ? "strong" : "not strong"}, ${out.text.split(/\s+/).length} words)`);
+      const judgeCost = judgedFirst(runs, "final" in c ? c.final! : "") ? 0 : judged.cost;
+      return { id: c.id, title: c.title, note: c.note, first, final, strong: judged.strong, text: out.text, ms: out.ms, cost: cost(out.usage) + judgeCost };
+    } catch (err) {
+      const message = err instanceof Error ? err.message : String(err);
+      log(`  ${c.id} closing ERROR ${message}`);
+      return { id: c.id, repeat: 0, error: message };
+    }
+  });
+}
+
 /** The checks, run on saved text every time, so a rescore uses the current checks. */
 const checksOn = (c: Coached) =>
   checkFeedback(c.text, {
@@ -238,11 +278,12 @@ const checksOn = (c: Coached) =>
   });
 
 async function main() {
-  const runs: Run[] = rescoring ? saved!.runs.filter((r) => selected.some((c) => c.id === r.id)) : await judgeAll();
+  const runs: Run[] = rescoring ? saved!.runs.filter((r) => selected.some((c) => c.id === r.id)) : closingsOnly ? [] : await judgeAll();
   if (rescoring) log(`Rescoring ${args.rescore}: ${runs.length} judgments`);
-  // The sequences draw on several cases, so they run only on the full set.
-  const coached: (Coached | Failed)[] = rescoring ? (saved!.coached ?? []) : judgeOnly ? [] : await coachFirsts(runs);
-  const sequences: Sequence[] = rescoring ? (saved!.sequences ?? []) : judgeOnly || only ? [] : await playSequences(runs);
+  // The sequences and closings draw on several cases, so they run only on the full set.
+  const coached: (Coached | Failed)[] = rescoring ? (saved!.coached ?? []) : judgeOnly || closingsOnly ? [] : await coachFirsts(runs);
+  const sequences: Sequence[] = rescoring ? (saved!.sequences ?? []) : judgeOnly || closingsOnly || only ? [] : await playSequences(runs);
+  const closings: (Closed | Failed)[] = rescoring ? (saved!.closings ?? []) : judgeOnly || only ? [] : await writeClosings(runs);
   // A rescored run covers only the cases it judged.
   const judgedCases = rescoring ? selected.filter((c) => runs.some((r) => r.id === c.id)) : selected;
 
@@ -305,12 +346,16 @@ async function main() {
   const sequenceMessages = sequences.flatMap((q) => ("steps" in q ? q.steps.map((st, i) => ({ ...st, id: `${q.id} round ${i + 1}` })) : []));
   const messages = [...firstMessages, ...sequenceMessages].map((m) => ({ ...m, checks: checksOn(m) }));
   const coachCost = messages.reduce((n, m) => n + m.cost, 0);
-  const totalCost = ok.reduce((n, r) => n + r.cost, 0) + coachCost;
+  const notes = closings.filter((c): c is Closed => !("error" in c)).map((c) => ({ ...c, checks: checkClosing(c.text, c) }));
+  const totalCost = ok.reduce((n, r) => n + r.cost, 0) + coachCost + notes.reduce((n, c) => n + c.cost, 0);
 
   const summary = [
     "# Eval results",
     "",
-    `Model \`${saved?.model ?? MODEL}\`, judge effort \`${effort}\`, ${judgedCases.length} cases x ${repeats} repeat(s)${messages.length ? `; coach effort \`${coachEffort}\`, ${messages.length} messages` : ""}. Estimated cost $${totalCost.toFixed(2)}.`,
+    `Model \`${saved?.model ?? MODEL}\`, judge effort \`${effort}\`, ${runs.length ? `${judgedCases.length} cases x ${repeats} repeat(s)` : "no cases judged"}${messages.length || notes.length ? `; coach effort \`${coachEffort}\`, ${[messages.length && `${messages.length} messages`, notes.length && `${notes.length} closing notes`].filter(Boolean).join(" and ")}` : ""}. Estimated cost $${totalCost.toFixed(2)}.`,
+  ];
+  // A run of just the closing notes judges no cases, so it has no judge section.
+  if (runs.length) summary.push(
     "",
     "Every count is over all judgments, not just the first repeat of each case.",
     "",
@@ -321,13 +366,13 @@ async function main() {
     `- Two levels out: ${scored.flatMap((r) => r.twoOut.map((k) => `${r.c.id} ${k}`)).join("; ") || "none"}.`,
     `- Primary pattern in the judge's top two: ${patternRows.reduce((n, r) => n + r.patternHits!, 0)}/${patternRows.reduce((n, r) => n + r.mine.length, 0)}.`,
     `- Closest path overlaps: ${pathRows.reduce((n, r) => n + r.pathHits!, 0)}/${pathRows.reduce((n, r) => n + r.mine.length, 0)}.`,
-  ];
-  if (repeats > 1) {
+  );
+  if (runs.length && repeats > 1) {
     summary.push(
       `- Consistency across ${repeats} repeats: the same verdict every time on ${scored.filter((r) => r.stableVerdict).length}/${scored.length} cases; the same level every time on ${sum((r) => r.stableElements)}/${scored.length * ELEMENTS.length} elements.`,
     );
   }
-  summary.push(
+  if (runs.length) summary.push(
     `- Judge time: median ${secs(pct(0.5))}, 90th percentile ${secs(pct(0.9))}.`,
     `- Quotes dropped by the exact-match check: ${ok.reduce((n, r) => n + r.dropped, 0)}.`,
   );
@@ -355,7 +400,27 @@ async function main() {
     }
   }
 
-  summary.push(
+  if (closings.length) {
+    const failed = notes.filter((c) => c.checks.issues.length);
+    const byCheck = tally(failed.flatMap((c) => c.checks.issues.map((i) => i.check)));
+    const closingErrors = closings.filter((c): c is Failed => "error" in c);
+    summary.push(
+      "",
+      "## The closing note",
+      "",
+      `The debrief's note on what moved, for each of ${closings.length} closing cases, given whether the judge calls the final response strong. Checked in code: a quote from each version, exact, at most 70 words, and no questions, paths, levels or verdicts.`,
+      "",
+      `- **Notes with a failed check: ${failed.length}/${notes.length}.**${byCheck ? ` By check: ${byCheck.replace(/ (\d+)\/\d+/g, " $1")}.` : ""}`,
+      `- Length: ${notes.map((c) => `${c.id} ${c.checks.words}`).join(", ")} words.`,
+    );
+    if (closingErrors.length) summary.push(`- Errors: ${closingErrors.map((c) => `${c.id}: ${c.error}`).join("; ")}`);
+    if (failed.length) {
+      summary.push("", "| Note | Failed checks |", "| --- | --- |");
+      for (const c of failed) summary.push(`| ${c.id} | ${c.checks.issues.map((i: Issue) => `${i.check} (${i.detail.replace(/\|/g, "/")})`).join("; ")} |`);
+    }
+  }
+
+  if (runs.length) summary.push(
     "",
     "## Per case",
     "",
@@ -364,7 +429,7 @@ async function main() {
     "| Case | Expected | Verdicts | Element differences (expected → judged, how often) | Patterns | Paths |",
     "| --- | --- | --- | --- | --- | --- |",
   );
-  for (const r of rows) {
+  for (const r of runs.length ? rows : []) {
     if (!r.mine.length) {
       summary.push(`| ${r.c.id} | | error | | | |`);
       continue;
@@ -378,7 +443,7 @@ async function main() {
       `| ${r.c.id} | ${want} | ${flagged} | ${r.diffs.join(", ")} | ${j.patterns.join(", ")} (want ${e.patterns?.join(", ") || "none"}) | ${j.closest_paths.join(", ")} (want ${e.paths?.join(", ") || "–"}) |`,
     );
   }
-  summary.push("", `Levels are in element order: ${ELEMENTS.join(", ")}. B beginning, D developing, S strong; ★ strong overall. A verdict in bold doesn't match the label every time.`);
+  if (runs.length) summary.push("", `Levels are in element order: ${ELEMENTS.join(", ")}. B beginning, D developing, S strong; ★ strong overall. A verdict in bold doesn't match the label every time.`);
 
   // --- Write -------------------------------------------------------------------------
 
@@ -389,13 +454,14 @@ async function main() {
     const issues = checksOn(m).issues;
     return issues.length ? [`*Checks:* ${issues.map((i) => `${i.check} (${i.detail})`).join("; ")}`, ""] : [];
   };
-  const feedback = ["# The coach's feedback", "", "Every message the coach wrote in this run, for reading.", "", "## First feedback on each case", ""];
+  const feedback = ["# The coach's feedback", "", "Every message the coach wrote in this run, for reading.", ""];
+  if (firstMessages.length) feedback.push("## First feedback on each case", "");
   for (const m of firstMessages) {
     feedback.push(`### ${m.id}. ${byId[m.id].title}`, "", ...quote(m.response), "");
     feedback.push(`*${m.strong ? "Strong" : m.mode === "too_short" ? "Too short to judge" : "Not strong"}.${m.prompt ? ` Ends with: "${m.prompt}"` : ""}*`, "");
     feedback.push(m.text, "", ...checked(m));
   }
-  feedback.push("## Resubmission sequences", "");
+  if (sequences.length) feedback.push("## Resubmission sequences", "");
   for (const q of sequences) {
     if (!("steps" in q)) continue;
     feedback.push(`### ${q.id}. ${q.title}`, "", `*What to look for: ${q.note}*`, "");
@@ -405,19 +471,27 @@ async function main() {
       feedback.push(m.text, "", ...checked(m));
     });
   }
+  if (notes.length) feedback.push("## Closing notes", "");
+  for (const c of notes) {
+    feedback.push(`### ${c.id}. ${c.title}`, "", `*What to look for: ${c.note}*`, "");
+    if (c.first === c.final) feedback.push("One version:", "", ...quote(c.final), "");
+    else feedback.push("Starting point:", "", ...quote(c.first), "", "Final response:", "", ...quote(c.final), "");
+    feedback.push(`*The final response is ${c.strong ? "strong" : "not strong"}.*`, "", c.text, "");
+    if (c.checks.issues.length) feedback.push(`*Checks:* ${c.checks.issues.map((i) => `${i.check} (${i.detail})`).join("; ")}`, "");
+  }
 
   // The summary, the feedback, and everything they were scored from, so a run
   // can be rescored without calling the API.
   const outDir = runDir(baseline ? "baseline" : (args.tag ?? args.rescore ?? "latest"));
   fs.mkdirSync(outDir, { recursive: true });
   fs.writeFileSync(path.join(outDir, "summary.md"), summary.join("\n") + "\n");
-  if (messages.length) fs.writeFileSync(path.join(outDir, "feedback.md"), feedback.join("\n").trimEnd() + "\n");
+  if (messages.length || notes.length) fs.writeFileSync(path.join(outDir, "feedback.md"), feedback.join("\n").trimEnd() + "\n");
   if (!rescoring) {
-    const results: Saved = { model: MODEL, effort, coachEffort, repeats, runs, coached, sequences };
+    const results: Saved = { model: MODEL, effort, coachEffort, repeats, runs, coached, sequences, closings };
     fs.writeFileSync(path.join(outDir, "results.json"), JSON.stringify(results, null, 2) + "\n");
   }
   log("");
-  log(summary.slice(0, summary.indexOf("## Per case")).join("\n"));
+  log((runs.length ? summary.slice(0, summary.indexOf("## Per case")) : summary).join("\n"));
   log(`\nWritten to ${path.relative(process.cwd(), outDir)}`);
 }
 

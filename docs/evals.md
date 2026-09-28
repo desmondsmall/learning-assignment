@@ -29,6 +29,17 @@ The coach gives feedback on every labelled response, from the judge's first judg
 
 The rest only a person can judge: whether the feedback aims at the right thing, gives the answer away, or sounds like a coach. `feedback.md` has every message for reading, with the response it answers and the prompt it ends with, and each sequence with what to look for.
 
+## What the closing note is checked on
+
+The debrief's closing note is written for four closing cases, each a starting point and a final response, given whether the judge calls the final one strong, as the app does:
+
+- **The worked example**, W1 to W3: names the move from "not really my call" to a plan.
+- **From a rule to a plan**, E07 to E09: names the movement in thinking, not just what was added.
+- **Stopping before strong**, E04 to a written final that stays stuck: honest about the one thing still open, without pressing the learner to go on.
+- **Strong on the first try**, E09 alone: says what it does well and invents no movement.
+
+`checkClosing` in `evals/checks.ts` checks each note: a quote from each version (or from the one version), exact; at most 70 words; no questions; and no paths, level names, rubric words or verdicts. `feedback.md` has every note under "Closing notes", with both versions and what to look for.
+
 ## What a run reports
 
 `npm run eval` judges every case and writes a `summary.md`, counting every judgment rather than the first repeat of each case, since a case judged right three times in five is a problem one run can hide. It reports:
@@ -40,6 +51,7 @@ The rest only a person can judge: whether the feedback aims at the right thing, 
 - **Consistency**, with repeats. Whether each response gets the same strong-or-not, and the same level on each element, every time. The judge sees only the current response, so the same response should always get the same judgment.
 - **Judge time and dropped quotes.** How long each judgment takes, and how many quotes the exact-match check threw away.
 - **The coach.** How many messages failed a check, which checks, and the time to the coach's first word: the judge, then the coach's first streamed text, which is how long a learner waits.
+- **The closing note.** How many notes failed a check, which checks, and each note's length.
 - **Per case**, a table of the verdicts across repeats, with each element's differences from the label and how often they happened.
 
 Beside it, `feedback.md` holds every coach message, and `results.json` everything the run produced: every judgment, with the quotes each level rests on and what the judge said each element shows and doesn't yet show, and every coach message with what it was given. That's where to look when a number moves.
@@ -59,7 +71,7 @@ The judge and the coach run on Claude Opus 5 at low effort. `evals/comparisons/s
 
 ## Running it
 
-It needs `ANTHROPIC_API_KEY` in `.env.local`. Every run calls the API and costs money: about $0.80 per repeat of the judge on all 29 cases, and about $2 for the coach's messages.
+It needs `ANTHROPIC_API_KEY` in `.env.local`. Every run calls the API and costs money: about $0.80 per repeat of the judge on all 29 cases, about $2 for the coach's messages, and about $0.20 for the closing notes.
 
 ```bash
 npm run eval                          # every case, once
@@ -68,6 +80,7 @@ npm run eval -- --repeats=5           # consistency
 npm run eval -- --tag=before          # name a run, to compare it with a later one
 npm run eval -- --baseline            # five repeats, written to evals/baseline/
 npm run eval -- --judge-only          # the judge alone, cheaper while iterating on it
+npm run eval -- --closings-only       # just the closing notes, judging only their final responses
 npm run eval -- --rescore=baseline    # rescore saved results, without the API
 CLAUDE_MODEL=claude-sonnet-5 npm run eval -- --tag=comparisons/sonnet-5
 ```

@@ -4,7 +4,7 @@ What the learner sees and does, from opening the page to the debrief. The reason
 
 ## What's on the screen
 
-**The scenario.** The situation, ending "What do you do, and why?" On a wide screen it sits beside the work throughout, so the learner can always reread it. On a phone, where both won't fit, the page opens on the scenario alone, with a **Start writing** button; after that the learner works on the feedback and the response, and a **Scenario** button beside the version tabs opens it again in a dialog.
+**The scenario.** The situation, ending "What do you do, and why?" On a wide screen it sits beside the work throughout, so the learner can always reread it. On a phone, where both won't fit, the page opens on the scenario alone, with a **Start writing** button; after that the learner works on the feedback and the response, and a **Scenario** button beside the version tabs opens it again in a dialog. **Reflection**, which opens the debrief, sits below the scenario on a wide screen, and beside the Scenario button on a phone.
 
 **Your response.** A text area for the learner's answer to the scenario, with a button to submit it.
 
@@ -26,14 +26,14 @@ What the learner sees and does, from opening the page to the debrief. The reason
 
 - after the last test: "If your response already handles this, you're done. If not, you can add it."
 - after a response too short to judge: "Add to your response and submit it again."
-- when See the debrief appears because the response is strong: "Your response is strong. See the debrief when you're ready, or keep working on it."
-- when it appears because the learner seems stuck: "If you're stuck, you can see the debrief now: every path someone could take here, and how each might play out. Or keep revising."
+- when the latest version is strong: "Your response is strong. Open the reflection when you're ready, or keep working on it."
+- when the debrief has opened because the learner seems stuck: "If you're stuck, you can open the reflection now: every path someone could take here, and how each might play out. Or keep revising."
 
 Like the feedback, the hints belong to the version on screen.
 
-**See the debrief.** A button that appears once the response is strong, or once the learner seems stuck, and then stays. It sits with the hints at the foot of the feedback box, next to the one that explains it. Stuck is a rule in code, from what the judge already returns: the same limiting pattern in three versions in a row, or five versions without reaching strong.
+**Reflection.** The button that opens the debrief. It is there from the start, so nothing appears or moves when it becomes available. Until then it does nothing, and hovering over it, or tapping it on a phone, shows a hint: "Available once you have a strong response, or if you get stuck." It becomes available once a version is strong, or once the learner seems stuck, and then stays available, whatever later versions do. Stuck is a rule in code, from what the judge already returns: the same limiting pattern in three versions in a row, or five versions without reaching strong.
 
-Seeing the debrief ends the session.
+The debrief opens in a dialog over the work. From it the learner can go back to their response and keep revising, or start fresh, which clears their versions and begins a new session. If they go back and submit a new version, the debrief shows that version the next time it's opened, with a new note from the coach. A draft that hasn't been submitted isn't part of it: the final response is the last version submitted.
 
 **The paths, at the end.** While the learner is working, the paths are never shown as options: they come in one at a time, as challenges in the feedback. In the debrief, the paths are revealed.
 
@@ -51,8 +51,8 @@ The whole experience is one loop: submit, feedback, revise, resubmit. Each submi
 5. **The learner revises and submits.** The coach responds to what changed since the last version, quoting before and after, and says whether it dealt with what was flagged. If the new version takes on what it was asked last time, the coach says so; if it doesn't, the coach lets it go. It keeps the starting point in view.
 6. **From the second round, the feedback ends with a challenge**: a path the learner didn't take, argued the way someone who took it would argue it, and chosen by the rule below. The learner tests their next version against it.
 7. **Another round.** This repeats as long as the learner wants.
-8. **When the response is strong, the coach says so plainly** and stops pushing for polish. What counts as strong is set out in `rubric.md`: it is judged on the response alone, so a first attempt can be strong. The feedback ends with one last test: a moment of pressure after the decision, the client phoning before the board. If the response already handles it, the learner is done; if not, they can add it. See the debrief appears.
-9. **The debrief.** It is offered when the response is strong, or earlier if the learner seems stuck. The starting point and the final response are shown side by side, with a short note from the coach on what moved. Then the paths are revealed.
+8. **When the response is strong, the coach says so plainly** and stops pushing for polish. What counts as strong is set out in `rubric.md`: it is judged on the response alone, so a first attempt can be strong. The feedback ends with one last test: a moment of pressure after the decision, the client phoning before the board. If the response already handles it, the learner is done; if not, they can add it. Reflection becomes available.
+9. **The debrief.** It is offered when the response is strong, or earlier if the learner seems stuck. The starting point and the final response are shown side by side, with a short note from the coach on what moved. Then the paths are revealed. If the first response was already strong there is only one version, so it is shown alone, and the note says what it does well.
 
 ## What the feedback ends with
 
@@ -154,9 +154,9 @@ The challenge: the response is now closest to path 6 (Send an accurate report an
 
 > "Monday, 8:15. The client phones you: 'I'm walking into the board in forty-five minutes. If they ask about quality, what do I tell them?' You haven't heard from Marcus. What do you tell the client?"
 
-**Hints, at the foot of the box, next to See the debrief:** *If your response already handles this, you're done. If not, you can add it.* · *Your response is strong. See the debrief when you're ready, or keep working on it.*
+**Hints, at the foot of the box:** *If your response already handles this, you're done. If not, you can add it.* · *Your response is strong. Open the reflection when you're ready, or keep working on it.*
 
-The learner decides their response covers it, and opens the debrief.
+Reflection, below the scenario, is now available. The learner decides their response covers it, and opens the debrief.
 
 ### The debrief
 
@@ -170,7 +170,9 @@ Then the paths are revealed, all seven. "Send it as Marcus asked" and "Hold it u
 
 Nothing is marked as the learner's own path. Which path a response is closest to is used only to choose challenges, never shown.
 
-Each can be opened to read how it might play out.
+Each can be opened to read how it might play out: what most likely happens, what could also happen, what it cost and what it protected.
+
+Below the paths, **Back to your response** closes the debrief, and **Start fresh** begins a new session.
 
 ## How the coach handles the unexpected
 
@@ -180,5 +182,5 @@ Each can be opened to read how it might play out.
 - **A very short or empty response.** The coach asks for more in its own words, without feedback: "Tell me a bit more. What would you actually do at 4:30, and why?" It isn't kept as a version.
 - **A resubmission with nothing changed.** The coach notices and says so, then points to the one thing it most wants them to work on. It isn't kept as a version.
 - **Disagreement that's well argued.** If the learner makes a different choice about *how* to act (whether to escalate, when to send, how much to say to whom) and reasons it well, the coach credits it rather than pushing them to switch. The *whether* is settled: a plan to send a report that misleads is never credited as strong, however well argued. `rubric.md` draws the line.
-- **A learner who stays stuck.** The coach moves down its hint ladder each round they stay on the same pattern (`design.md`). If they're still there after three versions, See the debrief appears, so they aren't left revising with nowhere to go.
+- **A learner who stays stuck.** The coach moves down its hint ladder each round they stay on the same pattern (`design.md`). If they're still there after three versions, Reflection becomes available, so they aren't left revising with nowhere to go.
 - **A learner who ignores the challenges.** Nothing forces them. A challenge is a way to test the next version, not a gate, and the coach doesn't chase one that went unanswered.

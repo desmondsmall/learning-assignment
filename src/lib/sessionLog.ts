@@ -28,16 +28,40 @@ export type ExchangeRecord = {
   at?: string;
 };
 
+/** The debrief's closing note, beside the feedback files of the same session. */
+export type ClosingRecord = {
+  sessionId: string;
+  /** The final version the note is about. */
+  version: number;
+  first: string;
+  final: string;
+  strong: boolean;
+  note?: string;
+  model: string;
+  closing?: { ms: number; firstTextMs: number | null; usage?: unknown };
+  error?: string;
+  at?: string;
+};
+
 /**
  * Saves one exchange. Does nothing without BLOB_READ_WRITE_TOKEN, so local
  * development and the evals store nothing unless we choose to.
  */
-export async function saveExchange(record: ExchangeRecord) {
+export function saveExchange(record: ExchangeRecord) {
+  return save(record, "feedback");
+}
+
+/** Saves one closing note, the same way. */
+export function saveClosing(record: ClosingRecord) {
+  return save(record, "closing");
+}
+
+async function save(record: { sessionId: string; version: number }, kind: "feedback" | "closing") {
   if (!process.env.BLOB_READ_WRITE_TOKEN) return;
   const env = process.env.VERCEL_ENV ?? "development";
   // One file per exchange: a blob can't be appended to, and the random suffix
   // means a retried round never overwrites another.
-  await put(`${env}/sessions/${record.sessionId}/${record.version}-feedback.json`, JSON.stringify({ ...record, at: new Date().toISOString() }, null, 2), {
+  await put(`${env}/sessions/${record.sessionId}/${record.version}-${kind}.json`, JSON.stringify({ ...record, at: new Date().toISOString() }, null, 2), {
     access: "private",
     addRandomSuffix: true,
     contentType: "application/json",

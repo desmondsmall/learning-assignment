@@ -5,7 +5,7 @@
 // The server keeps no sessions. The page holds this state, sends it with each
 // submission, and gets the next state back when the round is done.
 
-import { isUnchanged, nextPrompt, type Judgment, type Prompt } from "./rules";
+import { isUnchanged, nextPrompt, seemsStuck, type Judgment, type Prompt } from "./rules";
 
 export type SessionState = {
   /** The learner's first judged response, and the path it was closest to. */
@@ -23,6 +23,16 @@ export type SessionState = {
 };
 
 export const newSession = (): SessionState => ({ first: null, previous: null, rounds: [], raised: [], lastTestDone: false, lastPrompt: null });
+
+/**
+ * Whether the debrief is open to the learner, and why: once a version has been
+ * strong, or once they have seemed stuck, and from then on, whatever comes after.
+ */
+export function debriefOffer(session: SessionState): "strong" | "stuck" | null {
+  if (session.rounds.some((r) => r.strong)) return "strong";
+  const patterns = session.rounds.map((r) => r.patterns);
+  return patterns.some((_, i) => seemsStuck(patterns.slice(0, i + 1))) ? "stuck" : null;
+}
 
 /** The first response, a revision, an unchanged resubmission, or one too short to judge. */
 export type Mode = "first" | "revision" | "unchanged" | "too_short";
