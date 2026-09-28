@@ -4,7 +4,7 @@ What the learner sees and does, from opening the page to the debrief. The reason
 
 ## What's on the screen
 
-**The scenario.** The situation, ending "What do you do, and why?" On a wide screen it sits beside the work throughout, so the learner can always reread it. On a phone, where both won't fit, the page opens on the scenario alone, with a **Start writing** button; after that the learner works on the feedback and the response, and a **Scenario** button beside the version tabs opens it again in a dialog. **Reflection**, which opens the debrief, sits below the scenario on a wide screen, and beside the Scenario button on a phone.
+**The scenario.** The situation, ending "What do you do, and why?" On a wide screen it sits beside the work throughout, so the learner can always reread it. On a phone, where both won't fit, the page opens on the scenario alone, with a **Start writing** button; after that the learner works on the feedback and the response, and a **Scenario** button beside the version tabs opens it again in a dialog. **Reflection**, which opens the debrief, sits below the scenario on a wide screen, and beside the Scenario button on a phone. On a phone, the version tabs, Scenario and Reflection stay at the top of the screen as the page scrolls.
 
 **Your response.** A text area for the learner's answer to the scenario, with a button to submit it.
 
@@ -18,7 +18,7 @@ What the learner sees and does, from opening the page to the debrief. The reason
 **The coach's feedback.** One box, showing the coach's feedback on the version on screen.
 
 - Before the first submission it holds a single line: "Take your time. Write what you'd actually do, and why."
-- While the coach reads a response, the text area locks and a short line says the coach is reading. Then its words stream in as they are written, so the learner starts reading within seconds, not minutes.
+- While the coach reads a response, the text area locks and a short line says the coach is reading. If the coach's box is out of view, as it usually is on a phone after writing, the page first scrolls gently up to it, so the learner sees the coach start reading. Then its words stream in as they are written, so the learner starts reading within seconds, not minutes.
 - The feedback ends with something to take into the next version: the options question in the first round, a challenge after that, or a last test once the response is strong. Which one is set by the rule below.
 - The box holds only the coach's words and the prompt. The learner never writes to the coach: there is no reply space and no chat, and revising the response is the only way to answer.
 
@@ -52,7 +52,7 @@ The whole experience is one loop: submit, feedback, revise, resubmit. Each submi
 6. **From the second round, the feedback ends with a challenge**: a path the learner didn't take, argued the way someone who took it would argue it, and chosen by the rule below. The learner tests their next version against it.
 7. **Another round.** This repeats as long as the learner wants.
 8. **When the response is strong, the coach says so plainly** and stops pushing for polish. What counts as strong is set out in `rubric.md`: it is judged on the response alone, so a first attempt can be strong. The feedback ends with one last test: a moment of pressure after the decision, the client phoning before the board. If the response already handles it, the learner is done; if not, they can add it. Reflection becomes available.
-9. **The debrief.** It is offered when the response is strong, or earlier if the learner seems stuck. The starting point and the final response are shown side by side, with a short note from the coach on what moved. Then the paths are revealed. If the first response was already strong there is only one version, so it is shown alone, and the note says what it does well.
+9. **The debrief.** It is offered when the response is strong, or earlier if the learner seems stuck. It opens with a short note from the coach on what moved between the starting point and the final response, quoting each. Then the paths are revealed. If the first response was already strong there is only one version, and the note says what it does well.
 
 ## What the feedback ends with
 
@@ -160,7 +160,7 @@ Reflection, below the scenario, is now available. The learner decides their resp
 
 ### The debrief
 
-The starting point and the final response appear side by side.
+The debrief opens with the coach's note on what moved.
 
 **Coach:**
 

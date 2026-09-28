@@ -1,6 +1,6 @@
 "use client";
 
-import { useId, useState } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 
 const NOT_YET = "Available once you have a strong response, or if you get stuck.";
 
@@ -21,16 +21,28 @@ type Props = {
  */
 export function DebriefButton({ available, onOpen, children, className, align = "center" }: Props) {
   const hintId = useId();
-  // Phones have no hover: a tap shows the hint until the next tap elsewhere.
+  // Phones have no hover: a tap shows the hint until the next tap anywhere.
+  // Safari doesn't focus a tapped button, so blur can't be relied on to hide it.
   const [tapped, setTapped] = useState(false);
+  const button = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    if (!tapped) return;
+    const hide = (e: PointerEvent) => {
+      if (!button.current?.contains(e.target as Node)) setTapped(false);
+    };
+    document.addEventListener("pointerdown", hide);
+    return () => document.removeEventListener("pointerdown", hide);
+  }, [tapped]);
 
   return (
     <div className="relative">
       <button
+        ref={button}
         type="button"
         aria-disabled={!available}
         aria-describedby={available ? undefined : hintId}
-        onClick={() => (available ? onOpen() : setTapped(true))}
+        onClick={() => (available ? onOpen() : setTapped((t) => !t))}
         onBlur={() => setTapped(false)}
         className={`peer aria-disabled:cursor-not-allowed aria-disabled:opacity-40 ${className}`}
       >

@@ -53,6 +53,9 @@ export function Session({ session, onSession, sessionId, onShowScenario, onShowD
   const [note, setNote] = useState<Round | null>(null);
   const [error, setError] = useState<string | null>(null);
   const tabs = useRef<HTMLElement>(null);
+  const feedbackBox = useRef<HTMLElement>(null);
+  // Set from the click, before the page scrolls, so a second click can't submit twice.
+  const submitting = useRef(false);
 
   // On a phone the tabs can outgrow their row: keep the version being written in view.
   useEffect(() => {
@@ -66,12 +69,16 @@ export function Session({ session, onSession, sessionId, onShowScenario, onShowD
 
   async function submit() {
     const text = draft.trim();
-    if (!text || busy) return;
+    if (!text || busy || submitting.current) return;
+    submitting.current = true;
     const count = versions.length;
     setViewing(count);
+    setError(null);
+    // Scroll first, then clear the box to show the coach reading, so the box
+    // empties in view rather than the page jumping as it gets shorter.
+    await showFeedbackBox();
     setCoach("thinking");
     setStreamed("");
-    setError(null);
 
     let round: Omit<Round, "feedback"> | null = null;
     let feedback = "";
@@ -110,6 +117,35 @@ export function Session({ session, onSession, sessionId, onShowScenario, onShowD
       setViewing(count + 1);
     }
     setCoach("idle");
+    submitting.current = false;
+  }
+
+  // After submitting, the coach's box comes into view, gently, if its top is off
+  // screen (on a phone it usually is). The box sits at the top of the page, just
+  // under the pinned row, so the page scrolls to its top: anywhere lower, the page
+  // would jump once the box empties and the page gets shorter. The box's scroll
+  // margin is the pinned row's height. Resolves once the scroll has finished.
+  function showFeedbackBox() {
+    return new Promise<void>((resolve) => {
+      const box = feedbackBox.current;
+      if (!box) return resolve();
+      const margin = parseFloat(getComputedStyle(box).scrollMarginTop) || 0;
+      const top = box.getBoundingClientRect().top;
+      if (top >= margin && top < window.innerHeight / 3) return resolve();
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        window.scrollTo({ top: 0 });
+        return resolve();
+      }
+      // scrollend isn't in every browser yet, so a timeout ends the wait regardless.
+      const done = () => {
+        window.removeEventListener("scrollend", done);
+        clearTimeout(timer);
+        resolve();
+      };
+      const timer = setTimeout(done, 700);
+      window.addEventListener("scrollend", done);
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
   }
 
   // Makes the version on screen the one being written. Every submitted version stays
@@ -152,7 +188,8 @@ export function Session({ session, onSession, sessionId, onShowScenario, onShowD
 
   return (
     <div className="flex flex-col gap-5">
-      <div className="flex items-center justify-between gap-3">
+      {/* On smaller screens the versions, Scenario and Reflection stay at the top as the page scrolls. */}
+      <div className="sticky top-0 z-20 -mx-5 flex items-center justify-between gap-3 bg-paper/90 px-5 py-3 backdrop-blur sm:-mx-8 sm:px-8 lg:static lg:mx-0 lg:bg-transparent lg:p-0 lg:backdrop-blur-none">
         <nav ref={tabs} aria-label="Your versions" className="min-w-0 overflow-x-auto rounded-full border border-line bg-card p-1">
           <div className="flex w-max gap-1">
             {[...versions.keys(), versions.length].map((i) => {
@@ -200,7 +237,7 @@ export function Session({ session, onSession, sessionId, onShowScenario, onShowD
         </div>
       </div>
 
-      <section aria-label="The coach's feedback" className="rounded-3xl border border-line bg-card p-6 shadow-[0_18px_50px_rgb(45_75_55/0.05)] sm:p-7">
+      <section ref={feedbackBox} aria-label="The coach's feedback" className="scroll-mt-20 rounded-3xl lg:scroll-mt-8 border border-line bg-card p-6 shadow-[0_18px_50px_rgb(45_75_55/0.05)] sm:p-7">
         <div className="flex items-center gap-4">
           <div className="rounded-full bg-sage-soft">
             <CoachAvatar state={coach} size="72px" />

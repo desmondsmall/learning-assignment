@@ -7,9 +7,9 @@ import { readEvents } from "@/lib/events";
 import type { SessionState } from "@/lib/session";
 import { CoachAvatar, ThinkingDots } from "./CoachAvatar";
 
-// The debrief, in a dialog over the work: the starting point beside the final
-// response, the coach's closing note on what moved, then every path someone
-// could take, marking the ones raised as challenges. Nothing is ranked, and
+// The debrief, in a dialog over the work: the coach's closing note on what
+// moved between the starting point and the final response, then every path
+// someone could take, marking the ones raised as challenges. Nothing is ranked, and
 // nothing marks the learner's own path. The learner can go back and keep
 // revising; a new version gets a new note when the debrief is opened again.
 
@@ -85,7 +85,7 @@ export function Debrief({ open, onClose, onStartFresh, session, sessionId, paths
 
   const coach = note?.state === "reading" ? "thinking" : note?.state === "writing" ? "speaking" : "idle";
   const status =
-    note?.state === "reading" ? "Reading your versions" : note?.state === "writing" ? "Writing…" : oneVersion ? "On your response" : "On what moved";
+    note?.state === "reading" ? (oneVersion ? "Reading your response" : "Reading your versions") : note?.state === "writing" ? "Writing…" : oneVersion ? "On your response" : "On what moved";
   const raised = new Set(session.raised);
 
   return (
@@ -109,19 +109,8 @@ export function Debrief({ open, onClose, onStartFresh, session, sessionId, paths
 
         <p className="text-xs font-bold uppercase tracking-[0.18em] text-sage-deep">Reflection</p>
         <h2 id="debrief-title" className="mt-3 pr-10 font-display text-2xl font-semibold leading-tight text-ink sm:text-3xl">
-          {oneVersion ? "Your response" : "Where you started, and where you finished"}
+          Looking back
         </h2>
-
-        <div className={`mt-6 grid gap-4 ${oneVersion ? "" : "md:grid-cols-2"}`}>
-          {oneVersion ? (
-            <Response label="Version 1" text={final} />
-          ) : (
-            <>
-              <Response label="Version 1 · your starting point" text={first} />
-              <Response label={`Version ${version} · your final response`} text={final} />
-            </>
-          )}
-        </div>
 
         <section aria-label="The coach's note" className="mt-6 rounded-3xl border border-line bg-card p-6 sm:p-7">
           <div className="flex items-center gap-4">
@@ -206,14 +195,5 @@ export function Debrief({ open, onClose, onStartFresh, session, sessionId, paths
         </div>
       </div>
     </dialog>
-  );
-}
-
-function Response({ label, text }: { label: string; text?: string }) {
-  return (
-    <figure className="rounded-2xl border border-line bg-card p-5">
-      <figcaption className="text-sm text-ink-soft">{label}</figcaption>
-      <p className="mt-3 whitespace-pre-line leading-7 text-ink">{text}</p>
-    </figure>
   );
 }
