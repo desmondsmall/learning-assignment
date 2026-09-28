@@ -12,6 +12,17 @@ const labels: Record<CoachState, string> = {
   speaking: "The coach is giving feedback",
 };
 
+/** Pulsing dots that end the coach's status line while it reads: the ellipsis, moving. */
+export function ThinkingDots() {
+  return (
+    <span className={styles.dots} aria-hidden="true">
+      <i />
+      <i />
+      <i />
+    </span>
+  );
+}
+
 /** The coach's illustration, with a quiet cue for what it's doing. */
 export function CoachAvatar({ state = "idle", size = "64px" }: { state?: CoachState; size?: string }) {
   return (
@@ -25,7 +36,6 @@ export function CoachAvatar({ state = "idle", size = "64px" }: { state?: CoachSt
       <div className={styles.art}>
         <Image src={coach} alt="" draggable={false} sizes={size} preload />
       </div>
-      <div className={styles.thought} aria-hidden="true"><i /><i /><i /></div>
       <div className={styles.voice} aria-hidden="true"><i /><i /><i /></div>
     </div>
   );

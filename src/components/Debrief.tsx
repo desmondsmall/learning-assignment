@@ -5,7 +5,7 @@ import { LuChevronDown, LuX } from "react-icons/lu";
 import type { Path } from "@/lib/content";
 import { readEvents } from "@/lib/events";
 import type { SessionState } from "@/lib/session";
-import { CoachAvatar } from "./CoachAvatar";
+import { CoachAvatar, ThinkingDots } from "./CoachAvatar";
 
 // The debrief, in a dialog over the work: the starting point beside the final
 // response, the coach's closing note on what moved, then every path someone
@@ -85,7 +85,7 @@ export function Debrief({ open, onClose, onStartFresh, session, sessionId, paths
 
   const coach = note?.state === "reading" ? "thinking" : note?.state === "writing" ? "speaking" : "idle";
   const status =
-    note?.state === "reading" ? "Reading your versions…" : note?.state === "writing" ? "Writing…" : oneVersion ? "On your response" : "On what moved";
+    note?.state === "reading" ? "Reading your versions" : note?.state === "writing" ? "Writing…" : oneVersion ? "On your response" : "On what moved";
   const raised = new Set(session.raised);
 
   return (
@@ -132,6 +132,7 @@ export function Debrief({ open, onClose, onStartFresh, session, sessionId, paths
               <p className="font-display text-lg font-semibold text-sage-deep">Your coach</p>
               <p className="text-sm text-ink-soft" aria-live="polite">
                 {status}
+                {coach === "thinking" && <ThinkingDots />}
               </p>
             </div>
           </div>

@@ -77,6 +77,8 @@ export function Workspace({ scenario, paths }: Props) {
           sessionId={sessionId}
           onShowScenario={() => dialog.current?.showModal()}
           onShowDebrief={() => setDebriefOpen(true)}
+          // Working on a wide screen counts as starting, so narrowing the window doesn't go back to the scenario alone.
+          onBegin={() => setStarted(true)}
         />
       </div>
 

@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { LuFileText, LuPencil } from "react-icons/lu";
 import { readEvents } from "@/lib/events";
 import { debriefOffer, type Mode, type SessionState } from "@/lib/session";
-import { CoachAvatar, type CoachState } from "./CoachAvatar";
+import { CoachAvatar, ThinkingDots, type CoachState } from "./CoachAvatar";
 import { DebriefButton } from "./DebriefButton";
 
 // The learner's side of the loop. Each submission goes to /api/feedback, which
@@ -30,6 +30,8 @@ type Props = {
   sessionId: () => string;
   onShowScenario: () => void;
   onShowDebrief: () => void;
+  /** The learner has begun working, which on a wide screen skips Start writing. */
+  onBegin: () => void;
 };
 
 const OPENING = "Take your time. Write what you'd actually do, and why.";
@@ -41,7 +43,7 @@ const HINTS = {
 };
 const FAILED = "The coach couldn't finish. Your response is still here: try submitting it again.";
 
-export function Session({ session, onSession, sessionId, onShowScenario, onShowDebrief }: Props) {
+export function Session({ session, onSession, sessionId, onShowScenario, onShowDebrief, onBegin }: Props) {
   const [versions, setVersions] = useState<Version[]>([]);
   const [viewing, setViewing] = useState(0); // index into versions; versions.length means the version being written
   const [draft, setDraft] = useState("");
@@ -135,7 +137,7 @@ export function Session({ session, onSession, sessionId, onShowScenario, onShowD
           ].filter((h) => h !== null);
   const status =
     coach === "thinking"
-      ? "Reading your response…"
+      ? "Reading your response"
       : coach === "speaking"
         ? "Writing feedback…"
         : shown && shown === note
@@ -207,6 +209,7 @@ export function Session({ session, onSession, sessionId, onShowScenario, onShowD
             <p className="font-display text-lg font-semibold text-sage-deep">Your coach</p>
             <p className="text-sm text-ink-soft" aria-live="polite">
               {status}
+              {coach === "thinking" && <ThinkingDots />}
             </p>
           </div>
         </div>
@@ -247,6 +250,7 @@ export function Session({ session, onSession, sessionId, onShowScenario, onShowD
           id="response"
           value={onDraft ? draft : versions[viewing].text}
           onChange={(e) => setDraft(e.target.value)}
+          onFocus={onBegin}
           readOnly={!onDraft || busy}
           rows={9}
           placeholder="What would you do, and why?"
